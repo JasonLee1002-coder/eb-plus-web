@@ -279,6 +279,143 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== FRANCHISE SECTION ===== */}
+      <section id="franchise" className="bg-[#FBF7F0] py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">加盟方案</h2>
+            <p className="text-lg text-gray-600">
+              四大店型，滿足不同場景與商圈需求
+            </p>
+          </div>
+
+          {/* Four franchise types */}
+          <div className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                type: "早午餐",
+                desc: "經典東方美早午餐模式，融合中西式餐點，適合社區與學區商圈。",
+                icon: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z",
+                highlight: "970+ 門市實績",
+              },
+              {
+                type: "餐酒館",
+                desc: "日夜雙時段營運，白天咖啡輕食、夜晚餐酒體驗，最大化空間坪效。",
+                icon: "M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 16.5m14.8-1.2l.268 1.572a.75.75 0 01-.766.872H4.698a.75.75 0 01-.766-.872l.268-1.572",
+                highlight: "駁二示範店",
+              },
+              {
+                type: "智慧店",
+                desc: "AI 自動化 + 少人力營運模式，智慧取餐櫃、自助點餐、自動繳費一站完成。",
+                icon: "M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z",
+                highlight: "人力成本 -50%",
+              },
+              {
+                type: "店中店",
+                desc: "在現有商場、超市、交通樞紐等場域內設點，低坪數高坪效快速展店。",
+                icon: "M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016A3.001 3.001 0 0021 9.349m-18 0a2.994 2.994 0 00.209 1.126",
+                highlight: "快速展店",
+              },
+            ].map((f) => (
+              <article
+                key={f.type}
+                className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-100 text-red-600">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-lg font-bold">{f.type}</h3>
+                <p className="mb-3 text-sm leading-relaxed text-gray-600">{f.desc}</p>
+                <span className="inline-block rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600">
+                  {f.highlight}
+                </span>
+              </article>
+            ))}
+          </div>
+
+          {/* 駁二 Showcase */}
+          <div className="overflow-hidden rounded-3xl bg-white shadow-lg">
+            <div className="grid md:grid-cols-2">
+              {/* Left: Images */}
+              <div className="relative">
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="relative h-64">
+                    <Image src="/images/scenes/pier2-01.jpg" alt="東方美駁二示範店外觀 — 取餐櫃設計" fill className="object-cover" />
+                  </div>
+                  <div className="relative h-64">
+                    <Image src="/images/scenes/smart-cabinet-01.jpg" alt="欣殿萬飲智慧櫃子 — 駁二夜間營運" fill className="object-cover" />
+                  </div>
+                  <div className="relative h-64">
+                    <Image src="/images/scenes/pier2-02.jpg" alt="東方美駁二店內空間設計" fill className="object-cover" />
+                  </div>
+                  <div className="relative h-64">
+                    <Image src="/images/scenes/pier2-render-2.jpg" alt="東方美智取活動機 — 科技融合餐飲" fill className="object-cover" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Info */}
+              <div className="flex flex-col justify-center p-8 lg:p-12">
+                <div className="mb-4 inline-block self-start rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">
+                  餐酒館示範案例
+                </div>
+                <h3 className="mb-4 text-2xl font-bold lg:text-3xl">
+                  高雄駁二特區 — 欣殿萬飲
+                </h3>
+                <p className="mb-6 text-gray-600 leading-relaxed">
+                  東方美集團與欣殿萬飲有限公司策略合作，在高雄駁二藝術特區打造
+                  <strong>「早午餐 + 餐酒館」日夜雙時段營運模式</strong>
+                  ，以創新商業模型啟動南台灣夜生活經濟。結合東方美供應鏈優勢與
+                  8 年餐酒館實戰經驗，打造高雄首創「咖啡 x 餐酒」複合式體驗空間。
+                </p>
+
+                {/* Time segments */}
+                <div className="mb-6 space-y-3">
+                  <div className="flex items-start gap-3 rounded-xl bg-amber-50 p-4">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-200 text-sm font-bold text-amber-800">
+                      AM
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-amber-800">8:00–19:00 餐飲咖啡 x 文創空間</div>
+                      <div className="text-xs text-amber-600">親子/遊客/IG客 — 咖啡、輕食、伴手禮</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 rounded-xl bg-purple-50 p-4">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-purple-200 text-sm font-bold text-purple-800">
+                      PM
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-purple-800">19:00–03:00 餐酒館 x 夜經濟入口</div>
+                      <div className="text-xs text-purple-600">上班族/企業客 — 調酒、餐點、包場活動</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Key stats */}
+                <div className="grid grid-cols-3 gap-4 rounded-xl bg-gray-50 p-4">
+                  <div className="text-center">
+                    <div className="text-lg font-black text-red-600">816萬</div>
+                    <div className="text-xs text-gray-500">年度造訪人次</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-black text-red-600">雙時段</div>
+                    <div className="text-xs text-gray-500">最大化坪效</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-black text-red-600">第一排</div>
+                    <div className="text-xs text-gray-500">駁二步行街</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
       {/* ===== TECHNOLOGY SECTION ===== */}
       <section id="technology" className="bg-[#FBF7F0] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

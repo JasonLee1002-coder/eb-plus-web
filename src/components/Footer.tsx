@@ -1,6 +1,7 @@
 const footerLinks = [
   { label: "關於我們", href: "#about" },
   { label: "品牌版圖", href: "#brands" },
+  { label: "加盟方案", href: "#franchise" },
   { label: "科技賦能", href: "#technology" },
   { label: "AI 智慧廚房", href: "#ai-kitchen" },
   { label: "成功案例", href: "#success" },
