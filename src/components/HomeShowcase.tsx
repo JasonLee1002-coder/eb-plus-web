@@ -212,9 +212,9 @@ export default function HomeShowcase() {
           <StaggerContainer className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-4" staggerDelay={0.15}>
             {[
               { value: 970, suffix: "+", label: "全台門市" },
-              { value: 192, suffix: "", label: "台配送車隊" },
-              { value: 489, suffix: "", label: "星加盟滿意度", prefix: "4.", isDecimal: true },
-              { value: 30, suffix: "+", label: "年品牌歷史" },
+              { value: 192, suffix: " 台", label: "配送車隊" },
+              { value: 489, suffix: " 星", label: "加盟滿意度", prefix: "4.", isDecimal: true },
+              { value: 30, suffix: "+ 年", label: "品牌歷史" },
             ].map((stat) => (
               <StaggerItem key={stat.label}>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
@@ -222,7 +222,7 @@ export default function HomeShowcase() {
                     {stat.isDecimal ? (
                       <>
                         <span>4.</span>
-                        <AnimatedCounter value={89} className="inline" />
+                        <AnimatedCounter value={89} suffix={stat.suffix} className="inline" />
                       </>
                     ) : (
                       <AnimatedCounter
