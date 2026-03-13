@@ -133,6 +133,9 @@ export default function Footer() {
           <p className="text-center text-xs text-gray-500">
             &copy; 2026 東方美集團 Eastern Beauty Group. All Rights Reserved.
           </p>
+          <div className="mt-4 text-center text-xs text-white/10">
+            <a href="/seo/dongfangmei-franchise-guide" className="hover:text-white/20">資源中心</a>
+          </div>
         </div>
       </div>
     </footer>
