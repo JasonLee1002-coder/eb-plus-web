@@ -1,65 +1,727 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "東方美集團",
+            alternateName: ["Eastern Beauty Group", "EB Plus", "東方美+"],
+            description:
+              "台灣最大早午餐連鎖集團，旗下擁有巧沛東方美、美芝城、美而美、瑞麟美而美等品牌，結合 AI 科技打造智慧餐飲生態系。",
+            numberOfEmployees: { "@type": "QuantitativeValue", value: 970 },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "東方美+ EB Plus",
+            description: "科技賦能的智慧餐飲集團",
+            priceRange: "$$",
+            servesCuisine: ["早午餐", "西式早餐", "中式早餐"],
+            areaServed: { "@type": "Country", name: "台灣" },
+          }),
+        }}
+      />
+
+      {/* ===== HERO SECTION ===== */}
+      <section
+        id="hero"
+        className="hero-gradient relative flex min-h-screen items-center justify-center overflow-hidden"
+      >
+        {/* Decorative circles */}
+        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-red-500/10 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl" />
+
+        <div className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center text-white sm:px-6">
+          <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight sm:text-6xl lg:text-8xl">
+            東方美
+            <span className="bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text text-transparent">
+              +
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mb-4 text-xl font-medium tracking-widest text-amber-300 sm:text-2xl">
+            科技賦能 &middot; 智慧餐飲
           </p>
+          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-gray-300">
+            結合 AI
+            人工智慧、自動化供應鏈、數據驅動營運，重新定義台灣餐飲產業的未來。
+          </p>
+
+          {/* Stats */}
+          <div className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {[
+              { value: "970+", label: "全台門市" },
+              { value: "192", label: "台配送車隊" },
+              { value: "4.89", label: "星加盟滿意度" },
+              { value: "30+", label: "年品牌歷史" },
+            ].map((stat) => (
+              <div key={stat.label} className="animate-count-up">
+                <div className="text-3xl font-black text-white sm:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-sm text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="#about"
+              className="rounded-full bg-white px-8 py-3 text-base font-bold text-red-600 shadow-lg transition-transform hover:scale-105"
+            >
+              了解更多
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full border-2 border-white/30 px-8 py-3 text-base font-bold text-white transition-colors hover:border-white hover:bg-white/10"
+            >
+              加盟諮詢
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <svg
+            className="h-6 w-6 text-white/50"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </svg>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ===== ABOUT SECTION ===== */}
+      <section id="about" className="bg-[#FBF7F0] py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-6 text-3xl font-bold sm:text-4xl">
+              關於
+              <span className="bg-gradient-to-r from-red-600 to-amber-500 bg-clip-text text-transparent">
+                東方美+
+              </span>
+            </h2>
+            <p className="mb-12 text-lg leading-relaxed text-gray-600">
+              東方美集團自 1985
+              年創立以來，旗下擁有巧沛東方美、東方美早餐、美芝城（早安美芝城）、美而美、瑞麟美而美等知名早午餐品牌，是台灣餐飲供應鏈的領導者。
+              <strong>東方美+</strong> 是新世代品牌概念 ——
+              在傳統餐飲的穩固基礎上，注入 AI
+              人工智慧、IoT 物聯網、大數據分析等尖端科技，打造
+              <strong>「零成本轉型」</strong>的智慧餐飲生態系。
+            </p>
+          </div>
+
+          {/* Three feature cards */}
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                title: "零成本轉型",
+                icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+                desc: "不賣軟體，賣供應鏈。系統免費提供，只要繼續採購原物料，即享完整的智慧餐飲系統。",
+                color: "bg-red-100 text-red-600",
+              },
+              {
+                title: "數據驅動營運",
+                icon: "M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z",
+                desc: "銷售數據直接轉化為採購決策，AI 自動補貨提醒，實現零浪費、高效率的營運模式。",
+                color: "bg-amber-100 text-amber-600",
+              },
+              {
+                title: "AI 智慧賦能",
+                icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z",
+                desc: "從需求預測到智能排程，AI 全面優化餐飲營運每個環節，降低加盟門檻。",
+                color: "bg-purple-100 text-purple-600",
+              },
+            ].map((card) => (
+              <article
+                key={card.title}
+                className="rounded-2xl bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div
+                  className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${card.color}`}
+                >
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d={card.icon}
+                    />
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{card.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
+      {/* ===== BRANDS SECTION ===== */}
+      <section id="brands" className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">品牌版圖</h2>
+            <p className="text-lg text-gray-600">
+              橫跨早午餐、通路、原物料供應鏈的餐飲帝國
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "巧沛東方美",
+                desc: "精緻早午餐品牌，融合中西式餐點，4.89 星好評。提供多樣化的套餐組合，從經典蛋餅到創意吐司應有盡有。",
+                color: "bg-red-500",
+              },
+              {
+                name: "東方美早餐",
+                desc: "經典早餐連鎖，遍布全台各地。以平價美味的早餐服務，陪伴台灣人開啟美好的每一天。",
+                color: "bg-orange-500",
+              },
+              {
+                name: "早安美芝城",
+                desc: "1983 年創立於台南，全台約 1,400 家門市。台灣早餐連鎖產業的重要品牌之一。",
+                color: "bg-yellow-500",
+              },
+              {
+                name: "美而美",
+                desc: "台灣西式早餐文化的開創者，1981 年創立。開啟了台灣連鎖早餐店的黃金時代。",
+                color: "bg-green-500",
+              },
+              {
+                name: "瑞麟美而美",
+                desc: "美而美餐飲連鎖企業集團，1988 年創立於台北通化街，以嚴格的品質管控聞名。",
+                color: "bg-blue-500",
+              },
+              {
+                name: "東方美+ 科技中台",
+                desc: "AI 驅動的供應鏈與數據平台，整合 POS 系統、智慧廚房、自動補貨等技術，為全體系賦能。",
+                color: "bg-gradient-to-br from-red-500 to-amber-500",
+              },
+            ].map((brand) => (
+              <article
+                key={brand.name}
+                className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div
+                  className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl ${brand.color} text-white text-xl font-bold`}
+                >
+                  {brand.name.charAt(0)}
+                </div>
+                <h3 className="mb-2 text-lg font-bold">{brand.name}</h3>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {brand.desc}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TECHNOLOGY SECTION ===== */}
+      <section id="technology" className="bg-[#FBF7F0] py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+              科技賦能 &middot; 降維打擊
+            </h2>
+            <p className="text-lg text-gray-600">
+              我們不賣軟體，我們提供「生意」
+            </p>
+          </div>
+
+          {/* Comparison */}
+          <div className="mb-16 grid gap-6 md:grid-cols-2">
+            {/* Traditional */}
+            <div className="rounded-2xl border-2 border-gray-200 bg-white p-8">
+              <div className="mb-4 inline-block rounded-full bg-gray-100 px-4 py-1 text-sm font-semibold text-gray-500">
+                傳統模式
+              </div>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs text-gray-500">
+                    ✕
+                  </span>
+                  <div>
+                    <strong>營收來源：</strong>軟體月費 — 增加店家固定成本
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs text-gray-500">
+                    ✕
+                  </span>
+                  <div>
+                    <strong>系統費用：</strong>每年 NT$60,000 額外支出
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 text-xs text-gray-500">
+                    ✕
+                  </span>
+                  <div>
+                    <strong>物流支撐：</strong>無（僅提供軟體）
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* EB+ */}
+            <div className="rounded-2xl border-2 border-red-200 bg-white p-8 ring-2 ring-red-100">
+              <div className="mb-4 inline-block rounded-full bg-red-100 px-4 py-1 text-sm font-semibold text-red-600">
+                東方美+ 模式
+              </div>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-xs text-green-600">
+                    ✓
+                  </span>
+                  <div>
+                    <strong>營收來源：</strong>原物料供應 — 轉換為採購優勢
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-xs text-green-600">
+                    ✓
+                  </span>
+                  <div>
+                    <strong>系統費用：</strong>免費（內含於服務）
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-xs text-green-600">
+                    ✓
+                  </span>
+                  <div>
+                    <strong>物流支撐：</strong>192 台自有車隊同步到貨
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Smart Scenarios */}
+          <h3 className="mb-8 text-center text-2xl font-bold">
+            四大智慧場景
+          </h3>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "自助點餐系統",
+                desc: "QR Code 掃碼點餐支付一次完成，櫃檯零排隊",
+                stat: "翻桌率 +40%",
+                color: "border-red-200 bg-red-50",
+              },
+              {
+                title: "智慧雙面取餐櫃",
+                desc: "GraBox-R101 線上預約 + 零接觸自取，告別排隊",
+                stat: "等待時間 → 0",
+                color: "border-amber-200 bg-amber-50",
+              },
+              {
+                title: "外送動線分流",
+                desc: "外送員不進店，專屬取餐區動線徹底分離",
+                stat: "取餐效率 +300%",
+                color: "border-blue-200 bg-blue-50",
+              },
+              {
+                title: "智慧自助繳費機",
+                desc: "現金/多元支付全支援，自動生成憑證",
+                stat: "收銀人力 -50%",
+                color: "border-green-200 bg-green-50",
+              },
+            ].map((s) => (
+              <article
+                key={s.title}
+                className={`rounded-2xl border-2 p-6 transition-shadow hover:shadow-md ${s.color}`}
+              >
+                <h4 className="mb-2 text-lg font-bold">{s.title}</h4>
+                <p className="mb-4 text-sm text-gray-600">{s.desc}</p>
+                <div className="inline-block rounded-full bg-white px-3 py-1 text-sm font-bold text-red-600 shadow-sm">
+                  {s.stat}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AI KITCHEN SECTION ===== */}
+      <section
+        id="ai-kitchen"
+        className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 text-white sm:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+              AI 智慧廚房
+            </h2>
+            <p className="text-lg text-gray-400">
+              不只自動化，更具備「思考能力」的未來廚房
+            </p>
+          </div>
+
+          <div className="mb-16 grid gap-8 md:grid-cols-3">
+            {[
+              {
+                title: "智慧需求預測",
+                desc: "AI 分析歷史銷售數據、即時天氣、商圈活動，精準預測次日物料需求量，降低 15% 食材浪費。",
+                icon: "M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941",
+              },
+              {
+                title: "動態生產排程",
+                desc: "AI 即時調度煎台、炸鍋、飲料站負載量，自動優化出餐順序，外送單與現場單智慧併發管理。",
+                icon: "M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z",
+              },
+              {
+                title: "IoT 設備監控",
+                desc: "全廚房設備聯網，即時監控烤箱溫度、冰箱能耗、設備健康度，預防故障確保餐點品質一致。",
+                icon: "M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z",
+              },
+            ].map((f) => (
+              <article
+                key={f.title}
+                className="rounded-2xl border border-gray-700 bg-gray-800/50 p-8 backdrop-blur transition-colors hover:border-red-500/50"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/20 text-red-400">
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d={f.icon}
+                    />
+                  </svg>
+                </div>
+                <h3 className="mb-3 text-xl font-bold">{f.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{f.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          {/* Metrics */}
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                value: "0.5%",
+                label: "缺貨率",
+                desc: "AI 精準預測確保庫存充足",
+              },
+              {
+                value: "3%",
+                label: "物料浪費",
+                desc: "數據驅動的採購決策",
+              },
+              {
+                value: "98.5%",
+                label: "設備效率",
+                desc: "IoT 預防性維護",
+              },
+            ].map((m) => (
+              <div
+                key={m.label}
+                className="rounded-2xl border border-gray-700 bg-gray-800/50 p-6 text-center"
+              >
+                <div className="mb-1 text-4xl font-black text-red-400">
+                  {m.value}
+                </div>
+                <div className="mb-2 text-lg font-bold text-white">
+                  {m.label}
+                </div>
+                <div className="text-sm text-gray-500">{m.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SUPPLY CHAIN SECTION ===== */}
+      <section id="supply-chain" className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+              全鏈路供應鏈
+            </h2>
+            <p className="text-lg text-gray-600">
+              從銷售到採購的智慧迴圈：數據驅動的零浪費供應鏈
+            </p>
+          </div>
+
+          {/* Three step flow */}
+          <div className="mb-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                step: "01",
+                title: "實時銷售數據",
+                desc: "每一筆 QR 點餐訂單即時上傳雲端，建立完整的銷售數據庫。",
+                color: "text-red-600",
+              },
+              {
+                step: "02",
+                title: "AI 需求預估",
+                desc: "分析歷史銷售趨勢，預測未來一週需求，考量季節與天氣因素。",
+                color: "text-amber-600",
+              },
+              {
+                step: "03",
+                title: "自動補貨決策",
+                desc: "低於安全庫存自動下單，優化 192 台車隊路徑，精準配送零積壓。",
+                color: "text-green-600",
+              },
+            ].map((s, i) => (
+              <div key={s.step} className="relative text-center">
+                <div
+                  className={`mb-4 text-5xl font-black ${s.color} opacity-20`}
+                >
+                  {s.step}
+                </div>
+                <h3 className="mb-2 text-xl font-bold">{s.title}</h3>
+                <p className="text-gray-600">{s.desc}</p>
+                {i < 2 && (
+                  <div className="absolute right-0 top-8 hidden text-3xl text-gray-300 md:block -mr-3">
+                    &rarr;
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-2xl bg-gradient-to-r from-red-600 to-red-700 p-8 text-center text-white">
+            <p className="text-xl font-bold">
+              192 台專業配送車隊 — 這是純軟體公司無法跨越的實體門檻
+            </p>
+            <p className="mt-2 text-red-200">
+              從倉庫到全台 970 家門市，確保物資與資訊流同步到貨
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
+      {/* ===== SUCCESS STORIES SECTION ===== */}
+      <section id="success" className="bg-[#FBF7F0] py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">成功案例</h2>
+            <p className="text-lg text-gray-600">
+              真實數據，見證東方美+的科技轉型成效
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                store: "北投早午餐店",
+                results: [
+                  { label: "人力成本", value: "↓ NT$22,500/月" },
+                  { label: "月營業額", value: "↑ NT$100,000" },
+                ],
+                highlight: "淨利增加 +NT$122,500/月",
+              },
+              {
+                store: "台中連鎖咖啡（5店）",
+                results: [
+                  { label: "物料浪費", value: "12% → 3%" },
+                  { label: "採購成本", value: "↓ NT$60,000" },
+                ],
+                highlight: "淨利增加 +NT$114,000/月",
+              },
+              {
+                store: "新竹便當店",
+                results: [
+                  { label: "外帶比例", value: "30% → 55%" },
+                  { label: "排隊時間", value: "15 分 → 2 分" },
+                ],
+                highlight: "淨利增加 +NT$85,000/月",
+              },
+            ].map((c) => (
+              <article
+                key={c.store}
+                className="overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-md"
+              >
+                {/* Header */}
+                <div className="bg-gradient-to-r from-red-600 to-red-500 px-6 py-4">
+                  <h3 className="text-lg font-bold text-white">{c.store}</h3>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-4">
+                    {c.results.map((r) => (
+                      <div
+                        key={r.label}
+                        className="flex items-center justify-between"
+                      >
+                        <span className="text-sm text-gray-500">{r.label}</span>
+                        <span className="text-lg font-bold text-gray-900">
+                          {r.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 rounded-xl bg-green-50 px-4 py-3 text-center">
+                    <span className="text-sm font-bold text-green-700">
+                      {c.highlight}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CONTACT / CTA SECTION ===== */}
+      <section
+        id="contact"
+        className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 text-white sm:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+              加入東方美+，讓科技為你的美味服務
+            </h2>
+            <p className="mb-8 text-lg text-gray-400">
+              實現「高產出、低人力、精準供應」的未來
+            </p>
+
+            {/* Benefit pills */}
+            <div className="mb-12 flex flex-wrap justify-center gap-3">
+              {[
+                "翻桌率提升 25%",
+                "節省 50% 櫃檯人力",
+                "零庫存浪費",
+                "原物料成本最佳化",
+              ].map((b) => (
+                <span
+                  key={b}
+                  className="rounded-full border border-red-400/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300"
+                >
+                  {b}
+                </span>
+              ))}
+            </div>
+
+            {/* Roadmap */}
+            <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {[
+                { step: "1", title: "預約諮詢", desc: "了解您的店面狀況" },
+                { step: "2", title: "現場評估", desc: "規劃動線與設備" },
+                { step: "3", title: "系統導入", desc: "完全免費" },
+                { step: "4", title: "正式營運", desc: "享受數據紅利" },
+              ].map((r) => (
+                <div key={r.step} className="text-center">
+                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-lg font-bold">
+                    {r.step}
+                  </div>
+                  <div className="text-sm font-bold">{r.title}</div>
+                  <div className="text-xs text-gray-500">{r.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="mx-auto max-w-2xl rounded-2xl border border-gray-700 bg-gray-800/50 p-8 backdrop-blur">
+            <h3 className="mb-6 text-center text-xl font-bold">
+              立即諮詢轉型方案
+            </h3>
+            <form className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm text-gray-400">
+                    姓名
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="您的姓名"
+                    className="w-full rounded-lg border border-gray-600 bg-gray-700/50 px-4 py-2.5 text-white placeholder-gray-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm text-gray-400">
+                    電話
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="聯絡電話"
+                    className="w-full rounded-lg border border-gray-600 bg-gray-700/50 px-4 py-2.5 text-white placeholder-gray-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  />
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm text-gray-400">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="電子信箱"
+                    className="w-full rounded-lg border border-gray-600 bg-gray-700/50 px-4 py-2.5 text-white placeholder-gray-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm text-gray-400">
+                    店型
+                  </label>
+                  <select className="w-full rounded-lg border border-gray-600 bg-gray-700/50 px-4 py-2.5 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500">
+                    <option value="">請選擇店型</option>
+                    <option value="breakfast">早餐店</option>
+                    <option value="brunch">早午餐店</option>
+                    <option value="cafe">咖啡廳</option>
+                    <option value="bento">便當店</option>
+                    <option value="chain">連鎖餐飲</option>
+                    <option value="other">其他</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="mb-1 block text-sm text-gray-400">
+                  需求說明
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder="請簡述您的需求或想了解的內容..."
+                  className="w-full rounded-lg border border-gray-600 bg-gray-700/50 px-4 py-2.5 text-white placeholder-gray-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full rounded-full bg-red-600 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700"
+              >
+                立即諮詢
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
