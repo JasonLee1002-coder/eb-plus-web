@@ -142,13 +142,13 @@ export default function Home() {
           {/* Brand showcase images */}
           <div className="mb-12 grid grid-cols-3 gap-4 overflow-hidden rounded-2xl">
             <div className="relative h-48">
-              <Image src="/images/brands/eb-brand-1.jpg" alt="東方美品牌設計" fill className="object-cover" />
+              <Image src="/images/food/dongfangmei-cover.jpg" alt="巧沛東方美早午餐店面" fill className="object-cover" />
             </div>
             <div className="relative h-48">
-              <Image src="/images/brands/macc-food-2.jpg" alt="早安美芝城餐點" fill className="object-cover" />
+              <Image src="/images/brands/macc-food-1.jpg" alt="早安美芝城餐點" fill className="object-cover" />
             </div>
             <div className="relative h-48">
-              <Image src="/images/brands/eb-brand-3.jpg" alt="東方美品牌識別" fill className="object-cover" />
+              <Image src="/images/scenes/pier2-01.jpg" alt="東方美+ 駁二智慧門市" fill className="object-cover" />
             </div>
           </div>
 
@@ -220,38 +220,34 @@ export default function Home() {
               {
                 name: "巧沛東方美",
                 desc: "精緻早午餐品牌，融合中西式餐點，4.89 星好評。提供多樣化的套餐組合，從經典蛋餅到創意吐司應有盡有。",
-                color: "bg-red-500",
-                image: "/images/brands/eb-brand-1.jpg",
+                image: "/images/food/dongfangmei-cover.jpg",
               },
               {
                 name: "東方美早餐",
                 desc: "經典早餐連鎖，遍布全台各地。以平價美味的早餐服務，陪伴台灣人開啟美好的每一天。",
-                color: "bg-orange-500",
                 image: "/images/brands/eb-breakfast-yt.jpg",
               },
               {
                 name: "早安美芝城",
                 desc: "1983 年創立於台南，全台約 1,400 家門市。台灣早餐連鎖產業的重要品牌之一。",
-                color: "bg-yellow-500",
                 image: "/images/brands/macc-food-1.jpg",
               },
               {
                 name: "美而美",
                 desc: "台灣西式早餐文化的開創者，1981 年創立。開啟了台灣連鎖早餐店的黃金時代。",
+                image: null,
                 color: "bg-green-500",
-                image: "/images/brands/mam-logo.jpg",
               },
               {
                 name: "瑞麟美而美",
                 desc: "美而美餐飲連鎖企業集團，1988 年創立於台北通化街，以嚴格的品質管控聞名。",
+                image: null,
                 color: "bg-blue-500",
-                image: "/images/brands/eb-brand-2.jpg",
               },
               {
                 name: "東方美+ 科技中台",
                 desc: "AI 驅動的供應鏈與數據平台，整合 POS 系統、智慧廚房、自動補貨等技術，為全體系賦能。",
-                color: "bg-gradient-to-br from-red-500 to-amber-500",
-                image: "/images/brands/eb-brand-3.jpg",
+                image: "/images/scenes/pier2-01.jpg",
               },
             ].map((brand) => (
               <article
@@ -259,12 +255,18 @@ export default function Home() {
                 className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative h-40 w-full overflow-hidden">
-                  <Image
-                    src={brand.image}
-                    alt={brand.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+                  {brand.image ? (
+                    <Image
+                      src={brand.image}
+                      alt={brand.name}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className={`flex h-full w-full items-center justify-center ${brand.color || "bg-gray-200"}`}>
+                      <span className="text-4xl font-black text-white/80">{brand.name.substring(0, 2)}</span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
                 <div className="p-6">
@@ -345,13 +347,13 @@ export default function Home() {
                     <Image src="/images/scenes/pier2-01.jpg" alt="東方美駁二示範店外觀 — 取餐櫃設計" fill className="object-cover" />
                   </div>
                   <div className="relative h-64">
-                    <Image src="/images/scenes/smart-cabinet-01.jpg" alt="欣殿萬飲智慧櫃子 — 駁二夜間營運" fill className="object-cover" />
+                    <Image src="/images/scenes/smart-cabinet-01.jpg" alt="欣殿萬飲智慧櫃子 — 駁二夜間霓虹燈" fill className="object-cover" />
                   </div>
                   <div className="relative h-64">
-                    <Image src="/images/scenes/pier2-02.jpg" alt="東方美駁二店內空間設計" fill className="object-cover" />
+                    <Image src="/images/scenes/pier2-03.jpg" alt="東方美駁二店內空間 — 工業風設計" fill className="object-cover" />
                   </div>
                   <div className="relative h-64">
-                    <Image src="/images/scenes/pier2-render-2.jpg" alt="東方美智取活動機 — 科技融合餐飲" fill className="object-cover" />
+                    <Image src="/images/scenes/smart-cabinet-02.jpg" alt="欣殿萬飲智慧櫃子 — 駁二白天實景" fill className="object-cover" />
                   </div>
                 </div>
               </div>
