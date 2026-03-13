@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <>
@@ -34,8 +36,18 @@ export default function Home() {
       {/* ===== HERO SECTION ===== */}
       <section
         id="hero"
-        className="hero-gradient relative flex min-h-screen items-center justify-center overflow-hidden"
+        className="relative flex min-h-screen items-center justify-center overflow-hidden"
       >
+        {/* Background image */}
+        <Image
+          src="/images/food/dongfangmei-cover.jpg"
+          alt="東方美早午餐店面"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-red-900/50" />
         {/* Decorative circles */}
         <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-red-500/10 blur-3xl" />
         <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl" />
@@ -127,6 +139,19 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Brand showcase images */}
+          <div className="mb-12 grid grid-cols-3 gap-4 overflow-hidden rounded-2xl">
+            <div className="relative h-48">
+              <Image src="/images/brands/eb-brand-1.jpg" alt="東方美品牌設計" fill className="object-cover" />
+            </div>
+            <div className="relative h-48">
+              <Image src="/images/brands/macc-food-2.jpg" alt="早安美芝城餐點" fill className="object-cover" />
+            </div>
+            <div className="relative h-48">
+              <Image src="/images/brands/eb-brand-3.jpg" alt="東方美品牌識別" fill className="object-cover" />
+            </div>
+          </div>
+
           {/* Three feature cards */}
           <div className="grid gap-8 md:grid-cols-3">
             {[
@@ -196,46 +221,58 @@ export default function Home() {
                 name: "巧沛東方美",
                 desc: "精緻早午餐品牌，融合中西式餐點，4.89 星好評。提供多樣化的套餐組合，從經典蛋餅到創意吐司應有盡有。",
                 color: "bg-red-500",
+                image: "/images/brands/eb-brand-1.jpg",
               },
               {
                 name: "東方美早餐",
                 desc: "經典早餐連鎖，遍布全台各地。以平價美味的早餐服務，陪伴台灣人開啟美好的每一天。",
                 color: "bg-orange-500",
+                image: "/images/brands/eb-breakfast-yt.jpg",
               },
               {
                 name: "早安美芝城",
                 desc: "1983 年創立於台南，全台約 1,400 家門市。台灣早餐連鎖產業的重要品牌之一。",
                 color: "bg-yellow-500",
+                image: "/images/brands/macc-food-1.jpg",
               },
               {
                 name: "美而美",
                 desc: "台灣西式早餐文化的開創者，1981 年創立。開啟了台灣連鎖早餐店的黃金時代。",
                 color: "bg-green-500",
+                image: "/images/brands/mam-logo.jpg",
               },
               {
                 name: "瑞麟美而美",
                 desc: "美而美餐飲連鎖企業集團，1988 年創立於台北通化街，以嚴格的品質管控聞名。",
                 color: "bg-blue-500",
+                image: "/images/brands/eb-brand-2.jpg",
               },
               {
                 name: "東方美+ 科技中台",
                 desc: "AI 驅動的供應鏈與數據平台，整合 POS 系統、智慧廚房、自動補貨等技術，為全體系賦能。",
                 color: "bg-gradient-to-br from-red-500 to-amber-500",
+                image: "/images/brands/eb-brand-3.jpg",
               },
             ].map((brand) => (
               <article
                 key={brand.name}
-                className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <div
-                  className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl ${brand.color} text-white text-xl font-bold`}
-                >
-                  {brand.name.charAt(0)}
+                <div className="relative h-40 w-full overflow-hidden">
+                  <Image
+                    src={brand.image}
+                    alt={brand.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold">{brand.name}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  {brand.desc}
-                </p>
+                <div className="p-6">
+                  <h3 className="mb-2 text-lg font-bold">{brand.name}</h3>
+                  <p className="text-sm leading-relaxed text-gray-600">
+                    {brand.desc}
+                  </p>
+                </div>
               </article>
             ))}
           </div>
@@ -692,13 +729,11 @@ export default function Home() {
                     店型
                   </label>
                   <select className="w-full rounded-lg border border-gray-600 bg-gray-700/50 px-4 py-2.5 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500">
-                    <option value="">請選擇店型</option>
-                    <option value="breakfast">早餐店</option>
-                    <option value="brunch">早午餐店</option>
-                    <option value="cafe">咖啡廳</option>
-                    <option value="bento">便當店</option>
-                    <option value="chain">連鎖餐飲</option>
-                    <option value="other">其他</option>
+                    <option value="">請選擇加盟店型</option>
+                    <option value="brunch">早午餐</option>
+                    <option value="bistro">餐酒館</option>
+                    <option value="smart">智慧店（少人力）</option>
+                    <option value="shop-in-shop">店中店</option>
                   </select>
                 </div>
               </div>
