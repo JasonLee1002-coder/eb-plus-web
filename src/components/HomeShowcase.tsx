@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ScrollReveal,
   StaggerContainer,
@@ -14,15 +15,89 @@ import {
   TextReveal,
 } from "@/components/motion";
 
+/* ===== Floating Particles ===== */
+function HeroParticles() {
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    size: Math.random() * 4 + 2,
+    duration: Math.random() * 8 + 6,
+    delay: Math.random() * 6,
+    opacity: Math.random() * 0.5 + 0.2,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="particle"
+          style={{
+            left: p.left,
+            bottom: "-10px",
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            animationDuration: `${p.duration}s`,
+            animationDelay: `${p.delay}s`,
+            opacity: p.opacity,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* ===== Brand Ticker Marquee ===== */
+function BrandTicker() {
+  const brands = [
+    "巧沛東方美",
+    "東方美早餐",
+    "早安美芝城",
+    "美而美",
+    "瑞麟美而美",
+    "東方美+ 科技中台",
+    "AI 智慧廚房",
+    "GraBox 智取櫃",
+    "970+ 門市",
+    "192 台車隊",
+  ];
+
+  return (
+    <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 py-4 overflow-hidden">
+      <div className="ticker-track">
+        {[...brands, ...brands].map((brand, i) => (
+          <span
+            key={i}
+            className="flex-shrink-0 mx-8 text-sm font-bold text-white/90 tracking-wider whitespace-nowrap"
+          >
+            {brand}
+            <span className="mx-8 text-white/40">◆</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ================================================================== */
 /*  HomeShowcase — animated visual content for the EB Plus homepage    */
 /* ================================================================== */
 
 export default function HomeShowcase() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroOpacity = useTransform(heroScroll, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(heroScroll, [0, 0.5], [1, 0.92]);
+  const heroY = useTransform(heroScroll, [0, 0.5], [0, -80]);
+
   return (
     <>
       {/* ===== 1. CINEMATIC HERO ===== */}
       <section
+        ref={heroRef}
         id="hero"
         className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black"
       >
@@ -48,6 +123,9 @@ export default function HomeShowcase() {
           }}
         />
 
+        {/* Floating particles */}
+        <HeroParticles />
+
         {/* Radial glow orbs */}
         <motion.div
           className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-[#C8102E]/20 blur-[150px]"
@@ -65,8 +143,40 @@ export default function HomeShowcase() {
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Hero content */}
-        <div className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center text-white sm:px-6">
+        {/* Floating spec badges */}
+        <motion.div
+          className="absolute right-8 top-1/3 hidden bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-2 lg:block"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+        >
+          <span className="text-amber-400 font-bold">AI</span>
+          <span className="text-white/50 ml-2 text-sm">智慧餐飲</span>
+        </motion.div>
+        <motion.div
+          className="absolute left-8 bottom-1/3 hidden bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-2 lg:block"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2.3, duration: 0.8 }}
+        >
+          <span className="text-red-400 font-bold">IoT</span>
+          <span className="text-white/50 ml-2 text-sm">物聯網</span>
+        </motion.div>
+        <motion.div
+          className="absolute right-16 bottom-1/4 hidden bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-2 lg:block"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2.6, duration: 0.8 }}
+        >
+          <span className="text-green-400 font-bold">Big Data</span>
+          <span className="text-white/50 ml-2 text-sm">大數據</span>
+        </motion.div>
+
+        {/* Hero content — parallax */}
+        <motion.div
+          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
+          className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center text-white sm:px-6"
+        >
           {/* Title */}
           <motion.h1
             className="mb-6 text-5xl font-black leading-tight tracking-tight sm:text-6xl lg:text-8xl"
@@ -150,7 +260,7 @@ export default function HomeShowcase() {
               了解更多
             </a>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
@@ -280,8 +390,8 @@ export default function HomeShowcase() {
         </div>
       </section>
 
-      {/* Gradient divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+      {/* Brand ticker marquee */}
+      <BrandTicker />
 
       {/* ===== 3. BRANDS SECTION ===== */}
       <section id="brands" className="bg-white py-20 sm:py-28">
