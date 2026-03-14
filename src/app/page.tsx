@@ -13,7 +13,7 @@ export default function Home() {
             name: "東方美集團",
             alternateName: ["Eastern Beauty Group", "EB Plus", "東方美+"],
             description:
-              "東方美集團相關合作團隊，與巧沛東方美、美芝城、美而美、瑞麟美而美等品牌合作，結合 AI 科技打造智慧餐飲生態系。",
+              "東方美集團相關合作團隊，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，結合 AI 科技打造智慧餐飲生態系。",
             numberOfEmployees: { "@type": "QuantitativeValue", value: 970 },
           }),
         }}

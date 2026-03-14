@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     "早午餐加盟",
     "餐飲科技",
     "AI智慧廚房",
-    "美而美",
-    "美芝城",
+    "巧沛東方美",
+    "巧沛廚房",
     "餐飲數位轉型",
   ],
   openGraph: {

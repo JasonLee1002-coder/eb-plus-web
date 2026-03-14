@@ -51,15 +51,14 @@ function HeroParticles() {
 function BrandTicker() {
   const brands = [
     "巧沛東方美",
+    "巧沛廚房",
     "東方美早餐",
-    "早安美芝城",
-    "美而美",
-    "瑞麟美而美",
     "東方美+ 科技中台",
     "AI 智慧廚房",
-    "GraBox 智取櫃",
+    "現點現做",
     "970+ 門市",
-    "192 台車隊",
+    "4.89 星好評",
+    "30 元起",
   ];
 
   return (
@@ -299,7 +298,7 @@ export default function HomeShowcase() {
             <ScrollReveal delay={0.15}>
               <p className="mb-12 text-lg leading-relaxed text-gray-600">
                 東方美集團自 1985
-                年創立以來，與巧沛東方美、東方美早餐、美芝城（早安美芝城）、美而美、瑞麟美而美等知名早午餐品牌合作，是台灣餐飲供應鏈的領導者。東方美+ 為東方美集團相關合作團隊，負責科技賦能與數位轉型。
+                年創立以來，以「精緻的早餐、充沛的活力」為理念，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，全台約 970 家分店，是台灣最受歡迎的連鎖早午餐品牌之一。東方美+ 為東方美集團相關合作團隊，負責科技賦能與數位轉型。
                 <strong>東方美+</strong> 是新世代品牌概念 ——
                 在傳統餐飲的穩固基礎上，注入 AI
                 人工智慧、IoT 物聯網、大數據分析等尖端科技，打造
@@ -321,8 +320,8 @@ export default function HomeShowcase() {
               </div>
               <div className="relative h-48 overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/brands/macc-food-1.jpg"
-                  alt="早安美芝城餐點"
+                  src="/images/brands/eb-breakfast-yt.jpg"
+                  alt="東方美早餐經典餐點"
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-110"
                 />
@@ -402,41 +401,29 @@ export default function HomeShowcase() {
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <p className="text-lg text-gray-600">
-                橫跨早午餐、通路、原物料供應鏈的餐飲帝國
+                美好的一天就在東方美 — 精緻的早餐、充沛的活力
               </p>
             </ScrollReveal>
           </div>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.12}>
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.12}>
             {[
               {
                 name: "巧沛東方美",
-                desc: "精緻早午餐品牌，融合中西式餐點，4.89 星好評。提供多樣化的套餐組合，從經典蛋餅到創意吐司應有盡有。",
+                desc: "東方美集團旗艦早午餐品牌，1985 年創立。講求衛生、快速、品質服務，中西式餐點應有盡有，4.89 星超高評價。",
                 image: "/images/food/dongfangmei-cover.jpg",
               },
               {
+                name: "巧沛廚房",
+                desc: "東方美集團旗下特色餐飲品牌，以多元料理與健康餐點為主軸，提供主廚特餐、各式湯品與創意料理。",
+                image: null,
+                color: "bg-gradient-to-br from-amber-600 to-red-600",
+                placeholder: "巧沛廚房",
+              },
+              {
                 name: "東方美早餐",
-                desc: "經典早餐連鎖，遍布全台各地。以平價美味的早餐服務，陪伴台灣人開啟美好的每一天。",
+                desc: "經典早餐連鎖，遍布全台各地。早上 5:30 就開始營業，週末延長至下午 1 點，想吃就吃。",
                 image: "/images/brands/eb-breakfast-yt.jpg",
-              },
-              {
-                name: "早安美芝城",
-                desc: "1983 年創立於台南，全台約 1,400 家門市。台灣早餐連鎖產業的重要品牌之一。",
-                image: "/images/brands/macc-food-1.jpg",
-              },
-              {
-                name: "美而美",
-                desc: "台灣西式早餐文化的開創者，1981 年創立。開啟了台灣連鎖早餐店的黃金時代。",
-                image: null,
-                color: "bg-green-500",
-                placeholder: "美而美",
-              },
-              {
-                name: "瑞麟美而美",
-                desc: "美而美餐飲連鎖企業集團，1988 年創立於台北通化街，以嚴格的品質管控聞名。",
-                image: null,
-                color: "bg-blue-500",
-                placeholder: "瑞麟美而美",
               },
               {
                 name: "東方美+ 科技中台",
@@ -498,7 +485,7 @@ export default function HomeShowcase() {
             </p>
             <h2 className="text-3xl font-bold sm:text-4xl mb-4">人氣餐點菜單</h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              巧沛東方美 Brunch — 超過 200 品項，從經典美式早餐到特色鐵板麵，全日供應
+              東方美早午餐 — 超過 200 品項，從 30 元起就能享用，早上 5:30 營業至下午
             </p>
           </ScrollReveal>
 
@@ -606,7 +593,7 @@ export default function HomeShowcase() {
           <ScrollReveal delay={0.4}>
             <div className="mt-12 text-center">
               <p className="text-white/40 text-sm mb-4">
-                以上為巧沛東方美 Brunch 部分菜單，各門市可能略有差異
+                以上為東方美早午餐部分菜單，各門市可能略有差異
               </p>
               <a
                 href="#franchise"
