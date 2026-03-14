@@ -284,6 +284,161 @@ export default function HomeShowcase() {
         </motion.div>
       </section>
 
+      {/* ===== 1.5 ECOSYSTEM VISION — 總體精神（有傳統 有未來）===== */}
+      <section className="relative overflow-hidden bg-[#050a15] py-0">
+        {/* Ambient glows */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-red-500/8 rounded-full blur-[200px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/6 rounded-full blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-blue-500/4 rounded-full blur-[180px]" />
+        </div>
+
+        <div className="relative z-10">
+          {/* "有傳統，有未來" contrast header */}
+          <div className="pt-24 pb-12 sm:pt-32 sm:pb-16">
+            <ScrollReveal className="text-center max-w-4xl mx-auto px-4 sm:px-6">
+              <motion.p
+                className="text-red-400 text-sm font-mono tracking-[0.3em] uppercase mb-6"
+                initial={{ opacity: 0, letterSpacing: "0.5em" }}
+                whileInView={{ opacity: 1, letterSpacing: "0.3em" }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                Ecosystem Vision
+              </motion.p>
+
+              {/* Tradition vs Future contrast */}
+              <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6">
+                <motion.span
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black text-white/80"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  有傳統
+                </motion.span>
+                <motion.span
+                  className="text-2xl sm:text-3xl text-white/30 font-light"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  ×
+                </motion.span>
+                <motion.span
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-[#C8102E] to-[#F5A623] bg-clip-text text-transparent"
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  有未來
+                </motion.span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                智慧餐飲整合服務
+              </h2>
+              <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+                傳承 50 年東方美早餐的美味根基，結合 AI 科技與數位系統，
+                打造下一代智慧餐飲生態圈 —— 引領餐飲業未來新革命。
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Hero image — cinematic full-width */}
+          <ScrollReveal delay={0.2}>
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {/* Glow frame behind image */}
+              <motion.div
+                className="absolute inset-0 -m-4 rounded-3xl bg-gradient-to-r from-red-500/20 via-amber-500/10 to-blue-500/20 blur-2xl"
+                animate={{ opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Image container with glass border */}
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-red-500/10">
+                <LightboxImage
+                  src="/images/scenes/eb-ecosystem-vision.png"
+                  alt="東方美EB+ 智慧餐飲整合服務生態系 — 原物料供應、物流配送、QR code點餐、智取櫃取餐、智慧系統平台、AI副店長、餐飲設備"
+                  width={1920}
+                  height={1080}
+                  quality={90}
+                  className="w-full"
+                />
+                {/* Subtle vignette overlay */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#050a15]/60 via-transparent to-[#050a15]/30" />
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* 6 Ecosystem pillars */}
+          <div className="pt-16 pb-8 sm:pt-20 sm:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4" staggerDelay={0.08}>
+              {[
+                { icon: "🥬", title: "原物料供應", desc: "新鮮食材・穩定供應" },
+                { icon: "🚚", title: "物流配送", desc: "冷鏈直達・全台覆蓋" },
+                { icon: "📱", title: "QR Code 點餐", desc: "智取櫃取餐・販賣機" },
+                { icon: "🖥️", title: "智慧系統平台", desc: "POS・訂餐・AI 營收分析" },
+                { icon: "🤖", title: "AI 副店長", desc: "智能庫存・決策支援" },
+                { icon: "⚙️", title: "餐飲設備", desc: "尖端設備・高效火力" },
+              ].map((item) => (
+                <StaggerItem key={item.title}>
+                  <motion.div
+                    className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm p-5 text-center transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.06]"
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="absolute inset-0 bg-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
+                    <div className="relative z-10">
+                      <span className="text-3xl mb-3 block">{item.icon}</span>
+                      <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
+                      <p className="text-xs text-white/40">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+
+          {/* Bottom tagline + CTA */}
+          <div className="pb-24 sm:pb-32">
+            <ScrollReveal delay={0.15} className="text-center max-w-3xl mx-auto px-4 sm:px-6">
+              <div className="mb-8">
+                <motion.div
+                  className="inline-block h-px w-20 bg-gradient-to-r from-transparent via-red-500 to-transparent mb-8"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 80 }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                  viewport={{ once: true }}
+                />
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                  一站式解決方案，全方位支持餐飲業升級
+                </h3>
+                <p className="text-white/50 text-lg leading-relaxed mb-8">
+                  從原物料到 AI 數據分析，從設備到智慧系統平台 —— 加入東方美 EB+ 生態圈，
+                  讓我們用科技陪你的餐廳一起邁向未來。
+                </p>
+              </div>
+              <GlowPulse>
+                <motion.a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#C8102E] to-red-500 px-10 py-4 text-lg font-bold text-white shadow-lg shadow-red-500/25 transition-all hover:shadow-red-500/40"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  加入 EB+ 生態圈
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </motion.a>
+              </GlowPulse>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* ===== 2. ABOUT SECTION ===== */}
       <section id="about" className="bg-[#FBF7F0] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1267,129 +1422,6 @@ export default function HomeShowcase() {
               </StaggerItem>
             ))}
           </StaggerContainer>
-        </div>
-      </section>
-
-      {/* ===== 8.5 ECOSYSTEM VISION — 總體精神 ===== */}
-      <section className="relative overflow-hidden bg-[#050a15] py-0">
-        {/* Ambient glows */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-red-500/8 rounded-full blur-[200px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/6 rounded-full blur-[150px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-blue-500/4 rounded-full blur-[180px]" />
-        </div>
-
-        <div className="relative z-10">
-          {/* Section header */}
-          <div className="pt-24 pb-12 sm:pt-32 sm:pb-16">
-            <ScrollReveal className="text-center max-w-4xl mx-auto px-4 sm:px-6">
-              <motion.p
-                className="text-red-400 text-sm font-mono tracking-[0.3em] uppercase mb-6"
-                initial={{ opacity: 0, letterSpacing: "0.5em" }}
-                whileInView={{ opacity: 1, letterSpacing: "0.3em" }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-              >
-                Ecosystem Vision
-              </motion.p>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-                智慧餐飲整合服務
-              </h2>
-              <p className="text-xl sm:text-2xl text-white/60 font-light">
-                引領餐飲業未來新革命
-              </p>
-            </ScrollReveal>
-          </div>
-
-          {/* Hero image — cinematic full-width with parallax */}
-          <ScrollReveal delay={0.2}>
-            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              {/* Glow frame behind image */}
-              <motion.div
-                className="absolute inset-0 -m-4 rounded-3xl bg-gradient-to-r from-red-500/20 via-amber-500/10 to-blue-500/20 blur-2xl"
-                animate={{ opacity: [0.4, 0.7, 0.4] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-              {/* Image container with glass border */}
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-red-500/10">
-                <LightboxImage
-                  src="/images/scenes/eb-ecosystem-vision.png"
-                  alt="東方美EB+ 智慧餐飲整合服務生態系 — 原物料供應、物流配送、QR code點餐、智取櫃取餐、智慧系統平台、AI副店長、餐飲設備"
-                  width={1920}
-                  height={1080}
-                  quality={90}
-                  className="w-full"
-                />
-                {/* Subtle vignette overlay */}
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#050a15]/60 via-transparent to-[#050a15]/30" />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* 6 Ecosystem pillars extracted from the image */}
-          <div className="pt-16 pb-8 sm:pt-20 sm:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4" staggerDelay={0.08}>
-              {[
-                { icon: "🥬", title: "原物料供應", desc: "新鮮食材・穩定供應" },
-                { icon: "🚚", title: "物流配送", desc: "冷鏈直達・全台覆蓋" },
-                { icon: "📱", title: "QR Code 點餐", desc: "智取櫃取餐・販賣機" },
-                { icon: "🖥️", title: "智慧系統平台", desc: "POS・訂餐・AI 營收分析" },
-                { icon: "🤖", title: "AI 副店長", desc: "智能庫存・決策支援" },
-                { icon: "⚙️", title: "餐飲設備", desc: "尖端設備・高效火力" },
-              ].map((item) => (
-                <StaggerItem key={item.title}>
-                  <motion.div
-                    className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm p-5 text-center transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.06]"
-                    whileHover={{ y: -4, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {/* Hover glow */}
-                    <div className="absolute inset-0 bg-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
-                    <div className="relative z-10">
-                      <span className="text-3xl mb-3 block">{item.icon}</span>
-                      <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
-                      <p className="text-xs text-white/40">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-
-          {/* Bottom tagline + CTA to join ecosystem */}
-          <div className="pb-24 sm:pb-32">
-            <ScrollReveal delay={0.15} className="text-center max-w-3xl mx-auto px-4 sm:px-6">
-              <div className="mb-8">
-                <motion.div
-                  className="inline-block h-px w-20 bg-gradient-to-r from-transparent via-red-500 to-transparent mb-8"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: 80 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                  viewport={{ once: true }}
-                />
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                  一站式解決方案，全方位支持餐飲業升級
-                </h3>
-                <p className="text-white/50 text-lg leading-relaxed mb-8">
-                  從原物料到 AI 數據分析，從設備到智慧系統平台 —— 加入東方美 EB+ 生態圈，
-                  讓我們用科技陪你的餐廳一起邁向未來。
-                </p>
-              </div>
-              <GlowPulse>
-                <motion.a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#C8102E] to-red-500 px-10 py-4 text-lg font-bold text-white shadow-lg shadow-red-500/25 transition-all hover:shadow-red-500/40"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  加入 EB+ 生態圈
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </motion.a>
-              </GlowPulse>
-            </ScrollReveal>
-          </div>
         </div>
       </section>
 
