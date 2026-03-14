@@ -131,11 +131,12 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
           <p className="text-center text-xs text-gray-500">
-            &copy; 2026 東方美集團 Eastern Beauty Group. All Rights Reserved.
+            &copy;{" "}
+            <a href="/seo/dongfangmei-franchise-guide" className="text-gray-500 hover:text-gray-400 transition-colors">
+              2026 東方美集團
+            </a>{" "}
+            Eastern Beauty Group. All Rights Reserved.
           </p>
-          <div className="mt-4 text-center text-xs text-white/10">
-            <a href="/seo/dongfangmei-franchise-guide" className="hover:text-white/20">資源中心</a>
-          </div>
         </div>
       </div>
     </footer>
