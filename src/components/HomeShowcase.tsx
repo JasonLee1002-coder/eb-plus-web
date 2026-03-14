@@ -429,14 +429,14 @@ export default function HomeShowcase() {
                 desc: "台灣西式早餐文化的開創者，1981 年創立。開啟了台灣連鎖早餐店的黃金時代。",
                 image: null,
                 color: "bg-green-500",
-                placeholder: "美而",
+                placeholder: "美而美",
               },
               {
                 name: "瑞麟美而美",
                 desc: "美而美餐飲連鎖企業集團，1988 年創立於台北通化街，以嚴格的品質管控聞名。",
                 image: null,
                 color: "bg-blue-500",
-                placeholder: "瑞麟",
+                placeholder: "瑞麟美而美",
               },
               {
                 name: "東方美+ 科技中台",
@@ -459,7 +459,7 @@ export default function HomeShowcase() {
                         <div
                           className={`flex h-full w-full items-center justify-center ${brand.color || "bg-gray-200"}`}
                         >
-                          <span className="text-4xl font-black text-white/80">
+                          <span className={`font-black text-white/80 ${(brand.placeholder || brand.name).length > 3 ? "text-2xl" : "text-4xl"}`}>
                             {brand.placeholder || brand.name.substring(0, 2)}
                           </span>
                         </div>
