@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const notoSansTC = Noto_Sans_TC({
   variable: "--font-noto-sans",
@@ -73,6 +75,8 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <BackToTop />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
