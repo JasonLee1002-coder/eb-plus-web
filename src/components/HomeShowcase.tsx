@@ -554,6 +554,42 @@ export default function HomeShowcase() {
       {/* Brand ticker marquee */}
       <BrandTicker />
 
+      {/* ===== Food Parallax Divider 1 — 美食視覺衝擊 ===== */}
+      <section className="relative h-[50vh] sm:h-[60vh] overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: typeof window !== "undefined" ? undefined : 0 }}
+        >
+          <Image
+            src="/images/menu/menu-01.jpeg"
+            alt="東方美早午餐精選餐點 — 品牌飲品、三明治、鍋燒拉麵、豬排飯"
+            fill
+            className="object-cover scale-110"
+            quality={85}
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <ScrollReveal className="text-center px-4">
+            <motion.p
+              className="text-white/60 text-sm font-mono tracking-[0.3em] uppercase mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              200+ Items · Since 1985
+            </motion.p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 drop-shadow-2xl">
+              美味，是我們的根基
+            </h2>
+            <p className="text-white/70 text-lg sm:text-xl max-w-lg mx-auto">
+              現點現做，超過 200 品項，從經典早餐到創意午餐
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ===== 3. BRANDS SECTION ===== */}
       <section id="brands" className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -641,7 +677,7 @@ export default function HomeShowcase() {
         </div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <ScrollReveal className="text-center mb-16">
+          <ScrollReveal className="text-center mb-12">
             <p className="text-red-400 text-sm font-mono tracking-widest uppercase mb-4">
               Menu Highlights
             </p>
@@ -649,6 +685,92 @@ export default function HomeShowcase() {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               東方美早午餐 — 超過 200 品項，從 30 元起就能享用，早上 5:30 營業至下午
             </p>
+          </ScrollReveal>
+
+          {/* Menu Photo Gallery — cinematic masonry */}
+          <ScrollReveal delay={0.1} className="mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[180px] sm:auto-rows-[220px]">
+              {/* Large featured image — spans 2 cols + 2 rows */}
+              <motion.div
+                className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden group"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <LightboxImage
+                  src="/images/menu/menu-01.jpeg"
+                  alt="東方美早午餐精選套餐 — 三明治、鍋燒拉麵、品牌飲品"
+                  fill
+                  className="relative h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 pointer-events-none">
+                  <span className="inline-block bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">招牌推薦</span>
+                  <p className="text-white font-bold text-lg drop-shadow-lg">經典早午餐全餐</p>
+                </div>
+              </motion.div>
+
+              {/* Top right */}
+              <motion.div
+                className="relative rounded-2xl overflow-hidden group"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <LightboxImage
+                  src="/images/menu/menu-full-02.jpg"
+                  alt="東方美漢堡蛋餅水餃全餐"
+                  fill
+                  className="relative h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                <span className="absolute bottom-3 left-3 text-white text-sm font-bold drop-shadow-lg pointer-events-none">漢堡 · 蛋餅 · 水餃</span>
+              </motion.div>
+
+              <motion.div
+                className="relative rounded-2xl overflow-hidden group"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <LightboxImage
+                  src="/images/menu/menu-04.jpeg"
+                  alt="東方美三明治鐵板麵蛋捲"
+                  fill
+                  className="relative h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                <span className="absolute bottom-3 left-3 text-white text-sm font-bold drop-shadow-lg pointer-events-none">三明治 · 鐵板麵</span>
+              </motion.div>
+
+              {/* Bottom right */}
+              <motion.div
+                className="relative rounded-2xl overflow-hidden group"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <LightboxImage
+                  src="/images/menu/menu-03.jpeg"
+                  alt="東方美漢堡義大利麵套餐"
+                  fill
+                  className="relative h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                <span className="absolute bottom-3 left-3 text-white text-sm font-bold drop-shadow-lg pointer-events-none">漢堡 · 義大利麵</span>
+              </motion.div>
+
+              <motion.div
+                className="relative rounded-2xl overflow-hidden group"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <LightboxImage
+                  src="/images/menu/menu-05.jpeg"
+                  alt="東方美貝果焗烤薯條拼盤"
+                  fill
+                  className="relative h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                <span className="absolute bottom-3 left-3 text-white text-sm font-bold drop-shadow-lg pointer-events-none">貝果 · 焗烤 · 炸物</span>
+              </motion.div>
+            </div>
           </ScrollReveal>
 
           {/* Set Meals */}
@@ -950,8 +1072,27 @@ export default function HomeShowcase() {
         </div>
       </section>
 
-      {/* Gradient divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+      {/* ===== Food Parallax Divider 2 — 科技 × 美食 ===== */}
+      <section className="relative h-[40vh] sm:h-[50vh] overflow-hidden">
+        <Image
+          src="/images/menu/menu-05.jpeg"
+          alt="東方美貝果焗烤薯條精緻拼盤"
+          fill
+          className="object-cover"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050a15]/90 via-[#050a15]/50 to-[#050a15]/90" />
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <ScrollReveal className="text-center px-4">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 drop-shadow-2xl">
+              用科技守護每一道美味
+            </h3>
+            <p className="text-white/60 text-base sm:text-lg max-w-md mx-auto">
+              從食材源頭到顧客餐桌，AI 全程把關品質與效率
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* ===== 5. TECHNOLOGY SECTION ===== */}
       <section id="technology" className="relative overflow-hidden bg-[#050a15] py-20 text-white sm:py-28">
@@ -1425,8 +1566,25 @@ export default function HomeShowcase() {
         </div>
       </section>
 
-      {/* Gradient divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+      {/* ===== Food Parallax Divider 3 — 美味收尾 ===== */}
+      <section className="relative h-[35vh] sm:h-[45vh] overflow-hidden">
+        <Image
+          src="/images/menu/menu-03.jpeg"
+          alt="東方美經典漢堡義大利麵套餐"
+          fill
+          className="object-cover"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-black/40 to-black/60" />
+        <div className="relative z-10 flex h-full items-end justify-center pb-12">
+          <ScrollReveal className="text-center px-4">
+            <p className="text-white/50 text-sm font-mono tracking-widest uppercase mb-3">Join The Future</p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-xl">
+              準備好加入東方美 EB+ 了嗎？
+            </h3>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* ===== 9. CONTACT / CTA SECTION ===== */}
       <section
