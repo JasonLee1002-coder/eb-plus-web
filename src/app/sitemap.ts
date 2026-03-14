@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/posts";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://ebplus.tw";
+  const baseUrl = "https://eb-plus-web.vercel.app";
   const posts = getAllPosts();
 
   const staticPages: MetadataRoute.Sitemap = [

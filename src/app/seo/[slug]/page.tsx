@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: post.image ? [{ url: post.image }] : [],
     },
     alternates: {
-      canonical: `https://ebplus.tw/seo/${slug}/`,
+      canonical: `https://eb-plus-web.vercel.app/seo/${slug}/`,
     },
     robots: { index: true, follow: true },
   };
@@ -141,7 +141,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
             inLanguage: "zh-Hant-TW",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://ebplus.tw/seo/${slug}/`,
+              "@id": `https://eb-plus-web.vercel.app/seo/${slug}/`,
             },
             keywords: post.keywords.join(", "),
           }),

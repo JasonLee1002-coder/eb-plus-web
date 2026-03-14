@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://ebplus.tw/sitemap.xml",
+    sitemap: "https://eb-plus-web.vercel.app/sitemap.xml",
   };
 }

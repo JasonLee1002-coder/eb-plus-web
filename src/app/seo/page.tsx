@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "東方美+ EB Plus",
     locale: "zh_TW",
   },
-  alternates: { canonical: "https://ebplus.tw/seo/" },
+  alternates: { canonical: "https://eb-plus-web.vercel.app/seo/" },
 };
 
 export default function SeoBlogIndex() {

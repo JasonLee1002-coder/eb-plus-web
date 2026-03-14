@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://ebplus.tw",
+    canonical: "https://eb-plus-web.vercel.app",
   },
 };
 
