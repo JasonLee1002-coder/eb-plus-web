@@ -483,6 +483,145 @@ export default function HomeShowcase() {
       {/* Gradient divider */}
       <div className="h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
 
+      {/* ===== 3.5 MENU SHOWCASE SECTION ===== */}
+      <section id="menu" className="relative overflow-hidden bg-[#050a15] py-20 text-white sm:py-28">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal className="text-center mb-16">
+            <p className="text-red-400 text-sm font-mono tracking-widest uppercase mb-4">
+              Menu Highlights
+            </p>
+            <h2 className="text-3xl font-bold sm:text-4xl mb-4">人氣餐點菜單</h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              巧沛東方美 Brunch — 超過 200 品項，從經典美式早餐到特色鐵板麵，全日供應
+            </p>
+          </ScrollReveal>
+
+          {/* Set Meals */}
+          <ScrollReveal delay={0.1}>
+            <div className="mb-12">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-sm">★</span>
+                超值套餐組合
+              </h3>
+              <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { name: "美式早餐", price: 105, desc: "厚牛堡/炸豬排＋培根＋德腸＋丹麥", hot: true },
+                  { name: "優質早餐", price: 95, desc: "里肌豬排＋培根＋德腸＋丹麥" },
+                  { name: "中式早餐", price: 85, desc: "原味蛋餅＋蘿蔔糕×1＋蝦捲×2" },
+                  { name: "營養早餐", price: 75, desc: "大火腿＋培根＋熱狗×2＋丹麥" },
+                  { name: "老闆特餐", price: 155, desc: "主餐四選一＋德式香腸＋培根＋蛋", hot: true },
+                  { name: "主廚特餐", price: 155, desc: "主餐四選一＋配料四選" },
+                  { name: "元氣麵特餐", price: 145, desc: "麵類四選一＋塔香肉蛋＋泡菜肉蛋" },
+                  { name: "寶貝特餐", price: 135, desc: "主餐＋醬燒＋玉米散蛋＋丹麥" },
+                ].map((meal, i) => (
+                  <StaggerItem key={i}>
+                    <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 hover:bg-white/[0.08] transition-all duration-300 group relative overflow-hidden h-full">
+                      {meal.hot && (
+                        <span className="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
+                          人氣
+                        </span>
+                      )}
+                      <div className="text-2xl font-black text-red-400 mb-1">
+                        ${meal.price}
+                        <span className="text-xs text-white/30 font-normal ml-1">元</span>
+                      </div>
+                      <div className="font-bold text-white mb-1 group-hover:text-red-300 transition-colors">
+                        {meal.name}
+                      </div>
+                      <div className="text-xs text-white/40 leading-relaxed">
+                        {meal.desc}
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </div>
+          </ScrollReveal>
+
+          {/* Category Grid */}
+          <ScrollReveal delay={0.2}>
+            <div className="mb-12">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-sm">☰</span>
+                餐點分類
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                {[
+                  { cat: "漢堡 / 吐司", items: "厚牛堡、炸豬排、鱈魚排...", range: "$40–95" },
+                  { cat: "軟法堡", items: "西西里雞腿、香煎雞腿、鐵板牛...", range: "$75–95" },
+                  { cat: "總匯三明治", items: "牛肉起司、炸豬排起司...", range: "$70–145" },
+                  { cat: "蛋餅 / 河粉", items: "牛柳、里肌、泡菜、鮪魚...", range: "$30–70" },
+                  { cat: "鐵板麵", items: "黑胡椒、蘑菇、義式肉醬...", range: "$55" },
+                  { cat: "炒蛋黃麵", items: "牛柳刀削、蝦醬炒蛋黃...", range: "$85–95" },
+                  { cat: "飯類", items: "咖哩飯、塔香飯、宮保飯...", range: "$40–95" },
+                  { cat: "專業咖啡", items: "義式拿鐵、鴛鴦咖啡...", range: "$35–65" },
+                  { cat: "鮮果特調", items: "紅心芭樂、愛文芒果...", range: "$35–65" },
+                  { cat: "湯品 / 粥品", items: "野菇濃湯、芋頭瘦肉粥...", range: "$40–55" },
+                ].map((c, i) => (
+                  <div
+                    key={i}
+                    className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 hover:bg-white/[0.06] hover:border-red-500/20 transition-all duration-300"
+                  >
+                    <div className="font-bold text-white text-sm mb-1">{c.cat}</div>
+                    <div className="text-xs text-white/30 mb-2 leading-relaxed">{c.items}</div>
+                    <div className="text-red-400 text-sm font-bold">{c.range}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Combo Add-on */}
+          <ScrollReveal delay={0.3}>
+            <div className="bg-gradient-to-r from-red-500/10 to-amber-500/10 border border-white/[0.08] rounded-2xl p-6 sm:p-8">
+              <h3 className="text-lg font-bold text-white mb-4">主餐加價組合 — 可搭配所有餐點</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { label: "A 組合", add: "+40", content: "中冰紅茶＋熱狗", color: "text-red-400" },
+                  { label: "B 組合", add: "+50", content: "中冰紅茶＋薯條", color: "text-amber-400" },
+                  { label: "C 組合", add: "+50", content: "中冰紅茶＋雞塊", color: "text-orange-400" },
+                ].map((combo, i) => (
+                  <div key={i} className="flex items-center gap-4 bg-white/[0.04] rounded-xl p-4">
+                    <div className={`text-2xl font-black ${combo.color}`}>{combo.add}</div>
+                    <div>
+                      <div className="font-bold text-white text-sm">{combo.label}</div>
+                      <div className="text-xs text-white/40">{combo.content}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-xs text-white/30 text-center">
+                搭配任何飲品折價 $20 · 套餐系列除外 · 更換飲料補差額
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* CTA */}
+          <ScrollReveal delay={0.4}>
+            <div className="mt-12 text-center">
+              <p className="text-white/40 text-sm mb-4">
+                以上為巧沛東方美 Brunch 部分菜單，各門市可能略有差異
+              </p>
+              <a
+                href="#franchise"
+                className="inline-block rounded-full bg-gradient-to-r from-red-600 to-red-500 px-8 py-3 font-bold text-white transition-all hover:shadow-[0_0_30px_rgba(200,16,46,0.4)] hover:scale-105"
+              >
+                加盟開店 → 擁有完整菜單
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Gradient divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+
       {/* ===== 4. FRANCHISE SECTION ===== */}
       <section id="franchise" className="bg-[#FBF7F0] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
