@@ -773,27 +773,6 @@ export default function HomeShowcase() {
             </div>
           </ScrollReveal>
 
-          {/* Paper Menu — 完整菜單一覽 */}
-          <ScrollReveal delay={0.15} className="mb-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-bold text-white flex items-center justify-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/60 text-sm">📋</span>
-                完整菜單一覽
-              </h3>
-              <p className="text-white/30 text-sm mt-2">點擊放大查看完整價目表</p>
-            </div>
-            <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 shadow-xl">
-              <LightboxImage
-                src="/images/menu/menu-paper-full.jpg"
-                alt="東方美早午餐完整菜單價目表 — 漢堡吐司、軟法堡、總匯三明治、蛋餅河粉、鐵板麵、炒蛋黃麵、飯類、咖啡飲品、湯品粥品、中式餐點、元氣小點"
-                width={1920}
-                height={1280}
-                quality={90}
-                className="w-full"
-              />
-            </div>
-          </ScrollReveal>
-
           {/* Set Meals */}
           <ScrollReveal delay={0.1}>
             <div className="mb-12">
