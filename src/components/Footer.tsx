@@ -132,7 +132,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
           <p className="text-center text-xs text-gray-500">
             &copy;{" "}
-            <a href="/seo/dongfangmei-franchise-guide" className="text-gray-500 hover:text-gray-400 transition-colors">
+            <a href="/seo" className="text-gray-500 hover:text-gray-400 transition-colors">
               2026 東方美集團
             </a>{" "}
             Eastern Beauty Group. All Rights Reserved.
