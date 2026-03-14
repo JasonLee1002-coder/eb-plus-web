@@ -815,97 +815,141 @@ export default function HomeShowcase() {
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <ScrollReveal>
               <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
-                科技賦能&middot;降維打擊
+                智慧餐飲生態圈
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
+              <p className="text-red-400 text-sm font-mono tracking-widest uppercase mb-2">
+                Smart Restaurant Ecosystem
+              </p>
               <p className="text-lg text-gray-400">
-                我們不賣軟體，我們提供「生意」
+                以 AI 為核心，從供應鏈到餐盤的全方位賦能 — 不只賣系統，提供的是「開店的捷徑」
               </p>
             </ScrollReveal>
           </div>
 
-          {/* Comparison */}
+          {/* 四大核心賦能支柱 */}
           <ScrollReveal>
-            <div className="mb-16 grid gap-6 md:grid-cols-2">
-              {/* Traditional */}
-              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-sm">
-                <div className="mb-4 inline-block rounded-full bg-gray-800 px-4 py-1 text-sm font-semibold text-gray-400">
-                  傳統模式
-                </div>
-                <ul className="space-y-4 text-gray-400">
-                  {[
-                    { label: "營收來源：", text: "軟體月費 — 增加店家固定成本" },
-                    { label: "系統費用：", text: "每年 NT$60,000 額外支出" },
-                    { label: "物流支撐：", text: "無（僅提供軟體）" },
-                  ].map((item) => (
-                    <li key={item.label} className="flex items-start gap-3">
-                      <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-800 text-xs text-gray-500">
-                        ✕
-                      </span>
-                      <div>
-                        <strong className="text-gray-300">{item.label}</strong>
-                        {item.text}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <h3 className="mb-8 text-center text-xl font-bold text-white/80">
+              四大核心賦能支柱
+            </h3>
+          </ScrollReveal>
 
-              {/* EB+ */}
-              <div className="rounded-2xl border border-[#C8102E]/30 bg-white/[0.03] p-8 backdrop-blur-sm ring-1 ring-[#C8102E]/20">
-                <div className="mb-4 inline-block rounded-full bg-[#C8102E]/20 px-4 py-1 text-sm font-semibold text-[#C8102E]">
-                  東方美+ 模式
-                </div>
-                <ul className="space-y-4 text-gray-400">
+          <StaggerContainer className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+            {[
+              {
+                pillar: "數位營收終端",
+                subtitle: "讓客人隨處都能點",
+                borderColor: "border-red-500/30",
+                items: ["LINE 智慧語音點餐", "多功能雲端 POS 系統", "行動支付與會員整合"],
+              },
+              {
+                pillar: "AI 數位店長",
+                subtitle: "讓 AI 幫您做決策",
+                borderColor: "border-amber-500/30",
+                items: ["分店 AI：自動調度訂單", "總部 AI：營運分析與預測", "異常自動偵測與告警"],
+              },
+              {
+                pillar: "自動化智慧硬體",
+                subtitle: "解決缺工與取餐問題",
+                borderColor: "border-blue-500/30",
+                items: ["智慧自取櫃：零接觸取餐", "KDS 出餐管理螢幕", "AI 影像辨識與品質控管"],
+              },
+              {
+                pillar: "戰略供應鏈",
+                subtitle: "最強大的後勤盾牌",
+                borderColor: "border-purple-500/30",
+                items: ["優質原物料穩定供應", "全台高效物流配送網", "數位化報貨與庫存管理"],
+              },
+            ].map((p) => (
+              <StaggerItem key={p.pillar}>
+                <motion.article
+                  className={`group rounded-2xl border ${p.borderColor} bg-white/[0.03] p-6 backdrop-blur-sm transition-all h-full`}
+                  whileHover={{ boxShadow: "0 0 30px rgba(200,16,46,0.15)", y: -4 }}
+                >
+                  <h4 className="mb-1 text-lg font-black text-white">{p.pillar}</h4>
+                  <p className="mb-4 text-xs text-white/50">{p.subtitle}</p>
+                  <ul className="space-y-2">
+                    {p.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
+                        <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-400" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.article>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          {/* 資訊管控中台 */}
+          <ScrollReveal>
+            <div className="mb-16 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 sm:p-10 backdrop-blur-sm">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">東方美資訊管控中台 — 您的「數位大腦」</h3>
+                <p className="text-gray-400 text-sm">集結數十年餐飲經驗的「獲利公式」</p>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-3 mb-8">
+                {[
+                  { title: "智慧決策中樞", tag: "AI Agent Layer", desc: "透過 AI 進行補貨預測，不浪費食材、不漏掉訂單" },
+                  { title: "標準化介接技術", tag: "Digital Gateway", desc: "無縫串接外送平台、支付系統與硬體，像樂高一樣輕鬆擴充" },
+                  { title: "營運大數據", tag: "Data Lake", desc: "記錄每一筆交易與客戶喜好，將「資料」變「現金」" },
+                ].map((layer) => (
+                  <div key={layer.title} className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-5">
+                    <h4 className="font-bold text-white mb-1">{layer.title}</h4>
+                    <p className="text-xs text-red-400 font-mono mb-2">{layer.tag}</p>
+                    <p className="text-sm text-gray-400">{layer.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-xl bg-white/[0.02] border border-white/[0.06] p-5">
+                <h4 className="font-bold text-white mb-3 text-sm">雲端基石：企業級的安全與穩定</h4>
+                <div className="grid gap-4 sm:grid-cols-3">
                   {[
-                    { label: "營收來源：", text: "原物料供應 — 轉換為採購優勢" },
-                    { label: "系統費用：", text: "免費（內含於服務）" },
-                    { label: "物流支撐：", text: "192 台自有車隊同步到貨" },
-                  ].map((item) => (
-                    <li key={item.label} className="flex items-start gap-3">
-                      <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-500/20 text-xs text-green-400">
-                        ✓
-                      </span>
+                    { title: "資安監控", desc: "保護營業秘密與會員資料" },
+                    { title: "備援系統", desc: "網路波動，店務依然穩定如常" },
+                    { title: "專業 SI 團隊", desc: "技術專家全程支援，您專注服務顧客" },
+                  ].map((s) => (
+                    <div key={s.title} className="flex items-start gap-2">
+                      <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-500/20 text-xs text-green-400">✓</span>
                       <div>
-                        <strong className="text-gray-200">{item.label}</strong>
-                        {item.text}
+                        <div className="text-sm font-bold text-gray-200">{s.title}</div>
+                        <div className="text-xs text-gray-500">{s.desc}</div>
                       </div>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Smart Scenarios */}
+          {/* old comparison removed */}
+
+          {/* old EB+ comparison removed */}
+
+          {/* 為什麼選擇東方美+ */}
           <ScrollReveal>
-            <h3 className="mb-8 text-center text-2xl font-bold">
-              四大智慧場景
+            <h3 className="mb-8 text-center text-xl font-bold text-white/80">
+              為什麼選擇東方美+？
             </h3>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+          <StaggerContainer className="grid gap-6 sm:grid-cols-3" staggerDelay={0.12}>
             {[
               {
-                title: "自助點餐系統",
-                desc: "QR Code 掃碼點餐支付一次完成，櫃檯零排隊",
-                stat: "翻桌率 +40%",
+                title: "快速複製",
+                desc: "支援多店模式，從一家店輕鬆變連鎖集團",
+                stat: "970+ 家門市",
               },
               {
-                title: "智慧雙面取餐櫃",
-                desc: "GraBox-R101 線上預約 + 零接觸自取，告別排隊",
-                stat: "等待時間 → 0",
+                title: "降低門檻",
+                desc: "整合設備、物流、原物料，不需要懂 IT 也能經營智慧餐廳",
+                stat: "資訊軟體零成本",
               },
               {
-                title: "外送動線分流",
-                desc: "外送員不進店，專屬取餐區動線徹底分離",
-                stat: "取餐效率 +300%",
-              },
-              {
-                title: "智慧自助繳費機",
-                desc: "現金/多元支付全支援，自動生成憑證",
-                stat: "收銀人力 -50%",
+                title: "精實人力",
+                desc: "透過 AI 代理人與智慧櫃，緩解缺工壓力，提升人效",
+                stat: "人力需求 -30%",
               },
             ].map((s) => (
               <StaggerItem key={s.title}>
