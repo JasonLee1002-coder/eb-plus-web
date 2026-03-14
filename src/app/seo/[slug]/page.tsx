@@ -132,7 +132,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
             dateModified: post.date,
             author: {
               "@type": "Organization",
-              name: "東方美集團",
+              name: "東方美+ 合作團隊",
             },
             publisher: {
               "@type": "Organization",
