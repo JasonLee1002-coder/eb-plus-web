@@ -209,16 +209,14 @@ export default function HomeShowcase() {
           />
 
           {/* Stats row */}
-          <StaggerContainer className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-4" staggerDelay={0.15}>
+          <StaggerContainer className="mb-12 flex justify-center gap-6" staggerDelay={0.15}>
             {[
-              { value: 970, suffix: "+", label: "全台門市" },
-              { value: 192, suffix: " 台", label: "配送車隊" },
-              { value: 489, suffix: " 星", label: "加盟滿意度", prefix: "4.", isDecimal: true },
+              { isDecimal: true, suffix: " 星", label: "加盟滿意度" },
               { value: 30, suffix: "+ 年", label: "品牌歷史" },
             ].map((stat) => (
               <StaggerItem key={stat.label}>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
-                  <div className="text-3xl font-black text-white sm:text-4xl">
+                <div className="rounded-2xl border border-white/10 bg-white/5 px-10 py-6 backdrop-blur-md min-w-[160px] text-center">
+                  <div className="text-4xl font-black text-white sm:text-5xl">
                     {stat.isDecimal ? (
                       <>
                         <span>4.</span>
@@ -226,13 +224,13 @@ export default function HomeShowcase() {
                       </>
                     ) : (
                       <AnimatedCounter
-                        value={stat.value}
+                        value={stat.value!}
                         suffix={stat.suffix}
                         className="inline"
                       />
                     )}
                   </div>
-                  <div className="mt-1 text-sm text-gray-400">{stat.label}</div>
+                  <div className="mt-2 text-sm text-gray-400">{stat.label}</div>
                 </div>
               </StaggerItem>
             ))}
