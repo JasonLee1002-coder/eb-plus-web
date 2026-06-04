@@ -339,7 +339,7 @@ export default function HomeShowcase() {
                 智慧餐飲整合服務
               </h2>
               <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
-                傳承 50 年東方美早餐的美味根基，結合 AI 科技與數位系統，
+                傳承 40 年東方美早餐的美味根基，結合 AI 科技與數位系統，
                 打造下一代智慧餐飲生態圈 —— 引領餐飲業未來新革命。
               </p>
             </ScrollReveal>
