@@ -16,7 +16,7 @@ const notoSansTC = Noto_Sans_TC({
 export const metadata: Metadata = {
   title: "東方美+ | EB Plus — 科技賦能的智慧餐飲集團",
   description:
-    "東方美+ (EB Plus) 是東方美集團相關合作團隊打造的科技升級品牌。旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，結合 AI 智慧廚房、自動化供應鏈、數據驅動營運，全台超過 970 家門市。",
+    "東方美+ (EB Plus) 是東方美集團相關合作團隊打造的科技升級品牌。旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，結合 AI 智慧廚房、自動化供應鏈、數據驅動營運，4.89 星加盟滿意度、30+ 年品牌歷史。",
   keywords: [
     "東方美",
     "東方美+",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "東方美+ | EB Plus — 科技賦能的智慧餐飲集團",
     description:
-      "全台 970+ 門市、192 台配送車隊。東方美+ 以 AI 與科技重新定義台灣餐飲業，打造零成本轉型的智慧餐飲生態系。",
+      "4.89 星加盟滿意度、30+ 年品牌歷史。東方美+ 以 AI 與科技重新定義台灣餐飲業，打造零成本轉型的智慧餐飲生態系。",
     locale: "zh_TW",
     type: "website",
     siteName: "東方美+ EB Plus",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "東方美+ | EB Plus — 科技賦能的智慧餐飲集團",
     description:
-      "全台 970+ 門市。東方美+ 以 AI 與科技重新定義台灣餐飲業。",
+      "4.89 星加盟滿意度、30+ 年品牌歷史。東方美+ 以 AI 與科技重新定義台灣餐飲業。",
   },
   robots: {
     index: true,
