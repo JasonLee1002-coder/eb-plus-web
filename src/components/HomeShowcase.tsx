@@ -451,7 +451,7 @@ export default function HomeShowcase() {
             <ScrollReveal delay={0.15}>
               <p className="mb-12 text-lg leading-relaxed text-gray-600">
                 東方美集團自 1985
-                年創立以來，以「精緻的早餐、充沛的活力」為理念，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，全台約 970 家分店，是台灣最受歡迎的連鎖早午餐品牌之一。東方美+ 為東方美集團相關合作團隊，負責科技賦能與數位轉型。
+                年創立以來，以「精緻的早餐、充沛的活力」為理念，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，全台多家分店，是台灣最受歡迎的連鎖早午餐品牌之一。東方美+ 為東方美集團相關合作團隊，負責科技賦能與數位轉型。
                 <strong>東方美+</strong> 是新世代品牌概念 ——
                 在傳統餐飲的穩固基礎上，注入 AI
                 人工智慧、IoT 物聯網、大數據分析等尖端科技，打造
@@ -502,7 +502,7 @@ export default function HomeShowcase() {
               {
                 title: "FreshLink 冷鏈配送",
                 icon: "M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h-.375a3 3 0 013-3h.75m0 0h10.5m-10.5 0V6.375a1.125 1.125 0 011.125-1.125h6.75c.621 0 1.125.504 1.125 1.125v7.875m0 0h.375a3 3 0 013 3v.375M17.25 14.25h.375",
-                desc: "專業配送車隊從倉庫直送 970 家門市，先進導航系統確保食材新鮮度與品質，供應不中斷。",
+                desc: "專業配送車隊從倉庫直送多家門市，先進導航系統確保食材新鮮度與品質，供應不中斷。",
                 color: "bg-amber-100 text-[#F5A623]",
               },
               {
@@ -911,7 +911,7 @@ export default function HomeShowcase() {
                 type: "早午餐",
                 desc: "經典東方美早午餐模式，融合中西式餐點，適合社區與學區商圈。",
                 icon: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z",
-                highlight: "970+ 門市實績",
+                highlight: "多家門市實績",
               },
               {
                 type: "餐酒館",
@@ -1233,7 +1233,7 @@ export default function HomeShowcase() {
               {
                 title: "快速複製",
                 desc: "支援多店模式，從一家店輕鬆變連鎖集團",
-                stat: "970+ 家門市",
+                stat: "多家門市",
               },
               {
                 title: "降低門檻",
@@ -1435,7 +1435,7 @@ export default function HomeShowcase() {
                 step: 3,
                 stepLabel: "03",
                 title: "自動補貨決策",
-                desc: "低於安全庫存自動下單，優化 192 台車隊路徑，精準配送零積壓。",
+                desc: "低於安全庫存自動下單，優化車隊路徑，精準配送零積壓。",
                 color: "text-green-600",
                 circleColor: "bg-green-600",
               },
@@ -1467,10 +1467,10 @@ export default function HomeShowcase() {
           <ScrollReveal>
             <div className="rounded-2xl bg-gradient-to-r from-[#C8102E] to-red-700 p-8 text-center text-white">
               <p className="text-xl font-bold">
-                <AnimatedCounter value={192} className="inline" /> 台專業配送車隊 — 這是純軟體公司無法跨越的實體門檻
+                多台專業配送車隊 — 這是純軟體公司無法跨越的實體門檻
               </p>
               <p className="mt-2 text-red-200">
-                從倉庫到全台 970 家門市，確保物資與資訊流同步到貨
+                從倉庫到全台多家門市，確保物資與資訊流同步到貨
               </p>
             </div>
           </ScrollReveal>
