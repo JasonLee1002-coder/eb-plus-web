@@ -450,8 +450,7 @@ export default function HomeShowcase() {
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <p className="mb-12 text-lg leading-relaxed text-gray-600">
-                東方美集團自 1985
-                年創立以來，以「精緻的早餐、充沛的活力」為理念，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，全台多家分店，是台灣最受歡迎的連鎖早午餐品牌之一。東方美+ 為東方美集團相關合作團隊，負責科技賦能與數位轉型。
+                東方美集團於 1987 年創立於台北市萬華區東園街，以「精緻的早餐、充沛的活力」為理念，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，全台多家分店，是台灣最受歡迎的連鎖早午餐品牌之一。東方美+ 為東方美集團相關合作團隊，負責科技賦能與數位轉型。
                 <strong>東方美+</strong> 是新世代品牌概念 ——
                 在傳統餐飲的穩固基礎上，注入 AI
                 人工智慧、IoT 物聯網、大數據分析等尖端科技，打造
@@ -575,7 +574,7 @@ export default function HomeShowcase() {
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              200+ Items · Since 1985
+              200+ Items · Since 1987
             </motion.p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 drop-shadow-2xl">
               美味，是我們的根基
@@ -605,7 +604,7 @@ export default function HomeShowcase() {
             {[
               {
                 name: "巧沛東方美",
-                desc: "東方美集團旗艦早午餐品牌，1985 年創立。講求衛生、快速、品質服務，中西式餐點應有盡有，4.89 星超高評價。",
+                desc: "東方美集團旗艦早午餐品牌，1987 年創立於台北市萬華區東園街。講求衛生、快速、品質服務，中西式餐點應有盡有，4.89 星超高評價。",
                 image: "/images/food/dongfangmei-cover.jpg",
               },
               {
