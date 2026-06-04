@@ -28,8 +28,7 @@ export default function Footer() {
             <p className="text-sm leading-relaxed text-gray-500">
               東方美+ 為東方美集團相關合作團隊，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌，透過原物料供應鏈與
               AI
-              智慧餐飲科技，為全台超過 970
-              家門市提供高效營運支援，持續引領餐飲業數位轉型。
+              智慧餐飲科技，為全台多家門市提供高效營運支援，持續引領餐飲業數位轉型。
             </p>
           </div>
 
