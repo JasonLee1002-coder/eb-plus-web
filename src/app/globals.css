@@ -24,7 +24,7 @@
 }
 
 body {
-  background: var(--background);
+  background: #0a0a0a;
   color: var(--foreground);
   font-family: "Noto Sans TC", "Noto Sans", Arial, Helvetica, sans-serif;
 }
