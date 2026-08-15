@@ -22,8 +22,8 @@ function BrandTicker() {
     "東方美+ 科技中台",
     "AI 智慧廚房",
     "現點現做",
-    "4.89 星好評",
-    "30 元起",
+    "中西式早午餐",
+    "1987 年創立",
   ];
   return (
     <div className="bg-[#C8102E] py-3.5 overflow-hidden">
@@ -203,14 +203,12 @@ export default function HomeShowcase() {
               {/* Stats */}
               <div className="mb-8 grid grid-cols-3 gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6">
                 <div className="text-center">
-                  <div className="text-3xl font-black text-white">
-                    4.89<span className="text-[#F5A623] text-2xl">★</span>
-                  </div>
-                  <div className="mt-1 text-xs text-gray-500">加盟滿意度</div>
+                  <div className="text-3xl font-black text-white">1987</div>
+                  <div className="mt-1 text-xs text-gray-500">創立於台北萬華</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-black text-white">
-                    <AnimatedCounter value={30} suffix="+" className="inline" />
+                    <AnimatedCounter value={39} className="inline" />
                     <span className="text-lg text-white/40"> 年</span>
                   </div>
                   <div className="mt-1 text-xs text-gray-500">品牌歷史</div>
@@ -294,7 +292,7 @@ export default function HomeShowcase() {
                 智慧餐飲整合服務
               </h2>
               <p className="text-lg sm:text-xl text-white/45 max-w-2xl mx-auto leading-relaxed">
-                傳承 40 年東方美早餐的美味根基，結合 AI 科技與數位系統，打造下一代智慧餐飲生態圈，引領餐飲業未來新革命。
+                傳承自 1987 年東方美早餐的美味根基，結合 AI 科技與數位系統，打造下一代智慧餐飲生態圈。
               </p>
             </ScrollReveal>
           </div>
@@ -440,7 +438,7 @@ export default function HomeShowcase() {
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="mb-2 inline-block rounded-full bg-[#C8102E] px-3 py-1 text-xs font-bold text-white">旗艦品牌</div>
                   <h3 className="text-2xl font-black text-white">巧沛東方美</h3>
-                  <p className="mt-2 text-sm text-white/60 max-w-xs">東方美集團旗艦早午餐品牌，1987 年創立。中西式餐點應有盡有，4.89 星超高評價。</p>
+                  <p className="mt-2 text-sm text-white/60 max-w-xs">東方美集團旗艦早午餐品牌，1987 年創立。中西式餐點應有盡有。</p>
                 </div>
               </article>
             </TiltCard>
@@ -900,7 +898,7 @@ export default function HomeShowcase() {
             {[
               { title: "快速複製", desc: "支援多店模式，從一家店輕鬆變連鎖集團", stat: "多家門市" },
               { title: "降低門檻", desc: "整合設備、物流、原物料，不需要懂 IT 也能經營智慧餐廳", stat: "軟體零成本" },
-              { title: "精實人力", desc: "透過 AI 代理人與智慧櫃，緩解缺工壓力，提升人效", stat: "人力需求 -30%" },
+              { title: "精實人力", desc: "透過 AI 代理人與智慧櫃，緩解缺工壓力，提升人效", stat: "緩解缺工" },
             ].map((s) => (
               <StaggerItem key={s.title}>
                 <motion.article
@@ -971,9 +969,9 @@ export default function HomeShowcase() {
           {/* Metrics */}
           <StaggerContainer className="grid gap-5 sm:grid-cols-3" staggerDelay={0.15}>
             {[
-              { display: "0.5%", label: "缺貨率", desc: "AI 精準預測確保庫存充足" },
-              { display: "3%", label: "物料浪費", desc: "數據驅動的採購決策" },
-              { display: "98.5%", label: "設備效率", desc: "IoT 預防性維護" },
+              { display: "即時", label: "庫存可見度", desc: "系統掌握門市需求，減少缺貨與囤貨" },
+              { display: "數據", label: "採購決策", desc: "以實際銷售紀錄取代憑印象備料" },
+              { display: "預防性", label: "設備維護", desc: "IoT 回報異常，故障前先處理" },
             ].map((m) => (
               <StaggerItem key={m.label}>
                 <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 text-center">
