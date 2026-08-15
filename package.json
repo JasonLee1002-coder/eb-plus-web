@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node scripts/content-gate.mjs && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gate": "node scripts/content-gate.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
