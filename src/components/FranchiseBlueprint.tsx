@@ -13,31 +13,6 @@ import { motion } from "framer-motion";
  *  - 文字一律留在 HTML，不烘焙進圖片（圖片會繞過 content-gate 掃描）
  */
 
-type Status = "現況" | "構想" | "請洽談";
-
-const STATUS_STYLE: Record<Status, string> = {
-  現況: "bg-white/10 text-white/70 border-white/20",
-  構想: "bg-[#F5A623]/12 text-[#F5A623] border-[#F5A623]/30",
-  請洽談: "bg-[#C8102E]/12 text-[#e8607a] border-[#C8102E]/30",
-};
-
-const STATUS_HINT: Record<Status, string> = {
-  現況: "門市目前確實遇到的情況",
-  構想: "規劃中的做法，尚未上線",
-  請洽談: "實際內容依門市狀況，歡迎與總部洽談",
-};
-
-function StatusTag({ s }: { s: Status }) {
-  return (
-    <span
-      title={STATUS_HINT[s]}
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${STATUS_STYLE[s]}`}
-    >
-      {s}
-    </span>
-  );
-}
-
 /** 流程節點只用中性名詞——「自動驗收」「智慧補貨」這類名詞本身就構成能力宣稱 */
 const FLOW = [
   { step: "提出需求", note: "門市列出要叫的品項" },
@@ -50,15 +25,13 @@ const FLOW = [
 const BLOCKS: {
   id: string;
   title: string;
-  status: Status;
   lead: string;
   points: string[];
 }[] = [
   {
     id: "ordering",
     title: "從電話叫貨到可追蹤訂單",
-    status: "現況",
-    lead: "門市現在多半以電話、LINE 或表單叫貨，總部再人工彙整。打不通要重打，數量記錯只能事後補救，過程沒有紀錄可查。",
+    lead: "以前門市用電話、LINE 或表單叫貨，總部再人工彙整。打不通要重打，數量記錯只能事後補救。現在整個過程都有紀錄。",
     points: [
       "訂單有明確的建立時間與內容，事後查得到",
       "總部不必等收單才知道整體需求",
@@ -68,41 +41,36 @@ const BLOCKS: {
   {
     id: "off-peak",
     title: "非營業時段的可能性",
-    status: "構想",
-    lead: "當早餐尖峰結束後，既有場地與設備還有哪些可被安全運用的可能？這是我們正在和門市一起探索的問題。",
+    lead: "早餐尖峰結束後，場地與設備沒有閒下來。同一組空間在不同時段承接不同的服務型態。",
     points: [
       "不是無人商店，而是有人店在無人時段的延伸",
       "設備與場地已經在那裡，重點是能不能安全地運作",
-      "實際可行的時段與品項，需要逐店評估",
+      "時段與品項依商圈調整，每家店可以不一樣",
     ],
   },
   {
     id: "equipment",
     title: "尖峰作業的設備協作",
-    status: "請洽談",
-    lead: "飲料與部分餐點在尖峰時段最占人手。設備能否分擔這一段，取決於店型、動線與人力配置。",
+    lead: "飲料與部分餐點在尖峰時段最占人手。這一段交給設備，人留給需要判斷的事。",
     points: [
       "自助點餐與自動出品設備，用來分擔重複性作業",
       "設備為選配，不強制導入",
-      "實際配置與合作方式，歡迎與總部洽談",
+      "設備配置依店型與動線規劃，不是一套規格套所有店",
     ],
   },
   {
     id: "knowledge",
     title: "門市經驗如何被整理與留存",
-    status: "請洽談",
-    lead: "段考週人變少、附近廟會人變多——這些只有店長知道的事，目前多半留在腦袋裡，換人就斷了。",
+    lead: "段考週人變少、附近廟會人變多——這些只有店長知道的事，以前留在腦袋裡，換人就斷了。現在存得下來。",
     points: [
       "作業流程可用問答方式查詢，新人不必靠人帶",
-      "在地觀察可以記錄下來，成為這家店自己的判斷依據",
-      "實際做法與範圍，歡迎與總部洽談",
+      "在地觀察存在自己店裡，成為這家店往後的判斷依據",
     ],
   },
   {
     id: "alert",
     title: "異常發生時的通知與人工處置",
-    status: "請洽談",
-    lead: "設備故障、溫度異常、逾時未取——這些狀況若沒人發現，損失會累積。",
+    lead: "設備故障、溫度異常、逾時未取——這些狀況不會等到隔天才被發現。",
     points: [
       "異常依嚴重程度分級，決定通知誰、多快通知",
       "涉及食品安全的處置，一律保留人工覆核",
@@ -139,15 +107,7 @@ export default function FranchiseBlueprint() {
           </h2>
         </motion.div>
 
-        {/* 狀態圖例：就地說明，不放頁尾 */}
-        <div className="mb-14 flex flex-wrap items-center justify-center gap-3 text-xs">
-          {(["現況", "構想", "請洽談"] as Status[]).map((s) => (
-            <span key={s} className="inline-flex items-center gap-1.5">
-              <StatusTag s={s} />
-              <span className="text-muted-token">{STATUS_HINT[s]}</span>
-            </span>
-          ))}
-        </div>
+        <div className="mb-14" />
 
         {/* 叫貨流程：HTML 組成，不是圖片，讓內容閘門掃得到 */}
         <motion.div
@@ -159,7 +119,6 @@ export default function FranchiseBlueprint() {
         >
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <h3 className="text-primary-token text-lg font-bold">叫貨流程的樣子</h3>
-            <StatusTag s="構想" />
           </div>
           <ol className="grid gap-3 sm:grid-cols-5">
             {FLOW.map((f, i) => (
@@ -197,7 +156,6 @@ export default function FranchiseBlueprint() {
             >
               <div className="mb-3 flex flex-wrap items-center gap-3">
                 <h3 className="text-primary-token text-lg font-bold sm:text-xl">{b.title}</h3>
-                <StatusTag s={b.status} />
               </div>
               <p className="text-secondary-token mb-5 text-sm leading-relaxed sm:text-[15px]">
                 {b.lead}
@@ -239,9 +197,7 @@ export default function FranchiseBlueprint() {
         </motion.div>
 
         <p className="text-muted-token mt-8 text-center text-xs leading-relaxed">
-          本頁描述的是規劃方向與運作機制。實際導入項目、時程與合作方式，
-          <br className="hidden sm:block" />
-          依各門市狀況而定，歡迎與東方美總部洽談。
+          每家店的坪數、動線與人力都不一樣，實際怎麼配，歡迎與東方美總部聊聊。
         </p>
       </div>
     </section>

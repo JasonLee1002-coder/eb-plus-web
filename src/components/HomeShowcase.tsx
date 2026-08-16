@@ -7,8 +7,8 @@ import BrandStory from "@/components/BrandStory";
 import FranchiseBlueprint from "@/components/FranchiseBlueprint";
 import ConceptGallery from "@/components/ConceptGallery";
 import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
-import StoreTypeIllustration from "@/components/StoreTypeIllustration";
 import DayInLife from "@/components/DayInLife";
+import HeadquartersSection from "@/components/HeadquartersSection";
 import { LightboxImage } from "@/components/Lightbox";
 import {
   ScrollReveal,
@@ -52,44 +52,7 @@ function BrandTicker() {
 /*  HomeShowcase                                                       */
 /* ================================================================== */
 
-/**
- * 加盟店型。
- * Jason 2026-08-16：「還沒有的東西先別亂畫，寧可用真實照片」
- *  → 已營運的用實拍（欣殿萬飲為 2026-08-10 現場拍攝）
- *  → 規劃中的用插畫，並明確標示尚未有實際門市
- */
-const STORE_TYPES: {
-  type: string;
-  desc: string;
-  photo?: string;
-  alt: string;
-  illust?: "smart" | "shop-in-shop";
-}[] = [
-  {
-    type: "早午餐",
-    desc: "經典東方美早午餐模式，中西式餐點並存，適合社區與學區商圈。",
-    photo: "/images/xindian/dining-area.jpg",
-    alt: "東方美早午餐門市用餐區實景",
-  },
-  {
-    type: "餐酒館",
-    desc: "白天咖啡輕食、夜晚餐酒，同一組空間支撐兩種客群節奏。高雄駁二欣殿萬飲已在營運。",
-    photo: "/images/xindian/kiosk-bar.jpg",
-    alt: "高雄駁二欣殿萬飲店內，吧台旁設置兩台自助點餐機",
-  },
-  {
-    type: "智慧店",
-    desc: "自助點餐機與取餐櫃分擔重複性作業，延長可服務的時段。町早 Café 已在營運。",
-    photo: "/images/scenes/smartstore-wide.jpg",
-    alt: "町早 Café 24H 智慧飲食門市，四台自助點餐機與智取櫃牆，顧客自行操作",
-  },
-  {
-    type: "店中店",
-    desc: "在既有賣場或交通節點內設置小型據點，共用母場域既有人流。",
-    illust: "shop-in-shop",
-    alt: "店中店概念插畫",
-  },
-];
+
 
 export default function HomeShowcase() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -684,72 +647,7 @@ export default function HomeShowcase() {
       <ConceptGallery />
 
       {/* ===== 8. FRANCHISE ===== */}
-      <section id="franchise" className="surface-elevated py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="mb-4">
-            <h2 className="text-primary-token mb-3 text-3xl font-bold sm:text-4xl">加盟方案</h2>
-            <p className="text-muted-token text-lg">
-              目前有兩種已在營運的店型，另有兩種正在規劃中。
-            </p>
-          </ScrollReveal>
-
-          {/* 圖例：讓「已營運」與「規劃中」一眼可分 */}
-          <div className="mb-12 flex flex-wrap gap-4 text-xs">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-full border border-[#C8102E]/40 bg-[#C8102E]/15 px-2.5 py-0.5 font-medium text-[#e8607a]">
-                已營運
-              </span>
-              <span className="text-muted-token">實際門市照片</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-full border border-[#F5A623]/30 bg-[#F5A623]/10 px-2.5 py-0.5 font-medium text-[#F5A623]">
-                規劃中
-              </span>
-              <span className="text-muted-token">概念插畫，尚未有實際門市</span>
-            </span>
-          </div>
-
-          <StaggerContainer className="grid gap-5 sm:grid-cols-2" staggerDelay={0.09}>
-            {STORE_TYPES.map((s) => (
-              <StaggerItem key={s.type}>
-                <article className="overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.04] transition-colors hover:border-white/[0.2]">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-[#151b23]">
-                    {s.photo ? (
-                      <LightboxImage
-                        src={s.photo}
-                        alt={s.alt}
-                        fill
-                        className="relative h-full w-full"
-                      />
-                    ) : (
-                      <StoreTypeIllustration
-                        variant={s.illust!}
-                        className="h-full w-full object-cover"
-                      />
-                    )}
-                    <span
-                      className={`absolute bottom-2 left-2 rounded-md px-2 py-1 text-[10px] font-medium backdrop-blur-sm ${
-                        s.photo ? "bg-[#C8102E]/85 text-white" : "bg-[#F5A623]/85 text-black"
-                      }`}
-                    >
-                      {s.photo ? "已營運" : "規劃中"}
-                    </span>
-                  </div>
-                  <div className="p-5 sm:p-6">
-                    <h3 className="text-primary-token mb-2 text-lg font-bold">{s.type}</h3>
-                    <p className="text-muted-token text-sm leading-relaxed">{s.desc}</p>
-                  </div>
-                </article>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          <p className="text-muted-token mt-8 text-sm leading-relaxed">
-            標示「規劃中」者為概念插畫，目前尚未有實際門市。
-            實際可開放的店型、條件與時程，歡迎與東方美總部洽談。
-          </p>
-        </div>
-      </section>
+      <HeadquartersSection />
 
       {/* ===== 9. TECHNOLOGY ===== */}
       <section id="technology" className="relative overflow-hidden bg-[#050a15] py-20 text-white sm:py-28">

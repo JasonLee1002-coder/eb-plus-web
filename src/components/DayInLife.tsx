@@ -15,16 +15,19 @@ import { motion } from "framer-motion";
  * 因此改成一條「一天」的時間軸——加盟主最有感的不是設備清單，
  * 是「哪幾件事我不用再自己扛」。對齊科專的三時段營運帶（PPT P13/P16/P24）。
  *
- * 紀律：
+ * 2026-08-16 Jason：「因為還沒對外，就大膽寫出來，假設都已經成真，
+ * 不要寫『規劃中』這類，都拿掉，假設都上線了。給團隊看到未來藍圖與長相。」
+ * → 本站現階段是給團隊看的願景版本，受眾由 Jason 控制。
+ *   對外開放前必須把狀態標籤加回來（見 docs/CONTENT_POLICY.md）。
+ *
+ * 紀律（不因願景版而放寬）：
  *  - 全部 HTML 文字，不烘焙進圖片（圖片會繞過 content-gate）
- *  - 已在營運的與規劃中的分開標，不混為一談
- *  - 不寫任何時數、成效百分比、獲利暗示
+ *  - 仍不寫成效百分比、獲利承諾、營運數字
  */
 
 type Phase = {
   time: string;
   label: string;
-  status: "現在就有" | "規劃中";
   title: string;
   you: string;
   system: string[];
@@ -34,7 +37,6 @@ const PHASES: Phase[] = [
   {
     time: "05:00",
     label: "開店",
-    status: "規劃中",
     title: "不用再打電話叫貨",
     you: "你在準備開店。以前這個時間要抽空打電話叫貨，打不通就要一直重打。",
     system: [
@@ -46,7 +48,6 @@ const PHASES: Phase[] = [
   {
     time: "07:30",
     label: "尖峰",
-    status: "現在就有",
     title: "最忙的九十分鐘，有人幫你分擔",
     you: "客人一波接一波，你的手沒停過。",
     system: [
@@ -58,40 +59,37 @@ const PHASES: Phase[] = [
   {
     time: "11:00",
     label: "收尾",
-    status: "規劃中",
-    title: "貨到了，對不對得起來",
+    title: "貨到了，對得起來",
     you: "配送到店，你要一邊做餐一邊點收。",
-    system: ["到貨品項與數量留下紀錄", "對不上的地方有憑據，不必事後回想"],
+    system: [
+      "掃一下就完成點收，品項與數量留下紀錄",
+      "對不上的地方當場標記，不必事後回想",
+      "差異自動回報總部，補送與退換有依據",
+    ],
   },
   {
     time: "14:00",
     label: "離峰",
-    status: "現在就有",
     title: "店還開著，但不用一直站著",
     you: "客人少了，但店還得開。",
     system: [
       "飲品與部分品項由設備出品，顧客自己操作",
       "你可以去備料、去休息，或者去看下一家店",
+      "系統照常記錄每一筆交易，帳不會亂",
     ],
   },
   {
     time: "21:00",
     label: "打烊後",
-    status: "現在就有",
     title: "你回家了，設備還在營業",
-    you: "以前這個時間拉下鐵門，一天就結束了。町早 Café 的取餐櫃與自助設備已經在做這件事。",
+    you: "以前這個時間拉下鐵門，一天就結束了。",
     system: [
       "取餐櫃與自助設備繼續接單，顧客掃碼自取",
-      "溫度異常、設備故障的自動通知與處置：規劃中",
-      "夜間發生什麼事的隔日摘要：規劃中",
+      "溫度異常、設備故障，系統會先做處置再通知你",
+      "隔天早上你會收到一份夜裡發生什麼事的摘要",
     ],
   },
 ];
-
-const STATUS_STYLE: Record<Phase["status"], string> = {
-  現在就有: "border-[#C8102E]/40 bg-[#C8102E]/15 text-[#e8607a]",
-  規劃中: "border-[#F5A623]/30 bg-[#F5A623]/10 text-[#F5A623]",
-};
 
 export default function DayInLife() {
   return (
@@ -117,20 +115,7 @@ export default function DayInLife() {
           </p>
         </motion.div>
 
-        <div className="mb-12 mt-8 flex flex-wrap items-center justify-center gap-3 text-xs">
-          {(["現在就有", "規劃中"] as const).map((s) => (
-            <span key={s} className="inline-flex items-center gap-1.5">
-              <span
-                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 font-medium ${STATUS_STYLE[s]}`}
-              >
-                {s}
-              </span>
-              <span className="text-muted-token">
-                {s === "現在就有" ? "已在門市運作" : "規劃中，尚未上線"}
-              </span>
-            </span>
-          ))}
-        </div>
+        <div className="mb-12" />
 
         <div className="relative">
           {/* 時間軸線 */}
@@ -161,11 +146,6 @@ export default function DayInLife() {
                   <div className="mb-3 flex flex-wrap items-center gap-3">
                     <span className="font-mono text-lg font-bold text-[#F5A623]">{p.time}</span>
                     <h3 className="text-primary-token text-lg font-bold sm:text-xl">{p.title}</h3>
-                    <span
-                      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${STATUS_STYLE[p.status]}`}
-                    >
-                      {p.status}
-                    </span>
                   </div>
 
                   <p className="text-secondary-token mb-4 text-sm leading-relaxed sm:text-[15px]">
@@ -211,7 +191,7 @@ export default function DayInLife() {
             我想了解加盟
           </a>
           <p className="text-muted-token mt-4 text-xs">
-            標示「規劃中」者尚未上線，實際可導入的項目依門市狀況而定。
+            實際可導入的項目依門市坪數、動線與人力配置而定。
           </p>
         </motion.div>
       </div>
