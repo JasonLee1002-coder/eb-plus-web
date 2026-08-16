@@ -256,3 +256,28 @@ html {
 
 .media-scrim-inline { background-image: var(--media-scrim-inline); }
 .media-scrim-block { background-image: var(--media-scrim-block); }
+
+/* ===================================================================
+   錨點捲動偏移（2026-08-16）
+   Header 是 sticky top-0，點導覽跳到 #blueprint 這類錨點時，
+   區塊標題會被 header 蓋住。全站 9 個錨點都有這個問題，
+   用 scroll-margin-top 一次解決，不逐個元件改。
+=================================================================== */
+section[id],
+div[id]:not([id=""]) {
+  scroll-margin-top: 88px;
+}
+
+@media (min-width: 1024px) {
+  section[id],
+  div[id]:not([id=""]) {
+    scroll-margin-top: 96px;
+  }
+}
+
+/* 尊重使用者的減少動態偏好 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
