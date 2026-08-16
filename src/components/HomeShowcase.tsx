@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import BrandStory from "@/components/BrandStory";
 import FranchiseBlueprint from "@/components/FranchiseBlueprint";
 import ConceptGallery from "@/components/ConceptGallery";
 import { LightboxImage } from "@/components/Lightbox";
@@ -90,7 +91,7 @@ export default function HomeShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                科技賦能智慧餐飲
+                創立 1987 · 科技賦能智慧餐飲
               </motion.p>
 
               {/* Headline */}
@@ -143,6 +144,8 @@ export default function HomeShowcase() {
       {/* ===== 2. BRAND TICKER ===== */}
       <BrandTicker />
 
+      <BrandStory />
+
       {/* ===== 3. ABOUT ===== */}
       <section id="about" className="bg-[#111111] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -156,7 +159,7 @@ export default function HomeShowcase() {
                   <span className="text-[#C8102E]">東方美+</span>
                 </h2>
                 <p className="mb-12 max-w-lg text-lg leading-relaxed text-gray-400">
-                  東方美集團長期深耕台灣早餐與餐飲服務市場，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌。東方美+ 在傳統餐飲的根基上，注入 AI、IoT 與數據分析，探索門市數位化的新做法。
+                  東方美集團於 1987 年創立於台北市萬華區，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌。東方美+ 在傳統餐飲的根基上，注入 AI、IoT 與數據分析，探索門市數位化的新做法。
                 </p>
               </ScrollReveal>
 
@@ -205,8 +208,8 @@ export default function HomeShowcase() {
               {/* Stats */}
               <div className="mb-8 grid grid-cols-3 gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6">
                 <div className="text-center">
-                  <div className="text-3xl font-black text-white">萬華</div>
-                  <div className="mt-1 text-xs text-gray-500">起家的地方</div>
+                  <div className="text-3xl font-black text-white">1987</div>
+                  <div className="mt-1 text-xs text-gray-500">創立於台北萬華</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-black text-white">
@@ -294,7 +297,7 @@ export default function HomeShowcase() {
                 智慧餐飲整合服務
               </h2>
               <p className="text-lg sm:text-xl text-white/45 max-w-2xl mx-auto leading-relaxed">
-                傳承東方美早餐的美味根基，結合 AI 科技與數位系統，探索下一代餐飲服務的做法。
+                傳承自 1987 年東方美早餐的美味根基，結合 AI 科技與數位系統，探索下一代餐飲服務的做法。
               </p>
             </ScrollReveal>
           </div>
@@ -440,7 +443,7 @@ export default function HomeShowcase() {
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="mb-2 inline-block rounded-full bg-[#C8102E] px-3 py-1 text-xs font-bold text-white">旗艦品牌</div>
                   <h3 className="text-2xl font-black text-white">巧沛東方美</h3>
-                  <p className="mt-2 text-sm text-white/60 max-w-xs">東方美集團旗艦早午餐品牌，中西式餐點應有盡有。</p>
+                  <p className="mt-2 text-sm text-white/60 max-w-xs">東方美集團旗艦早午餐品牌，1987 年創立。中西式餐點應有盡有。</p>
                 </div>
               </article>
             </TiltCard>

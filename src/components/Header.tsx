@@ -6,6 +6,7 @@ const navLinks = [
   { label: "關於我們", href: "#about" },
   { label: "品牌版圖", href: "#brands" },
   { label: "人氣菜單", href: "#menu" },
+  { label: "品牌故事", href: "#story" },
   { label: "加盟支援", href: "#blueprint" },
   { label: "加盟方案", href: "#franchise" },
   { label: "科技賦能", href: "#technology" },
