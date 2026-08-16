@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { INQUIRY_OPEN } from "@/lib/site";
 
 /**
  * 加盟洽詢表單
@@ -165,6 +166,32 @@ export default function FranchiseInquiryForm() {
         >
           再填一筆
         </button>
+      </div>
+    );
+  }
+
+  /**
+   * Jason 2026-08-16 裁示：揭露流程齊備前，表單先不對外開放。
+   * 不是把區塊藏起來假裝沒有——訪客還是看得到怎麼找總部，只是不在這裡留資料。
+   */
+  if (!INQUIRY_OPEN) {
+    return (
+      <div className="mx-auto max-w-2xl rounded-2xl border border-white/[0.12] bg-white/[0.04] p-8 text-center backdrop-blur-md">
+        <h3 className="text-primary-token mb-3 text-xl font-bold">加盟洽詢</h3>
+        <p className="text-secondary-token mx-auto mb-6 max-w-md text-sm leading-relaxed">
+          線上洽詢表單尚未開放。加盟的費用、店型與區域條件由總部依實際狀況說明，
+          請直接與東方美總部聯繫。
+        </p>
+        <a
+          href="#hq"
+          className="inline-block rounded-full bg-[#C8102E] px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-red-700"
+        >
+          查看總部聯絡方式
+        </a>
+        <p className="text-muted-token mt-5 text-xs leading-relaxed">
+          依公平交易委員會規定，加盟業主應於締結加盟關係前提供加盟重要資訊。
+          我們會在這份資訊備妥後才開放線上收件。
+        </p>
       </div>
     );
   }

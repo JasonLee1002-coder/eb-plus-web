@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PUBLIC_INDEXING, SITE_URL } from "@/lib/site";
 import { Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -50,12 +51,11 @@ export const metadata: Metadata = {
     description:
       "東方美+ 以 AI 與科技協助傳統餐飲數位轉型。",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: PUBLIC_INDEXING
+    ? { index: true, follow: true }
+    : { index: false, follow: false, nocache: true },
   alternates: {
-    canonical: "https://eb-plus-web.vercel.app",
+    canonical: SITE_URL,
   },
 };
 

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { PUBLIC_INDEXING } from "@/lib/site";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import type { Metadata } from "next";
 
@@ -31,7 +32,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `https://eb-plus-web.vercel.app/seo/${slug}/`,
     },
-    robots: { index: true, follow: true },
+    robots: PUBLIC_INDEXING
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
   };
 }
 
