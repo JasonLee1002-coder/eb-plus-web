@@ -754,8 +754,8 @@ export default function HomeShowcase() {
 
                   <div className="grid grid-cols-3 gap-3 rounded-xl bg-white/[0.03] p-4">
                     <div className="text-center">
-                      <div className="text-lg font-black text-[#C8102E]"><AnimatedCounter value={816} suffix="萬" /></div>
-                      <div className="text-xs text-gray-500">年度造訪人次</div>
+                      <div className="text-lg font-black text-[#C8102E]">駁二特區</div>
+                      <div className="text-xs text-gray-500">高雄文創聚落</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-black text-[#C8102E]">雙時段</div>
@@ -860,11 +860,11 @@ export default function HomeShowcase() {
             <div className="mb-16 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-8 sm:p-10">
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-white mb-2">東方美資訊管控中台，您的數位大腦</h3>
-                <p className="text-gray-500 text-sm">集結數十年餐飲經驗的獲利公式</p>
+                <p className="text-gray-500 text-sm">把門市每天的實際運作，變成看得懂的數字</p>
               </div>
               <div className="grid gap-5 sm:grid-cols-3 mb-8">
                 {[
-                  { title: "智慧決策中樞", tag: "AI Agent Layer", desc: "透過 AI 進行補貨預測，不浪費食材、不漏掉訂單" },
+                  { title: "智慧決策中樞", tag: "AI Agent Layer", desc: "透過 AI 進行補貨預測，減少憑印象抓量造成的報廢與缺料" },
                   { title: "標準化介接技術", tag: "Digital Gateway", desc: "無縫串接外送平台、支付系統與硬體，像樂高一樣擴充" },
                   { title: "營運大數據", tag: "Data Lake", desc: "記錄每一筆交易與客戶喜好，將資料變現金" },
                 ].map((layer) => (
@@ -990,7 +990,7 @@ export default function HomeShowcase() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="mb-14 text-center">
             <h2 className="mb-3 text-3xl font-bold text-white sm:text-4xl">全鏈路供應鏈</h2>
-            <p className="text-lg text-gray-500">從銷售到採購的智慧迴圈，數據驅動的零浪費供應鏈</p>
+            <p className="text-lg text-gray-500">從銷售到採購的智慧迴圈，用實際銷售紀錄推估備料</p>
           </ScrollReveal>
 
           {/* Horizontal flow: no numbered labels */}
@@ -1020,10 +1020,10 @@ export default function HomeShowcase() {
           <ScrollReveal>
             <div className="rounded-2xl bg-gradient-to-r from-[#C8102E] to-red-700 p-8 text-center text-white">
               <p className="text-xl font-bold">
-                多台專業配送車隊，這是純軟體公司無法跨越的實體門檻
+                自有配送車隊，這是純軟體公司無法跨越的實體門檻
               </p>
               <p className="mt-2 text-red-200 text-sm">
-                從倉庫到全台多家門市，確保物資與資訊流同步到貨
+                從倉庫到連鎖門市，確保物資與資訊流同步到貨
               </p>
             </div>
           </ScrollReveal>
@@ -1078,8 +1078,8 @@ export default function HomeShowcase() {
                 {[
                   { title: "預約諮詢", desc: "了解您的店面狀況" },
                   { title: "現場評估", desc: "規劃動線與設備" },
-                  { title: "系統導入", desc: "完全免費" },
-                  { title: "正式營運", desc: "享受數據紅利" },
+                  { title: "系統導入", desc: "教育訓練與上線協助" },
+                  { title: "正式營運", desc: "持續調整與支援" },
                 ].map((r, i) => (
                   <div key={r.title} className="flex items-center gap-2">
                     <div className="text-center px-4">

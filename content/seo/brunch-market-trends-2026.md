@@ -96,7 +96,7 @@ Instagram、TikTok、Google Maps 評價成為消費者選擇早午餐的三大�
 
 **免費 AI POS 系統**
 
-不同於市面上月租 1,500 到 3,000 元的 POS 系統，東方美+ 提供加盟店**完全免費**的 AI POS，功能涵蓋：
+東方美+ 為加盟店提供 AI POS，功能涵蓋：
 
 - 多平台外送整合（UberEats、foodpanda 一鍵串接）
 - 會員管理與消費數據分析
