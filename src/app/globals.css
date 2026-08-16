@@ -206,3 +206,53 @@ html {
   background: linear-gradient(180deg, var(--primary), var(--accent));
   border-radius: 4px;
 }
+
+/* ===================================================================
+   語意色彩 token（2026-08-16）
+   起因：全站直接寫死 bg-black / #0a0a0a / white/25 等值，
+   「暗底 × 淡字」讓可讀性掉到很低。Codex 稽核指出全域 regex 替換
+   會誤傷功能性遮罩（Lightbox 遮光層、Header 遮罩），因此改建 token，
+   由各元件逐區採用，不做全站字串替換。
+
+   兩種 scrim 用途不同，必須分開：
+   - inline：水平方向，為了讓左側文字在圖片上可讀
+   - block ：垂直方向，只做上下收邊，不該壓暗畫面主體
+=================================================================== */
+:root {
+  /* 表面層次：由深到淺，拉開 section 之間的明度節奏 */
+  --surface-base: #0f1419;
+  --surface-raised: #151b23;
+  --surface-elevated: #1a222c;
+
+  /* 文字層級：維持主次之分，不要全部拉到同一亮度 */
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.78);
+  --text-muted: rgba(255, 255, 255, 0.6);
+
+  /* 遮罩：功能不同，分開管理 */
+  --media-scrim-inline: linear-gradient(
+    to right,
+    rgba(10, 14, 19, 0.92) 0%,
+    rgba(10, 14, 19, 0.72) 42%,
+    rgba(10, 14, 19, 0.15) 100%
+  );
+  --media-scrim-block: linear-gradient(
+    to bottom,
+    rgba(10, 14, 19, 0.35) 0%,
+    transparent 28%,
+    transparent 72%,
+    rgba(10, 14, 19, 0.45) 100%
+  );
+  --overlay-modal: rgba(0, 0, 0, 0.9);
+}
+
+.surface-base { background-color: var(--surface-base); }
+.surface-raised { background-color: var(--surface-raised); }
+.surface-elevated { background-color: var(--surface-elevated); }
+
+.text-primary-token { color: var(--text-primary); }
+.text-secondary-token { color: var(--text-secondary); }
+.text-muted-token { color: var(--text-muted); }
+
+.media-scrim-inline { background-image: var(--media-scrim-inline); }
+.media-scrim-block { background-image: var(--media-scrim-block); }

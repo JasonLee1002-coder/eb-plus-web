@@ -23,7 +23,7 @@ function BrandTicker() {
     "AI 智慧廚房",
     "現點現做",
     "中西式早午餐",
-    "1987 年創立",
+    "中西式早午餐",
   ];
   return (
     <div className="bg-[#C8102E] py-3.5 overflow-hidden">
@@ -60,19 +60,19 @@ export default function HomeShowcase() {
       <section
         ref={heroRef}
         id="hero"
-        className="relative min-h-[100dvh] overflow-hidden bg-black"
+        className="surface-base relative min-h-[100dvh] overflow-hidden"
       >
         {/* Full-bleed background image */}
         <Image
           src="/images/food/dongfangmei-cover.jpg"
           alt="東方美早午餐店面"
           fill
-          className="object-cover object-center opacity-35"
+          className="object-cover object-center opacity-70"
           priority
         />
         {/* Left-to-right gradient: dark left, clear right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/88 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
+        <div className="media-scrim-inline absolute inset-0" />
+        <div className="media-scrim-block absolute inset-0" />
 
         {/* Content */}
         <motion.div
@@ -88,7 +88,7 @@ export default function HomeShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                創立 1987 · 科技賦能智慧餐飲
+                科技賦能智慧餐飲
               </motion.p>
 
               {/* Headline */}
@@ -103,7 +103,7 @@ export default function HomeShowcase() {
 
               {/* Subtext */}
               <motion.p
-                className="mb-10 max-w-md text-lg leading-relaxed text-white/60"
+                className="text-secondary-token mb-10 max-w-md text-lg leading-relaxed"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
@@ -154,7 +154,7 @@ export default function HomeShowcase() {
                   <span className="text-[#C8102E]">東方美+</span>
                 </h2>
                 <p className="mb-12 max-w-lg text-lg leading-relaxed text-gray-400">
-                  東方美集團於 1987 年創立於台北市萬華區，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌。東方美+ 在傳統餐飲的根基上，注入 AI、IoT 與大數據分析，打造零成本轉型的智慧餐飲生態系。
+                  東方美集團長期深耕台灣早餐與餐飲服務市場，旗下擁有巧沛東方美、巧沛廚房、東方美早餐等品牌。東方美+ 在傳統餐飲的根基上，注入 AI、IoT 與數據分析，探索門市數位化的新做法。
                 </p>
               </ScrollReveal>
 
@@ -162,7 +162,7 @@ export default function HomeShowcase() {
                 {[
                   {
                     title: "AI 數位化轉型",
-                    desc: "訂餐點餐、AI 副店長，資訊軟體零成本轉型。加盟即享完整智慧餐飲系統。",
+                    desc: "訂餐點餐與 AI 副店長，協助門市把日常作業數位化。實際導入內容與費用方案請與團隊確認。",
                     icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z",
                   },
                   {
@@ -203,8 +203,8 @@ export default function HomeShowcase() {
               {/* Stats */}
               <div className="mb-8 grid grid-cols-3 gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6">
                 <div className="text-center">
-                  <div className="text-3xl font-black text-white">1987</div>
-                  <div className="mt-1 text-xs text-gray-500">創立於台北萬華</div>
+                  <div className="text-3xl font-black text-white">萬華</div>
+                  <div className="mt-1 text-xs text-gray-500">起家的地方</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-black text-white">
@@ -292,7 +292,7 @@ export default function HomeShowcase() {
                 智慧餐飲整合服務
               </h2>
               <p className="text-lg sm:text-xl text-white/45 max-w-2xl mx-auto leading-relaxed">
-                傳承自 1987 年東方美早餐的美味根基，結合 AI 科技與數位系統，打造下一代智慧餐飲生態圈。
+                傳承東方美早餐的美味根基，結合 AI 科技與數位系統，探索下一代餐飲服務的做法。
               </p>
             </ScrollReveal>
           </div>
@@ -438,7 +438,7 @@ export default function HomeShowcase() {
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="mb-2 inline-block rounded-full bg-[#C8102E] px-3 py-1 text-xs font-bold text-white">旗艦品牌</div>
                   <h3 className="text-2xl font-black text-white">巧沛東方美</h3>
-                  <p className="mt-2 text-sm text-white/60 max-w-xs">東方美集團旗艦早午餐品牌，1987 年創立。中西式餐點應有盡有。</p>
+                  <p className="mt-2 text-sm text-white/60 max-w-xs">東方美集團旗艦早午餐品牌，中西式餐點應有盡有。</p>
                 </div>
               </article>
             </TiltCard>
