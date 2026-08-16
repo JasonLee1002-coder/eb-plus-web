@@ -68,8 +68,8 @@ const STORE_TYPES: {
   {
     type: "早午餐",
     desc: "經典東方美早午餐模式，中西式餐點並存，適合社區與學區商圈。",
-    photo: "/images/scenes/pier2-01.jpg",
-    alt: "東方美早午餐門市實景",
+    photo: "/images/xindian/dining-area.jpg",
+    alt: "東方美早午餐門市用餐區實景",
   },
   {
     type: "餐酒館",
@@ -79,9 +79,9 @@ const STORE_TYPES: {
   },
   {
     type: "智慧店",
-    desc: "以自助點餐與取餐櫃分擔重複性作業。實際設備配置與導入方式，依門市狀況而定。",
-    illust: "smart",
-    alt: "智慧店概念插畫",
+    desc: "自助點餐機與取餐櫃分擔重複性作業，延長可服務的時段。町早 Café 已在營運。",
+    photo: "/images/scenes/smartstore-wide.jpg",
+    alt: "町早 Café 24H 智慧飲食門市，四台自助點餐機與智取櫃牆，顧客自行操作",
   },
   {
     type: "店中店",
