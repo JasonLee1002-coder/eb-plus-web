@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SceneIllustration, { type SceneKey } from "@/components/SceneIllustration";
 
 /**
  * 加盟主的一天
@@ -31,11 +32,15 @@ type Phase = {
   title: string;
   you: string;
   system: string[];
+  /** 各時段一張情境示意圖。Jason 2026-08-16：「加盟主的一天這邊也請加入易懂的插畫。」
+   *  五張刻意用不同光線（藍調清晨→金色尖峰→中午→午後斜陽→夜色），讓人一眼看得出是同一天的推進。 */
+  scene: SceneKey;
 };
 
 const PHASES: Phase[] = [
   {
     time: "05:00",
+    scene: "day-0500",
     label: "開店",
     title: "不用再打電話叫貨",
     you: "你在準備開店。以前這個時間要抽空打電話叫貨，打不通就要一直重打。",
@@ -47,6 +52,7 @@ const PHASES: Phase[] = [
   },
   {
     time: "07:30",
+    scene: "day-0730",
     label: "尖峰",
     title: "最忙的九十分鐘，有人幫你分擔",
     you: "客人一波接一波，你的手沒停過。",
@@ -58,6 +64,7 @@ const PHASES: Phase[] = [
   },
   {
     time: "11:00",
+    scene: "day-1100",
     label: "收尾",
     title: "貨到了，對得起來",
     you: "配送到店，你要一邊做餐一邊點收。",
@@ -69,6 +76,7 @@ const PHASES: Phase[] = [
   },
   {
     time: "14:00",
+    scene: "day-1400",
     label: "離峰",
     title: "店還開著，但不用一直站著",
     you: "客人少了，但店還得開。",
@@ -80,6 +88,7 @@ const PHASES: Phase[] = [
   },
   {
     time: "21:00",
+    scene: "day-2100",
     label: "打烊後",
     title: "你回家了，設備還在營業",
     you: "以前這個時間拉下鐵門，一天就結束了。",
@@ -143,6 +152,9 @@ export default function DayInLife() {
                 </span>
 
                 <article className="rounded-2xl border border-white/[0.12] bg-white/[0.04] p-5 sm:p-7">
+                  <div className="gap-6 lg:grid lg:grid-cols-[minmax(0,34%)_minmax(0,1fr)] lg:items-start">
+                  <SceneIllustration scene={p.scene} className="mb-5 lg:mb-0" />
+                  <div>
                   <div className="mb-3 flex flex-wrap items-center gap-3">
                     <span className="font-mono text-lg font-bold text-[#F5A623]">{p.time}</span>
                     <h3 className="text-primary-token text-lg font-bold sm:text-xl">{p.title}</h3>
@@ -163,6 +175,8 @@ export default function DayInLife() {
                       </li>
                     ))}
                   </ul>
+                  </div>
+                  </div>
                 </article>
               </motion.li>
             ))}

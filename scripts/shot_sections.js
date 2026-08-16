@@ -10,7 +10,7 @@ const { chromium, devices } = require('playwright');
     const ctx = await b.newContext(opt);
     const pg = await ctx.newPage();
     await pg.goto('http://localhost:3111/', { waitUntil: 'networkidle' });
-    for (const id of ['blueprint', 'technology']) {
+    for (const id of ['day', 'blueprint', 'technology']) {
       const el = await pg.$('#' + id);
       await el.scrollIntoViewIfNeeded();
       await pg.waitForTimeout(1500);
