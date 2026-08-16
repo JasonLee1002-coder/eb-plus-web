@@ -9,6 +9,17 @@ import ConceptGallery from "@/components/ConceptGallery";
 import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
 import DayInLife from "@/components/DayInLife";
 import HeadquartersSection from "@/components/HeadquartersSection";
+import {
+  IllusTerminal,
+  IllusBrain,
+  IllusLocker,
+  IllusSupply,
+  IllusHub,
+  IllusHubStack,
+  IllusReplicate,
+  IllusThreshold,
+  IllusManpower,
+} from "@/components/Illustrations";
 import { LightboxImage } from "@/components/Lightbox";
 import {
   ScrollReveal,
@@ -675,6 +686,9 @@ export default function HomeShowcase() {
                   className="rounded-2xl border border-red-500/20 bg-gradient-to-br from-[#C8102E]/10 to-transparent p-7 h-full"
                   whileHover={{ borderColor: "rgba(200,16,46,0.4)" }}
                 >
+                  <div className="mb-5 overflow-hidden rounded-xl border border-white/[0.06] bg-black/25 px-5 py-4">
+                    <IllusTerminal className="mx-auto h-32 w-full max-w-[420px] sm:h-44" />
+                  </div>
                   <h4 className="mb-1 text-xl font-black text-white">數位營收終端</h4>
                   <p className="mb-5 text-sm text-white/45">讓客人隨處都能點</p>
                   <ul className="space-y-2.5">
@@ -694,18 +708,21 @@ export default function HomeShowcase() {
                   pillar: "AI 數位店長",
                   subtitle: "讓 AI 幫您做決策",
                   borderColor: "border-amber-500/20",
+                  Art: IllusBrain,
                   items: ["分店 AI：自動調度訂單", "總部 AI：營運預測", "異常自動偵測告警"],
                 },
                 {
                   pillar: "自動化智慧硬體",
                   subtitle: "解決缺工與取餐問題",
                   borderColor: "border-blue-500/20",
+                  Art: IllusLocker,
                   items: ["智慧自取櫃：零接觸取餐", "KDS 出餐管理螢幕", "AI 影像品質控管"],
                 },
                 {
                   pillar: "戰略供應鏈",
                   subtitle: "最強大的後勤盾牌",
                   borderColor: "border-purple-500/20",
+                  Art: IllusSupply,
                   items: ["優質原物料穩定供應", "全台高效物流配送網", "數位化報貨庫存管理"],
                 },
               ].map((p) => (
@@ -715,6 +732,9 @@ export default function HomeShowcase() {
                     whileHover={{ y: -4 }}
                     transition={{ type: "spring", stiffness: 280 }}
                   >
+                    <div className="mb-4 overflow-hidden rounded-xl border border-white/[0.06] bg-black/25 px-4 py-3">
+                      <p.Art className="mx-auto h-28 w-full max-w-[270px] sm:h-32" />
+                    </div>
                     <h4 className="mb-1 text-lg font-black text-white">{p.pillar}</h4>
                     <p className="mb-4 text-xs text-white/40">{p.subtitle}</p>
                     <ul className="space-y-2">
@@ -737,6 +757,10 @@ export default function HomeShowcase() {
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-white mb-2">東方美資訊管控中台，您的數位大腦</h3>
                 <p className="text-gray-500 text-sm">把門市每天的實際運作，變成看得懂的數字</p>
+              </div>
+              <div className="mb-8 overflow-hidden rounded-xl border border-white/[0.06] bg-black/25 px-4 py-5 sm:px-8">
+                <IllusHub className="mx-auto hidden h-44 w-full max-w-[780px] sm:block sm:h-56" />
+                <IllusHubStack className="mx-auto h-72 w-full max-w-[300px] sm:hidden" />
               </div>
               <div className="grid gap-5 sm:grid-cols-3 mb-8">
                 {[
@@ -772,15 +796,18 @@ export default function HomeShowcase() {
           {/* Why choose */}
           <StaggerContainer className="grid gap-5 sm:grid-cols-3" staggerDelay={0.12}>
             {[
-              { title: "快速複製", desc: "支援多店模式，從一家店輕鬆變連鎖集團", stat: "多家門市" },
-              { title: "降低門檻", desc: "整合設備、物流、原物料，不需要懂 IT 也能經營智慧餐廳", stat: "軟體零成本" },
-              { title: "精實人力", desc: "透過 AI 代理人與智慧櫃，緩解缺工壓力，提升人效", stat: "緩解缺工" },
+              { title: "快速複製", desc: "支援多店模式，從一家店輕鬆變連鎖集團", stat: "多家門市", Art: IllusReplicate },
+              { title: "降低門檻", desc: "整合設備、物流、原物料，不需要懂 IT 也能經營智慧餐廳", stat: "軟體零成本", Art: IllusThreshold },
+              { title: "精實人力", desc: "透過 AI 代理人與智慧櫃，緩解缺工壓力，提升人效", stat: "緩解缺工", Art: IllusManpower },
             ].map((s) => (
               <StaggerItem key={s.title}>
                 <motion.article
                   className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6"
                   whileHover={{ borderColor: "rgba(200,16,46,0.25)" }}
                 >
+                  <div className="mb-4 overflow-hidden rounded-xl border border-white/[0.06] bg-black/25 px-4 py-3">
+                    <s.Art className="mx-auto h-24 w-full max-w-[250px] sm:h-28" />
+                  </div>
                   <h4 className="mb-2 text-lg font-bold text-white">{s.title}</h4>
                   <p className="mb-4 text-sm text-gray-400">{s.desc}</p>
                   <div className="inline-block rounded-full border border-[#C8102E]/25 bg-[#C8102E]/8 px-3 py-1 text-sm font-bold text-[#C8102E]">

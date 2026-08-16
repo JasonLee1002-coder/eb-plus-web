@@ -1,6 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  FLOW_ICONS,
+  IllusOrdering,
+  IllusOffPeak,
+  IllusEquipment,
+  IllusKnowledge,
+  IllusAlert,
+} from "@/components/Illustrations";
+
+/** 每個區塊配一張線稿插畫。Jason 2026-08-16：純文字卡片牆看起來艱澀生硬。 */
+const ART: Record<string, (p: { className?: string }) => React.ReactElement> = {
+  ordering: IllusOrdering,
+  "off-peak": IllusOffPeak,
+  equipment: IllusEquipment,
+  knowledge: IllusKnowledge,
+  alert: IllusAlert,
+};
 
 /**
  * 加盟支援藍圖
@@ -126,9 +143,12 @@ export default function FranchiseBlueprint() {
                 key={f.step}
                 className="relative rounded-xl border border-white/[0.1] bg-white/[0.03] p-4"
               >
-                <span className="mb-2 block text-xs font-medium text-[#F5A623]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-xs font-medium text-[#F5A623]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {FLOW_ICONS[i]}
+                </div>
                 <span className="text-primary-token block text-sm font-bold">{f.step}</span>
                 <span className="text-muted-token mt-1 block text-xs leading-relaxed">
                   {f.note}
@@ -154,6 +174,14 @@ export default function FranchiseBlueprint() {
                 i === BLOCKS.length - 1 && BLOCKS.length % 2 === 1 ? "lg:col-span-2" : ""
               }`}
             >
+              {(() => {
+                const Art = ART[b.id];
+                return Art ? (
+                  <div className="mb-5 overflow-hidden rounded-xl border border-white/[0.07] bg-black/20 px-4 py-3">
+                    <Art className="mx-auto h-28 w-full max-w-[310px] sm:h-32" />
+                  </div>
+                ) : null;
+              })()}
               <div className="mb-3 flex flex-wrap items-center gap-3">
                 <h3 className="text-primary-token text-lg font-bold sm:text-xl">{b.title}</h3>
               </div>
