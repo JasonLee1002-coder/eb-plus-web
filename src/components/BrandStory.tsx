@@ -111,6 +111,12 @@ export default function BrandStory() {
           )}
         </motion.div>
 
+        <p className="text-muted-token -mt-10 mb-16 text-center text-xs leading-relaxed">
+          影片為巧沛國際股份有限公司形象片。巧沛國際為東方美實業旗下公司，
+          <br className="hidden sm:block" />
+          共同經營巧沛東方美等品牌。
+        </p>
+
         {/* 里程碑 */}
         <div className="grid gap-5 sm:grid-cols-2">
           {MILESTONES.map((m, i) => (
