@@ -93,7 +93,7 @@ export default function HomeShowcase() {
 
               {/* Headline */}
               <motion.h1
-                className="mb-6 text-7xl font-black leading-none tracking-tighter text-white lg:text-[7rem] xl:text-[8rem]"
+                className="mb-6 text-6xl font-black leading-none tracking-tighter text-white sm:text-7xl lg:text-[7rem] xl:text-[8rem]"
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
@@ -103,7 +103,7 @@ export default function HomeShowcase() {
 
               {/* Subtext */}
               <motion.p
-                className="text-secondary-token mb-10 max-w-md text-lg leading-relaxed"
+                className="text-secondary-token mb-10 w-full text-base leading-relaxed sm:max-w-md sm:text-lg"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
