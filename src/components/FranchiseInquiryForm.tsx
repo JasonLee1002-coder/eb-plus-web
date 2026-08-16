@@ -27,6 +27,20 @@ import { useState } from "react";
 
 type Status = "idle" | "sending" | "done" | "error";
 
+/**
+ * 送不出去時的替代路徑。
+ *
+ * Codex 2026-08-16 稽核抓到：原本三段錯誤訊息都寫「請直接與總部聯繫／直接來電」，
+ * 但總部電話尚未取得、HeadquartersSection 的 HQ.tel 是空字串，頁面上沒有任何電話。
+ * 等於是一條保證把名單丟掉的死路。
+ *
+ * 在拿到總部正式電話之前，誠實講「這條路現在不通」，並給出唯一真的走得通的方式，
+ * 比叫人去打一支不存在的電話好。電話填回來之後，這裡要一併改成撥號連結。
+ */
+const FALLBACK_TAIL =
+  "若持續無法送出，請將您的姓名與聯絡電話回覆給與您接洽的東方美窗口，我們會協助轉交。";
+const FALLBACK = "線上洽詢目前無法送出，我們正在開通中。" + FALLBACK_TAIL;
+
 /** 案件編號：日期 + 5 碼亂數 */
 function makeCaseNo() {
   const d = new Date();
@@ -49,6 +63,14 @@ const STAGES = [
   { v: "other", l: "其他" },
 ];
 
+/** 既有加盟主問的不是「找到店面沒」，而是想先了解哪一段 */
+const EXISTING_TOPICS = [
+  { v: "ordering", l: "叫貨與到貨核對" },
+  { v: "equipment", l: "設備與導入條件" },
+  { v: "training", l: "教育訓練與人力" },
+  { v: "other", l: "其他／想直接談" },
+];
+
 const TIMES = [
   { v: "morning", l: "上午" },
   { v: "afternoon", l: "下午" },
@@ -66,6 +88,15 @@ export default function FranchiseInquiryForm() {
   const [err, setErr] = useState("");
   const [agree, setAgree] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  /**
+   * 讀者分流。Codex 2026-08-16 稽核指出的最大內容缺口：全站 CTA 都導向「加盟洽詢」，
+   * 但 426 家既有加盟店沒有自己的入口，還會被迫填「希望加盟的區域」。
+   *
+   * 刻意不命名為「升級申請」——升級的流程、費用、施工與責任總部都還沒定案，
+   * 網站不能代替總部承諾。這裡只做「辨識身分 + 收件」，明講提交不等於取得資格。
+   */
+  const [who, setWho] = useState<"new" | "existing">("new");
+  const existing = who === "existing";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -79,7 +110,7 @@ export default function FranchiseInquiryForm() {
     const endpoint = process.env.NEXT_PUBLIC_INQUIRY_ENDPOINT;
     if (!endpoint) {
       // 不假裝送出成功——沒有收件位置就誠實說
-      setErr("線上洽詢尚未開通，請直接與東方美總部聯繫。");
+      setErr(FALLBACK);
       setStatus("error");
       return;
     }
@@ -95,18 +126,19 @@ export default function FranchiseInquiryForm() {
           ...payload,
           案件編號: no,
           送件時間: new Date().toLocaleString("zh-TW", { timeZone: "Asia/Taipei" }),
+          身分: existing ? "既有加盟主" : "新加盟申請",
           來源: "官網加盟洽詢表單",
         }),
       });
       if (!res.ok) {
-        setErr("送出時發生問題，請稍後再試或直接與總部聯繫。");
+        setErr(FALLBACK);
         setStatus("error");
         return;
       }
       setCaseNo(no);
       setStatus("done");
     } catch {
-      setErr("網路連線有問題，請確認後再試一次，或直接來電洽詢。");
+      setErr("網路連線有問題，請確認後再試一次。" + FALLBACK_TAIL);
       setStatus("error");
     }
   }
@@ -145,6 +177,44 @@ export default function FranchiseInquiryForm() {
       </p>
 
       <form onSubmit={onSubmit} className="space-y-4">
+        {/* 身分先分流，後面的欄位與說明才對得上 */}
+        <div>
+          <span className={LABEL}>您的身分</span>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              { v: "new" as const, l: "我想加盟", d: "還不是東方美加盟主" },
+              { v: "existing" as const, l: "我是既有加盟主", d: "已經在經營東方美門市" },
+            ].map((o) => (
+              <button
+                key={o.v}
+                type="button"
+                onClick={() => setWho(o.v)}
+                aria-pressed={who === o.v}
+                className={`rounded-lg border px-4 py-3 text-left transition-colors ${
+                  who === o.v
+                    ? "border-[#C8102E] bg-[#C8102E]/10"
+                    : "border-white/15 bg-white/[0.04] hover:border-white/30"
+                }`}
+              >
+                <span className="block text-sm font-bold text-white">{o.l}</span>
+                <span className="mt-0.5 block text-xs text-white/45">{o.d}</span>
+              </button>
+            ))}
+          </div>
+          <input type="hidden" name="identity" value={existing ? "既有加盟主" : "新加盟申請"} />
+          {!existing && (
+            <p className="mt-2 text-xs leading-relaxed text-white/45">
+              留下資料是為了讓總部與您聯繫並說明條件，不代表已錄取、保留區域或成立任何加盟關係。
+            </p>
+          )}
+          {existing && (
+            <p className="mt-2 rounded-lg border border-[#F5A623]/25 bg-[#F5A623]/[0.06] px-3 py-2 text-xs leading-relaxed text-white/70">
+              這裡先收您的需求與意見，由總部與您逐案確認。
+              導入項目、費用分擔與施工安排尚未定案，登記不代表取得資格、排程或費用承諾。
+            </p>
+          )}
+        </div>
+
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className={LABEL} htmlFor="name">
@@ -172,7 +242,8 @@ export default function FranchiseInquiryForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className={LABEL} htmlFor="area">
-              希望加盟的區域 <span className="text-[#C8102E]">*</span>
+              {existing ? "門市所在區域" : "希望加盟的區域"}{" "}
+              <span className="text-[#C8102E]">*</span>
             </label>
             <select id="area" name="area" required defaultValue="" className={`${INPUT} bg-[#1a222c]`}>
               <option value="" disabled>
@@ -187,13 +258,13 @@ export default function FranchiseInquiryForm() {
           </div>
           <div>
             <label className={LABEL} htmlFor="stage">
-              目前進度 <span className="text-[#C8102E]">*</span>
+              {existing ? "想先了解的方向" : "目前進度"} <span className="text-[#C8102E]">*</span>
             </label>
             <select id="stage" name="stage" required defaultValue="" className={`${INPUT} bg-[#1a222c]`}>
               <option value="" disabled>
                 請選擇
               </option>
-              {STAGES.map((s) => (
+              {(existing ? EXISTING_TOPICS : STAGES).map((s) => (
                 <option key={s.v} value={s.l}>
                   {s.l}
                 </option>
@@ -292,11 +363,11 @@ export default function FranchiseInquiryForm() {
               </p>
               <p>
                 <b className="text-white/75">個資類別：</b>
-                姓名、手機、電子郵件、希望加盟區域與您主動提供的內容
+                姓名、手機、電子郵件、加盟身分、區域與您主動提供的內容
               </p>
               <p>
                 <b className="text-white/75">利用期間與範圍：</b>
-                自送出日起至洽詢案件結束後之合理期間，於台灣地區、由本公司及受託協助處理之服務商以電子或紙本方式利用
+                自送出日起保存 2 年（洽詢未成案）或至加盟關係結束後 5 年（已成案），期滿即刪除；於台灣地區、由本公司及受託協助處理之服務商以電子或紙本方式利用
               </p>
               <p>
                 <b className="text-white/75">您的權利：</b>

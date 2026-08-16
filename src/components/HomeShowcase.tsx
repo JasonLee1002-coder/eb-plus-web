@@ -179,7 +179,7 @@ export default function HomeShowcase() {
                   },
                   {
                     title: "FreshLink 冷鏈配送",
-                    desc: "專業車隊從倉庫直送多家門市，先進導航確保食材新鮮，供應不中斷。",
+                    desc: "自有冷鏈車隊從倉庫直送門市，配送排程與路線由系統安排。",
                     icon: "M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h-.375a3 3 0 013-3h.75m0 0h10.5m-10.5 0V6.375a1.125 1.125 0 011.125-1.125h6.75c.621 0 1.125.504 1.125 1.125v7.875m0 0h.375a3 3 0 013 3v.375M17.25 14.25h.375",
                   },
                   {
@@ -217,6 +217,7 @@ export default function HomeShowcase() {
                 <div className="text-center">
                   <div className="text-3xl font-black text-white">1996</div>
                   <div className="mt-1 text-xs text-gray-500">公司設立</div>
+                  <div className="mt-0.5 text-[10px] leading-tight text-gray-600">民國 85 年</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-black text-white">
@@ -230,6 +231,9 @@ export default function HomeShowcase() {
                     <AnimatedCounter value={582} className="inline" />
                   </div>
                   <div className="mt-1 text-xs text-gray-500">全台門市</div>
+                  <div className="mt-0.5 text-[10px] leading-tight text-gray-600">
+                    依科專計畫書送件資料
+                  </div>
                 </div>
               </div>
 
@@ -761,8 +765,8 @@ export default function HomeShowcase() {
               <div className="grid gap-4 sm:grid-cols-3 rounded-xl bg-white/[0.02] border border-white/[0.05] p-5">
                 {[
                   { title: "資安監控", desc: "保護營業秘密與會員資料" },
-                  { title: "備援系統", desc: "網路波動，店務依然穩定如常" },
-                  { title: "專業 SI 團隊", desc: "技術專家全程支援" },
+                  { title: "備援機制", desc: "網路中斷時門市可離線作業，恢復後補傳" },
+                  { title: "技術團隊", desc: "導入與維運由專責團隊對接，支援範圍依合約約定" },
                 ].map((s) => (
                   <div key={s.title} className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-500/20 text-xs text-green-400">✓</span>
@@ -780,7 +784,7 @@ export default function HomeShowcase() {
           <StaggerContainer className="grid gap-5 sm:grid-cols-3" staggerDelay={0.12}>
             {[
               { title: "快速複製", desc: "支援多店模式，從一家店輕鬆變連鎖集團", stat: "多家門市", scene: "replicate" as SceneKey },
-              { title: "降低門檻", desc: "整合設備、物流、原物料，不需要懂 IT 也能經營智慧餐廳", stat: "軟體零成本", scene: "threshold" as SceneKey },
+              { title: "降低門檻", desc: "設備、物流、原物料先組成可選模組，不必自己一項一項談", stat: "模組化導入", scene: "threshold" as SceneKey },
               { title: "精實人力", desc: "透過 AI 代理人與智慧櫃，緩解缺工壓力，提升人效", stat: "緩解缺工", scene: "manpower" as SceneKey },
             ].map((s) => (
               <StaggerItem key={s.title}>
@@ -855,7 +859,7 @@ export default function HomeShowcase() {
             {[
               { display: "即時", label: "庫存可見度", desc: "系統掌握門市需求，減少缺貨與囤貨" },
               { display: "數據", label: "採購決策", desc: "以實際銷售紀錄取代憑印象備料" },
-              { display: "預防性", label: "設備維護", desc: "IoT 回報異常，故障前先處理" },
+              { display: "預防性", label: "設備維護", desc: "IoT 回報溫度與運轉狀態，異常即時通知" },
             ].map((m) => (
               <StaggerItem key={m.label}>
                 <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 text-center">
@@ -882,7 +886,7 @@ export default function HomeShowcase() {
             {[
               { title: "實時銷售數據", desc: "每一筆 QR 點餐訂單即時上傳雲端，建立完整銷售數據庫。", accent: "border-t-[#C8102E]" },
               { title: "AI 需求預估", desc: "分析歷史趨勢，預測未來一週需求，考量季節與天氣因素。", accent: "border-t-[#F5A623]" },
-              { title: "自動補貨決策", desc: "低於安全庫存自動下單，優化車隊路徑，精準配送零積壓。", accent: "border-t-green-500" },
+              { title: "自動補貨決策", desc: "低於安全庫存時提出補貨建議，經確認後成單，配送路線一併排入。", accent: "border-t-green-500" },
             ].map((s, i) => (
               <StaggerItem key={s.title} className="relative">
                 <div className={`border-t-2 ${s.accent} bg-white/[0.03] border-x border-b border-white/[0.06] ${i === 0 ? "rounded-l-2xl" : ""} ${i === 2 ? "rounded-r-2xl" : ""} p-7`}>

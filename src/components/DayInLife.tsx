@@ -32,6 +32,10 @@ type Phase = {
   title: string;
   you: string;
   system: string[];
+  /** 該時段的適用條件。Codex 2026-08-16 稽核：延伸營運時段涉及食安、設備、退款與
+   *  治安責任，即使是願景版也必須寫清楚適用邊界——這不是「規劃中」狀態標籤，
+   *  是已落地服務本來就該有的邊界。 */
+  scope?: string;
   /** 各時段一張情境示意圖。Jason 2026-08-16：「加盟主的一天這邊也請加入易懂的插畫。」
    *  五張刻意用不同光線（藍調清晨→金色尖峰→中午→午後斜陽→夜色），讓人一眼看得出是同一天的推進。 */
   scene: SceneKey;
@@ -77,6 +81,7 @@ const PHASES: Phase[] = [
   {
     time: "14:00",
     scene: "day-1400",
+    scope: "離峰時段的自助品項依門市坪數、動線與商圈評估後決定，不是每家店都相同。",
     label: "離峰",
     title: "店還開著，但不用一直站著",
     you: "客人少了，但店還得開。",
@@ -89,12 +94,15 @@ const PHASES: Phase[] = [
   {
     time: "21:00",
     scene: "day-2100",
+    scope:
+      "延長營運僅適用於完成總部店型、設備與營運條件評估的門市。可售品項、保存與取餐期限、" +
+      "逾時未取處理，一律依核定的食品安全 SOP 執行。",
     label: "打烊後",
     title: "你回家了，設備還在營業",
     you: "以前這個時間拉下鐵門，一天就結束了。",
     system: [
       "取餐櫃與自助設備繼續接單，顧客掃碼自取",
-      "溫度異常、設備故障，系統會先做處置再通知你",
+      "溫度異常或設備故障會即時通知，涉及食品安全的處置由人確認後執行",
       "隔天早上你會收到一份夜裡發生什麼事的摘要",
     ],
   },
@@ -175,6 +183,11 @@ export default function DayInLife() {
                       </li>
                     ))}
                   </ul>
+                  {p.scope && (
+                    <p className="text-muted-token mt-4 border-t border-white/[0.08] pt-3 text-xs leading-relaxed">
+                      {p.scope}
+                    </p>
+                  )}
                   </div>
                   </div>
                 </article>
