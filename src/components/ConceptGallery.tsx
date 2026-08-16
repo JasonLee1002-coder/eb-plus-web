@@ -6,49 +6,48 @@ import { motion } from "framer-motion";
 /**
  * 智慧門市情境
  *
- * 2026-08-16 修正：原本這一區用我方臨時以 Gemini 生成的四張泛用設備圖，
- * 但東方美與 MCS 早已有做好的官方情境圖，且畫的是真正的產品設計
- * （GraBox 品牌牆、冷凍櫃帶價格螢幕、刷 LINE QR Code 才能啟動微波）。
- * 自己生的圖不但多餘，還畫錯了機制。全數換成官方素材。
+ * 2026-08-16 兩次修正：
+ *  ① 原本用我方以 Gemini 生成的四張泛用設備圖 → 東方美早有官方情境圖，
+ *     且畫的是真正的產品設計（刷 LINE QR Code 才能啟動微波），我生的畫錯了機制。
+ *  ② 換成官方情境圖後，Jason 進一步指示「還沒有的東西先別亂畫，寧可用真實照片」
+ *     → 再換成 2026-08-10 於高雄駁二欣殿萬飲實地拍攝的照片。
  *
- * 教訓：生任何素材之前先翻既有資產（雲端客戶資料夾 + 專案 public/）。
- *
- * 標註原則不變：情境圖仍標「情境示意」，不宣稱為已完成的門市實景。
+ * 現在這一區全部是實拍，不需要「情境示意」標註。
+ * 還沒有的東西改用插畫呈現（見 StoreTypeIllustration.tsx）。
  */
 
 const ITEMS = [
   {
-    src: "/images/scenes/grabox-store-scene.jpg",
-    alt: "智慧門市情境圖：店內設置冷凍櫃、微波區與 GraBox 會員登入終端，顧客自助選購與加熱",
-    title: "店內自助動線",
-    body: "冷凍櫃陳列餐點與價格，顧客自行選取後到微波區加熱，店員專注在需要人的服務上。",
-    tag: "情境示意",
+    src: "/images/xindian/kiosk-bar.jpg",
+    alt: "高雄駁二欣殿萬飲店內，吧台旁設置兩台 WiXtar 自助點餐機，店員在旁待命",
+    title: "自助點餐分擔尖峰",
+    body: "顧客自己完成點餐與結帳，店員的時間可以留給需要人的服務。高雄駁二欣殿萬飲已在使用。",
+    tag: "實際場景",
   },
   {
-    src: "/images/scenes/grabox-microwave-wall.jpg",
-    alt: "智慧門市情境圖：微波爐牆與冷凍櫃，每台微波爐標示需刷 LINE QR Code 才能啟動",
-    title: "刷 QR Code 才能啟動",
-    body: "微波爐不是誰都能開。掃描 LINE QR Code 完成身分確認後才會啟動，避免誤用與未結帳取用。",
-    tag: "情境示意",
+    src: "/images/xindian/kiosk-ui.jpg",
+    alt: "自助點餐機的操作介面特寫",
+    title: "點餐介面",
+    body: "品項、加購與付款在同一個畫面完成，不需要口頭覆述。",
+    tag: "實際場景",
   },
   {
-    src: "/images/scenes/grabox-line-qr-microwave.jpg",
-    alt: "智慧門市情境圖：顧客以手機掃描終端上的 LINE QR Code，店員在旁協助取出加熱後的餐盒",
-    title: "手機就是鑰匙",
-    body: "不必另外辦卡或下載 App。用平常在用的 LINE 掃碼，就完成會員辨識與設備啟動。",
-    tag: "情境示意",
+    src: "/images/xindian/pos-printer.jpg",
+    alt: "收銀 POS 與出單機，訂單自動列印",
+    title: "訂單直接進廚房",
+    body: "點餐送出後直接出單，少了人工傳遞這一段，也少了聽錯寫錯的機會。",
+    tag: "實際場景",
   },
   {
     src: "/images/scenes/smart-cabinet-01.jpg",
     alt: "巧沛東方美門市外設置的 GraBox 智取櫃，格內放置實際販售的餐點與飲品",
     title: "門市外的取餐櫃",
-    body: "已實際設置於門市。顧客線上下單後自行取餐，不受店內尖峰排隊影響。",
+    body: "顧客線上下單後自行取餐，不受店內尖峰排隊影響。已實際設置於門市。",
     tag: "實際場景",
   },
 ];
 
 const TAG_STYLE: Record<string, string> = {
-  情境示意: "bg-black/75 text-white/85",
   實際場景: "bg-[#C8102E]/85 text-white",
 };
 
@@ -108,9 +107,9 @@ export default function ConceptGallery() {
         </div>
 
         <p className="text-muted-token mt-8 text-center text-xs leading-relaxed">
-          標示「情境示意」者為設計情境圖，用於說明運作方式，非特定門市之實景；
+          以上皆為實際門市照片。設備配置依店型與動線而異，
           <br className="hidden sm:block" />
-          標示「實際場景」者為已設置之門市照片。
+          實際導入項目歡迎與東方美總部洽談。
         </p>
       </div>
     </section>

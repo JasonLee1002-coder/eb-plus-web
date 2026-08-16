@@ -6,6 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import BrandStory from "@/components/BrandStory";
 import FranchiseBlueprint from "@/components/FranchiseBlueprint";
 import ConceptGallery from "@/components/ConceptGallery";
+import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
+import StoreTypeIllustration from "@/components/StoreTypeIllustration";
 import { LightboxImage } from "@/components/Lightbox";
 import {
   ScrollReveal,
@@ -48,6 +50,46 @@ function BrandTicker() {
 /* ================================================================== */
 /*  HomeShowcase                                                       */
 /* ================================================================== */
+
+/**
+ * 加盟店型。
+ * Jason 2026-08-16：「還沒有的東西先別亂畫，寧可用真實照片」
+ *  → 已營運的用實拍（欣殿萬飲為 2026-08-10 現場拍攝）
+ *  → 規劃中的用插畫，並明確標示尚未有實際門市
+ */
+const STORE_TYPES: {
+  type: string;
+  desc: string;
+  photo?: string;
+  alt: string;
+  illust?: "smart" | "shop-in-shop";
+}[] = [
+  {
+    type: "早午餐",
+    desc: "經典東方美早午餐模式，中西式餐點並存，適合社區與學區商圈。",
+    photo: "/images/scenes/pier2-01.jpg",
+    alt: "東方美早午餐門市實景",
+  },
+  {
+    type: "餐酒館",
+    desc: "白天咖啡輕食、夜晚餐酒，同一組空間支撐兩種客群節奏。高雄駁二欣殿萬飲已在營運。",
+    photo: "/images/xindian/kiosk-bar.jpg",
+    alt: "高雄駁二欣殿萬飲店內，吧台旁設置兩台自助點餐機",
+  },
+  {
+    type: "智慧店",
+    desc: "以自助點餐與取餐櫃分擔重複性作業。實際設備配置與導入方式，依門市狀況而定。",
+    illust: "smart",
+    alt: "智慧店概念插畫",
+  },
+  {
+    type: "店中店",
+    desc: "在既有賣場或交通節點內設置小型據點，共用母場域既有人流。",
+    illust: "shop-in-shop",
+    alt: "店中店概念插畫",
+  },
+];
+
 export default function HomeShowcase() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
@@ -656,129 +698,70 @@ export default function HomeShowcase() {
       <ConceptGallery />
 
       {/* ===== 8. FRANCHISE ===== */}
-      <section id="franchise" className="bg-[#111111] py-20 sm:py-28">
+      <section id="franchise" className="surface-elevated py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="mb-14">
-            <h2 className="mb-3 text-3xl font-bold text-white sm:text-4xl">加盟方案</h2>
-            <p className="text-lg text-gray-500">四大店型，滿足不同場景與商圈需求</p>
+          <ScrollReveal className="mb-4">
+            <h2 className="text-primary-token mb-3 text-3xl font-bold sm:text-4xl">加盟方案</h2>
+            <p className="text-muted-token text-lg">
+              目前有兩種已在營運的店型，另有兩種正在規劃中。
+            </p>
           </ScrollReveal>
 
-          {/* Split layout: left types list, right Pier-2 case study */}
-          <div className="grid gap-12 lg:grid-cols-[40fr_60fr]">
-
-            {/* Left: 4 franchise types as compact rows */}
-            <StaggerContainer className="space-y-4" staggerDelay={0.1}>
-              {[
-                {
-                  type: "早午餐",
-                  desc: "經典東方美早午餐模式，中西式餐點，適合社區與學區商圈。",
-                  highlight: "多家門市實績",
-                  icon: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z",
-                },
-                {
-                  type: "餐酒館",
-                  desc: "日夜雙時段營運，白天咖啡輕食、夜晚餐酒體驗，最大化坪效。",
-                  highlight: "駁二示範店",
-                  icon: "M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 16.5m14.8-1.2l.268 1.572a.75.75 0 01-.766.872H4.698a.75.75 0 01-.766-.872l.268-1.572",
-                },
-                {
-                  type: "智慧店",
-                  desc: "AI 自動化少人力模式，智慧取餐櫃、自助點餐、自動繳費一站完成。",
-                  highlight: "人力成本大幅降低",
-                  icon: "M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z",
-                },
-                {
-                  type: "店中店",
-                  desc: "在現有商場、超市、交通樞紐內設點，低坪數高坪效快速展店。",
-                  highlight: "快速展店",
-                  icon: "M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016A3.001 3.001 0 0021 9.349m-18 0a2.994 2.994 0 00.209 1.126",
-                },
-              ].map((f) => (
-                <StaggerItem key={f.type}>
-                  <div className="flex items-start gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5 transition-all hover:border-white/[0.12] hover:bg-white/[0.05]">
-                    <div className="flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-lg bg-[#C8102E]/15">
-                      <svg className="h-5 w-5 text-[#C8102E]" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
-                      </svg>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-1.5">
-                        <h3 className="font-bold text-white">{f.type}</h3>
-                        <span className="rounded-full bg-red-500/15 px-2.5 py-0.5 text-xs font-bold text-[#C8102E]">{f.highlight}</span>
-                      </div>
-                      <p className="text-sm leading-relaxed text-gray-500">{f.desc}</p>
-                    </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-
-            {/* Right: Pier-2 case study */}
-            <ScrollReveal delay={0.15}>
-              <div className="overflow-hidden rounded-3xl border border-white/[0.07] bg-white/[0.03]">
-                {/* Images 2x2 */}
-                <div className="grid grid-cols-2 gap-1">
-                  {[
-                    { src: "/images/scenes/pier2-01.jpg", alt: "東方美駁二示範店外觀" },
-                    { src: "/images/scenes/smart-cabinet-01.jpg", alt: "欣殿萬飲智慧櫃子" },
-                    { src: "/images/scenes/pier2-03.jpg", alt: "東方美駁二店內空間" },
-                    { src: "/images/scenes/smart-cabinet-02.jpg", alt: "欣殿萬飲智慧櫃子白天實景" },
-                  ].map((img) => (
-                    <div key={img.src} className="relative h-48 overflow-hidden">
-                      <LightboxImage src={img.src} alt={img.alt} fill className="relative h-full w-full" />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Info */}
-                <div className="p-7">
-                  <div className="mb-3 inline-block rounded-full bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-400">
-                    餐酒館示範案例
-                  </div>
-                  <h3 className="mb-3 text-xl font-bold text-white lg:text-2xl">
-                    高雄駁二特區 — 欣殿萬飲
-                  </h3>
-                  <p className="mb-5 leading-relaxed text-gray-400 text-sm">
-                    與欣殿萬飲策略合作，在高雄駁二藝術特區打造
-                    <strong className="text-white">「早午餐 + 餐酒館」日夜雙時段</strong>
-                    營運模式，結合東方美供應鏈優勢與 8 年餐酒館實戰經驗，打造高雄首創複合式體驗空間。
-                  </p>
-
-                  <div className="space-y-3 mb-5">
-                    <div className="flex items-start gap-3 rounded-xl bg-amber-500/8 border border-amber-500/15 p-3.5">
-                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-xs font-bold text-amber-400">AM</div>
-                      <div>
-                        <div className="text-sm font-bold text-amber-300">8:00-19:00 餐飲咖啡 × 文創空間</div>
-                        <div className="text-xs text-amber-500/70">親子/遊客/IG 客 — 咖啡、輕食、伴手禮</div>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 rounded-xl bg-purple-500/8 border border-purple-500/15 p-3.5">
-                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-purple-500/20 text-xs font-bold text-purple-400">PM</div>
-                      <div>
-                        <div className="text-sm font-bold text-purple-300">19:00-03:00 餐酒館 × 夜經濟入口</div>
-                        <div className="text-xs text-purple-500/70">上班族/企業客 — 調酒、餐點、包場活動</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-3 rounded-xl bg-white/[0.03] p-4">
-                    <div className="text-center">
-                      <div className="text-lg font-black text-[#C8102E]">駁二特區</div>
-                      <div className="text-xs text-gray-500">高雄文創聚落</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-black text-[#C8102E]">雙時段</div>
-                      <div className="text-xs text-gray-500">最大化坪效</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-black text-[#C8102E]">第一排</div>
-                      <div className="text-xs text-gray-500">駁二步行街</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+          {/* 圖例：讓「已營運」與「規劃中」一眼可分 */}
+          <div className="mb-12 flex flex-wrap gap-4 text-xs">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-flex items-center rounded-full border border-[#C8102E]/40 bg-[#C8102E]/15 px-2.5 py-0.5 font-medium text-[#e8607a]">
+                已營運
+              </span>
+              <span className="text-muted-token">實際門市照片</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-flex items-center rounded-full border border-[#F5A623]/30 bg-[#F5A623]/10 px-2.5 py-0.5 font-medium text-[#F5A623]">
+                規劃中
+              </span>
+              <span className="text-muted-token">概念插畫，尚未有實際門市</span>
+            </span>
           </div>
+
+          <StaggerContainer className="grid gap-5 sm:grid-cols-2" staggerDelay={0.09}>
+            {STORE_TYPES.map((s) => (
+              <StaggerItem key={s.type}>
+                <article className="overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.04] transition-colors hover:border-white/[0.2]">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#151b23]">
+                    {s.photo ? (
+                      <LightboxImage
+                        src={s.photo}
+                        alt={s.alt}
+                        fill
+                        className="relative h-full w-full"
+                      />
+                    ) : (
+                      <StoreTypeIllustration
+                        variant={s.illust!}
+                        className="h-full w-full object-cover"
+                      />
+                    )}
+                    <span
+                      className={`absolute bottom-2 left-2 rounded-md px-2 py-1 text-[10px] font-medium backdrop-blur-sm ${
+                        s.photo ? "bg-[#C8102E]/85 text-white" : "bg-[#F5A623]/85 text-black"
+                      }`}
+                    >
+                      {s.photo ? "已營運" : "規劃中"}
+                    </span>
+                  </div>
+                  <div className="p-5 sm:p-6">
+                    <h3 className="text-primary-token mb-2 text-lg font-bold">{s.type}</h3>
+                    <p className="text-muted-token text-sm leading-relaxed">{s.desc}</p>
+                  </div>
+                </article>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <p className="text-muted-token mt-8 text-sm leading-relaxed">
+            標示「規劃中」者為概念插畫，目前尚未有實際門市。
+            實際可開放的店型、條件與時程，歡迎與東方美總部洽談。
+          </p>
         </div>
       </section>
 
@@ -1108,65 +1091,7 @@ export default function HomeShowcase() {
 
           {/* Contact Form */}
           <ScrollReveal>
-            <div className="mx-auto max-w-2xl rounded-2xl border border-white/[0.07] bg-white/[0.03] p-8 backdrop-blur-md">
-              <h3 className="mb-6 text-center text-xl font-bold">立即諮詢轉型方案</h3>
-              <form className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-1.5 block text-sm text-gray-400">姓名</label>
-                    <input
-                      type="text"
-                      placeholder="您的姓名"
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder-gray-600 transition-colors focus:border-[#C8102E] focus:outline-none focus:ring-1 focus:ring-[#C8102E]"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm text-gray-400">電話</label>
-                    <input
-                      type="tel"
-                      placeholder="聯絡電話"
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder-gray-600 transition-colors focus:border-[#C8102E] focus:outline-none focus:ring-1 focus:ring-[#C8102E]"
-                    />
-                  </div>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-1.5 block text-sm text-gray-400">Email</label>
-                    <input
-                      type="email"
-                      placeholder="電子信箱"
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder-gray-600 transition-colors focus:border-[#C8102E] focus:outline-none focus:ring-1 focus:ring-[#C8102E]"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm text-gray-400">店型</label>
-                    <select className="w-full rounded-lg border border-white/10 bg-[#111] px-4 py-2.5 text-white transition-colors focus:border-[#C8102E] focus:outline-none focus:ring-1 focus:ring-[#C8102E]">
-                      <option value="">請選擇加盟店型</option>
-                      <option value="brunch">早午餐</option>
-                      <option value="bistro">餐酒館</option>
-                      <option value="smart">智慧店（少人力）</option>
-                      <option value="shop-in-shop">店中店</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm text-gray-400">需求說明</label>
-                  <textarea
-                    rows={4}
-                    placeholder="請簡述您的需求或想了解的內容..."
-                    className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder-gray-600 transition-colors focus:border-[#C8102E] focus:outline-none focus:ring-1 focus:ring-[#C8102E]"
-                  />
-                </div>
-                <GlowPulse color="rgba(200,16,46,0.5)" className="rounded-full">
-                  <button
-                    type="submit"
-                    className="w-full rounded-full bg-[#C8102E] py-3.5 text-lg font-bold text-white transition-colors hover:bg-red-700"
-                  >
-                    立即諮詢
-                  </button>
-                </GlowPulse>
-              </form>
-            </div>
+            <FranchiseInquiryForm />
           </ScrollReveal>
         </div>
       </section>
