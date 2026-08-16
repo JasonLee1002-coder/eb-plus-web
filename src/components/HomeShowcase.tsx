@@ -8,6 +8,7 @@ import FranchiseBlueprint from "@/components/FranchiseBlueprint";
 import ConceptGallery from "@/components/ConceptGallery";
 import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
 import StoreTypeIllustration from "@/components/StoreTypeIllustration";
+import DayInLife from "@/components/DayInLife";
 import { LightboxImage } from "@/components/Lightbox";
 import {
   ScrollReveal,
@@ -344,22 +345,7 @@ export default function HomeShowcase() {
             </ScrollReveal>
           </div>
 
-          {/* Ecosystem image */}
-          <ScrollReveal delay={0.2}>
-            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-red-500/10">
-                <LightboxImage
-                  src="/images/scenes/eb-ecosystem-vision.png"
-                  alt="東方美EB+ 智慧餐飲整合服務生態系"
-                  width={1920}
-                  height={1080}
-                  quality={90}
-                  className="w-full"
-                />
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-[#0a0a0a]/20" />
-              </div>
-            </div>
-          </ScrollReveal>
+          <DayInLife />
 
           {/* 6 Ecosystem pillars with SVG icons (no emoji) */}
           <div className="pt-16 pb-8 sm:pt-20 sm:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
