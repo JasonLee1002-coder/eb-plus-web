@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FranchiseBlueprint from "@/components/FranchiseBlueprint";
+import ConceptGallery from "@/components/ConceptGallery";
 import { LightboxImage } from "@/components/Lightbox";
 import {
   ScrollReveal,
@@ -648,6 +649,8 @@ export default function HomeShowcase() {
       </section>
 
       <FranchiseBlueprint />
+
+      <ConceptGallery />
 
       {/* ===== 8. FRANCHISE ===== */}
       <section id="franchise" className="bg-[#111111] py-20 sm:py-28">
