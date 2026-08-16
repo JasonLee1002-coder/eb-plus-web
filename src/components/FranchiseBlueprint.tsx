@@ -13,18 +13,18 @@ import { motion } from "framer-motion";
  *  - 文字一律留在 HTML，不烘焙進圖片（圖片會繞過 content-gate 掃描）
  */
 
-type Status = "現況" | "構想" | "待確認";
+type Status = "現況" | "構想" | "請洽談";
 
 const STATUS_STYLE: Record<Status, string> = {
   現況: "bg-white/10 text-white/70 border-white/20",
   構想: "bg-[#F5A623]/12 text-[#F5A623] border-[#F5A623]/30",
-  待確認: "bg-[#C8102E]/12 text-[#e8607a] border-[#C8102E]/30",
+  請洽談: "bg-[#C8102E]/12 text-[#e8607a] border-[#C8102E]/30",
 };
 
 const STATUS_HINT: Record<Status, string> = {
   現況: "門市目前確實遇到的情況",
   構想: "規劃中的做法，尚未上線",
-  待確認: "細節需與東方美總部確認後定案",
+  請洽談: "實際內容依門市狀況，歡迎與總部洽談",
 };
 
 function StatusTag({ s }: { s: Status }) {
@@ -79,34 +79,34 @@ const BLOCKS: {
   {
     id: "equipment",
     title: "尖峰作業的設備協作",
-    status: "待確認",
+    status: "請洽談",
     lead: "飲料與部分餐點在尖峰時段最占人手。設備能否分擔這一段，取決於店型、動線與人力配置。",
     points: [
       "自助點餐與自動出品設備，用來分擔重複性作業",
       "設備為選配，不強制導入",
-      "分攤方式、維護責任與費用計算，需與總部確認",
+      "實際配置與合作方式，歡迎與總部洽談",
     ],
   },
   {
     id: "knowledge",
     title: "門市經驗如何被整理與留存",
-    status: "待確認",
+    status: "請洽談",
     lead: "段考週人變少、附近廟會人變多——這些只有店長知道的事，目前多半留在腦袋裡，換人就斷了。",
     points: [
       "作業流程可用問答方式查詢，新人不必靠人帶",
       "在地觀察可以記錄下來，成為這家店自己的判斷依據",
-      "資料的存放位置與存取權限，需與總部確認後明確定義",
+      "實際做法與範圍，歡迎與總部洽談",
     ],
   },
   {
     id: "alert",
     title: "異常發生時的通知與人工處置",
-    status: "待確認",
+    status: "請洽談",
     lead: "設備故障、溫度異常、逾時未取——這些狀況若沒人發現，損失會累積。",
     points: [
       "異常依嚴重程度分級，決定通知誰、多快通知",
       "涉及食品安全的處置，一律保留人工覆核",
-      "自動化的範圍與責任歸屬，需與總部及相關規範確認",
+      "實際做法與範圍，歡迎與總部洽談",
     ],
   },
 ];
@@ -141,7 +141,7 @@ export default function FranchiseBlueprint() {
 
         {/* 狀態圖例：就地說明，不放頁尾 */}
         <div className="mb-14 flex flex-wrap items-center justify-center gap-3 text-xs">
-          {(["現況", "構想", "待確認"] as Status[]).map((s) => (
+          {(["現況", "構想", "請洽談"] as Status[]).map((s) => (
             <span key={s} className="inline-flex items-center gap-1.5">
               <StatusTag s={s} />
               <span className="text-muted-token">{STATUS_HINT[s]}</span>
@@ -239,9 +239,9 @@ export default function FranchiseBlueprint() {
         </motion.div>
 
         <p className="text-muted-token mt-8 text-center text-xs leading-relaxed">
-          本頁描述的是規劃方向與運作機制，實際導入項目、時程與費用方案，
+          本頁描述的是規劃方向與運作機制。實際導入項目、時程與合作方式，
           <br className="hidden sm:block" />
-          依各門市狀況與東方美總部確認後為準。
+          依各門市狀況而定，歡迎與東方美總部洽談。
         </p>
       </div>
     </section>
