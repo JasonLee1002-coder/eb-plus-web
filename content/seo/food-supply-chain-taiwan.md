@@ -4,7 +4,7 @@ date: 2026-02-05
 description: "深入剖析台灣餐飲供應鏈的現況、痛點與趨勢，以及東方美+ 如何透過自有物流車隊與 AI 需求預測打造低缺貨率的閉環供應鏈系統。"
 keywords: ["餐飲供應鏈", "食材物流", "AI 供應鏈", "餐飲物流", "東方美+", "冷鏈配送"]
 category: "產業分析"
-image: "/images/scenes/smart-cabinet-02.jpg"
+image: "/images/hq/fleet-basement.jpg"
 ---
 
 ## 餐飲供應鏈：台灣餐飲業最被低估的競爭力

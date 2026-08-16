@@ -38,13 +38,6 @@ const ITEMS = [
     body: "點餐送出後直接出單，少了人工傳遞這一段，也少了聽錯寫錯的機會。",
     tag: "實際場景",
   },
-  {
-    src: "/images/scenes/smart-cabinet-01.jpg",
-    alt: "巧沛東方美門市外設置的 GraBox 智取櫃，格內放置實際販售的餐點與飲品",
-    title: "門市外的取餐櫃",
-    body: "顧客線上下單後自行取餐，不受店內尖峰排隊影響。已實際設置於門市。",
-    tag: "實際場景",
-  },
 ];
 
 const TAG_STYLE: Record<string, string> = {

@@ -11,7 +11,7 @@ keywords:
   - 餐飲科技
   - 東方美數位轉型
 category: "數位轉型"
-image: "/images/scenes/smart-cabinet-01.jpg"
+image: "/images/xindian/kiosk-bar.jpg"
 ---
 
 ## 餐飲數位轉型：不是選擇題，而是生存題

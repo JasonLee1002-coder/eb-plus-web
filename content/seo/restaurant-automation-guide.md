@@ -11,7 +11,7 @@ keywords:
   - 廚房自動化
   - 餐飲數位轉型
 category: "餐飲科技"
-image: "/images/scenes/smart-cabinet-01.jpg"
+image: "/images/xindian/kiosk-ui.jpg"
 ---
 
 ## 餐飲自動化：中小型餐廳的生存必修課

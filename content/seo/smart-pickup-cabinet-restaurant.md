@@ -4,7 +4,7 @@ date: 2026-03-07
 description: "什麼是智慧取餐櫃（GraBox）？本文完整介紹智慧取餐櫃的運作原理、餐廳導入效益（零等候、無接觸、人力節省），以及東方美+的實際部署經驗與成效。"
 keywords: ["智慧取餐櫃", "GraBox", "無接觸取餐", "餐廳智慧設備", "東方美+", "外送取餐櫃", "智慧餐廳"]
 category: "科技應用"
-image: "/images/scenes/smart-cabinet-01.jpg"
+image: "/images/xindian/kiosk-bar.jpg"
 ---
 
 ## 智慧取餐櫃是什麼？為什麼餐廳需要它？

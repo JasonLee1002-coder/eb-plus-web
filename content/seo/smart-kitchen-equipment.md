@@ -11,7 +11,7 @@ keywords:
   - 智慧餐廳設備
   - 廚房物聯網
 category: "餐飲科技"
-image: "/images/scenes/smart-cabinet-02.jpg"
+image: "/images/hq/kitchen-store.jpg"
 ---
 
 ## 智慧廚房設備：餐飲業的第三次革命

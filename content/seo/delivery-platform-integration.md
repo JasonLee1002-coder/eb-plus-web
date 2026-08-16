@@ -4,7 +4,7 @@ date: 2026-01-18
 description: "完整解析外送平台整合的實戰策略——多平台訂單管理、廚房動線分流、出餐效率優化，以及東方美+如何做到外送與內用零衝突的完美平衡。"
 keywords: ["外送平台整合", "UberEats整合", "foodpanda接單", "外送訂單管理", "廚房動線優化", "東方美+", "外送分流"]
 category: "營運策略"
-image: "/images/scenes/smart-cabinet-01.jpg"
+image: "/images/xindian/pos-printer.jpg"
 ---
 
 ## 外送已不是加分項，而是必備項
