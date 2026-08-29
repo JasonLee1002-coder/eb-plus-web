@@ -31,7 +31,8 @@ export default function BackToTop() {
         <motion.button
           onClick={scrollToTop}
           aria-label="回到頂部"
-          className="fixed bottom-28 left-6 z-[90] group cursor-pointer"
+          /* 手機版原本 bottom-28 會壓在加盟洽詢的紅色主按鈕上，降到底角 */
+          className="fixed bottom-6 left-4 z-[90] group cursor-pointer sm:bottom-28 sm:left-6"
           initial={{ opacity: 0, scale: 0, x: -30 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           exit={{ opacity: 0, scale: 0, x: -30 }}

@@ -2,18 +2,26 @@
 
 import { useState, useEffect } from "react";
 
+/**
+ * 一律用絕對路徑錨點（/#xxx），不可以只寫 #xxx。
+ *
+ * 2026-08-29 實測發現的災情：原本全部寫成同頁錨點，在首頁沒事，
+ * 但 83 篇文章與文章列表頁沒有這些區塊，於是頁首整排導覽、紅色「加盟諮詢」
+ * 按鈕、連 LOGO 按了都完全不動——從 Google 進來的訪客一條路都走不出去。
+ * 寫成 /#xxx 後：首頁仍是同文件捲動（不會重新載入），子頁則正確導回首頁。
+ */
 const navLinks = [
-  { label: "關於我們", href: "#about" },
-  { label: "品牌版圖", href: "#brands" },
-  { label: "人氣菜單", href: "#menu" },
-  { label: "品牌故事", href: "#story" },
-  { label: "加盟主的一天", href: "#day" },
-  { label: "加盟支援", href: "#blueprint" },
-  { label: "餐飲型態", href: "#formats" },
-  { label: "加盟方案", href: "#franchise" },
-  { label: "科技賦能", href: "#technology" },
-  { label: "AI 智慧廚房", href: "#ai-kitchen" },
-  { label: "聯絡我們", href: "#contact" },
+  { label: "關於我們", href: "/#about" },
+  { label: "品牌版圖", href: "/#brands" },
+  { label: "人氣菜單", href: "/#menu" },
+  { label: "品牌故事", href: "/#story" },
+  { label: "加盟主的一天", href: "/#day" },
+  { label: "加盟支援", href: "/#blueprint" },
+  { label: "餐飲型態", href: "/#formats" },
+  { label: "加盟方案", href: "/#franchise" },
+  { label: "科技賦能", href: "/#technology" },
+  { label: "AI 智慧廚房", href: "/#ai-kitchen" },
+  { label: "聯絡我們", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -37,7 +45,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-12">
         {/* Logo */}
-        <a href="#" className="flex-shrink-0">
+        <a href="/#hero" className="flex-shrink-0">
           <span className="text-xl font-black tracking-tight text-white">
             東方美<span className="text-[#F5A623]">+</span>
           </span>
@@ -58,7 +66,7 @@ export default function Header() {
 
         {/* Desktop CTA */}
         <a
-          href="#contact"
+          href="/#contact"
           className="hidden flex-shrink-0 whitespace-nowrap rounded-full bg-[#C8102E] px-5 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-red-700 hover:shadow-red-500/20 hover:shadow-md lg:inline-block"
         >
           加盟諮詢
@@ -97,7 +105,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setMobileOpen(false)}
               className="mt-3 rounded-full bg-[#C8102E] px-5 py-2.5 text-center text-sm font-bold text-white transition-colors hover:bg-red-700"
             >

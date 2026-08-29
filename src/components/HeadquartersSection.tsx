@@ -53,6 +53,14 @@ export default function HeadquartersSection() {
 
   return (
     <section id="hq" className="surface-elevated py-20 sm:py-28">
+      {/*
+        #franchise 這個錨點原本不存在，但導覽列「加盟方案」、頁尾、
+        以及 83 篇文章裡的「查看加盟方案」全都指向它——按了整頁不動。
+        2026-08-29 修：把錨點掛在這一區，因為「加盟方案」現在的答案
+        就是「直接找總公司談」，落在這裡語意也對。
+        scroll-mt 是為了不被固定頁首擋住標題。
+      */}
+      <span id="franchise" aria-hidden className="block scroll-mt-24" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,12 +154,34 @@ export default function HeadquartersSection() {
             </div>
           ) : null}
 
-          <a
-            href="#contact"
-            className="inline-block rounded-full bg-[#C8102E] px-9 py-3.5 text-base font-bold text-white transition-colors hover:bg-red-700"
-          >
-            留下聯絡方式，總部與你聯繫
-          </a>
+          {/*
+            2026-08-29 修死循環。原本這裡固定放一顆「留下聯絡方式」→ #contact，
+            但 #contact 在表單未開放時會說「請直接與總部聯繫」並把人送回 #hq，
+            而 #hq 又沒有任何電話——訪客就在兩個區塊之間繞到放棄。
+            現在依實際有沒有聯絡方式決定要不要放按鈕：
+            HQ.tel 一填回來，這顆按鈕與上面的撥號卡片就會自動出現。
+          */}
+          {hasContact ? (
+            HQ.tel ? (
+              <a
+                href={`tel:${HQ.tel.replace(/[^0-9+]/g, "")}`}
+                className="inline-block rounded-full bg-[#C8102E] px-9 py-3.5 text-base font-bold text-white transition-colors hover:bg-red-700"
+              >
+                撥打總公司電話
+              </a>
+            ) : null
+          ) : (
+            <div className="mx-auto max-w-xl rounded-xl border border-white/[0.12] bg-white/[0.04] px-6 py-5">
+              <p className="text-secondary-token text-sm leading-relaxed">
+                總部的正式聯絡電話與地址正在確認中。
+                <br className="hidden sm:block" />
+                確認後會直接公布在這裡，在那之前我們不放未經確認的號碼。
+              </p>
+              <p className="text-muted-token mt-3 text-xs leading-relaxed">
+                若您已經有與東方美接洽的窗口，請直接與該窗口聯繫。
+              </p>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
