@@ -180,7 +180,7 @@ export default function HomeShowcase() {
                   },
                   {
                     title: "FreshLink 冷鏈配送",
-                    desc: "自有冷鏈車隊從倉庫直送門市，配送排程與路線由系統安排。",
+                    desc: "自有物流車隊從倉庫直送門市，配送排程與路線由系統安排。",
                     icon: "M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h-.375a3 3 0 013-3h.75m0 0h10.5m-10.5 0V6.375a1.125 1.125 0 011.125-1.125h6.75c.621 0 1.125.504 1.125 1.125v7.875m0 0h.375a3 3 0 013 3v.375M17.25 14.25h.375",
                   },
                   {
@@ -916,7 +916,7 @@ export default function HomeShowcase() {
           <ScrollReveal>
             <div className="rounded-2xl bg-gradient-to-r from-[#C8102E] to-red-700 p-8 text-center text-white">
               <p className="text-xl font-bold">
-                自有配送車隊，這是純軟體公司無法跨越的實體門檻
+                自有物流車隊，這是純軟體公司無法跨越的實體門檻
               </p>
               <p className="mt-2 text-red-200 text-sm">
                 從倉庫到連鎖門市，確保物資與資訊流同步到貨

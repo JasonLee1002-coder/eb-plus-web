@@ -30,7 +30,7 @@ const SHOTS = [
   {
     src: "/images/hq/fleet-basement.jpg",
     alt: "總部地下室停放的冷藏配送車隊",
-    title: "自有冷藏配送車隊",
+    title: "自有物流車隊",
     body: "從中央廚房到門市，物流自己跑。這是純軟體公司跨不過去的一段。",
     span: true,
   },
