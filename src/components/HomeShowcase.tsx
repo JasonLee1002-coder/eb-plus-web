@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import BrandStory from "@/components/BrandStory";
 import FranchiseBlueprint from "@/components/FranchiseBlueprint";
 import ConceptGallery from "@/components/ConceptGallery";
+import StoreFormat from "@/components/StoreFormat";
 import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
 import DayInLife from "@/components/DayInLife";
 import HeadquartersSection from "@/components/HeadquartersSection";
@@ -653,6 +654,8 @@ export default function HomeShowcase() {
       </section>
 
       <FranchiseBlueprint />
+
+      <StoreFormat />
 
       <ConceptGallery />
 

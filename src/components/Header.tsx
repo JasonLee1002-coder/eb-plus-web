@@ -9,6 +9,7 @@ const navLinks = [
   { label: "品牌故事", href: "#story" },
   { label: "加盟主的一天", href: "#day" },
   { label: "加盟支援", href: "#blueprint" },
+  { label: "餐飲型態", href: "#formats" },
   { label: "加盟方案", href: "#franchise" },
   { label: "科技賦能", href: "#technology" },
   { label: "AI 智慧廚房", href: "#ai-kitchen" },
@@ -48,7 +49,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-white/60 transition-colors hover:bg-white/5 hover:text-white"
+              className="whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium text-white/60 transition-colors hover:bg-white/5 hover:text-white xl:px-3"
             >
               {link.label}
             </a>
@@ -58,7 +59,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <a
           href="#contact"
-          className="hidden rounded-full bg-[#C8102E] px-5 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-red-700 hover:shadow-red-500/20 hover:shadow-md lg:inline-block"
+          className="hidden flex-shrink-0 whitespace-nowrap rounded-full bg-[#C8102E] px-5 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-red-700 hover:shadow-red-500/20 hover:shadow-md lg:inline-block"
         >
           加盟諮詢
         </a>
