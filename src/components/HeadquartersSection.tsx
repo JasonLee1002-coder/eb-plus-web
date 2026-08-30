@@ -53,14 +53,6 @@ export default function HeadquartersSection() {
 
   return (
     <section id="hq" className="surface-elevated py-20 sm:py-28">
-      {/*
-        #franchise 這個錨點原本不存在，但導覽列「加盟方案」、頁尾、
-        以及 83 篇文章裡的「查看加盟方案」全都指向它——按了整頁不動。
-        2026-08-29 修：把錨點掛在這一區，因為「加盟方案」現在的答案
-        就是「直接找總公司談」，落在這裡語意也對。
-        scroll-mt 是為了不被固定頁首擋住標題。
-      */}
-      <span id="franchise" aria-hidden className="block scroll-mt-24" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -108,81 +100,12 @@ export default function HeadquartersSection() {
           ))}
         </div>
 
-        {/* 加盟洽詢：方案未定，一律導向總公司 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="rounded-2xl border border-[#C8102E]/25 bg-[#C8102E]/[0.07] p-8 text-center sm:p-10"
-        >
-          <h3 className="text-primary-token mb-3 text-xl font-bold sm:text-2xl">
-            想加盟，直接找總公司談
-          </h3>
-          <p className="text-secondary-token mx-auto mb-7 max-w-xl text-sm leading-relaxed sm:text-base">
-            每家店的坪數、商圈與經營型態都不一樣，適合哪一種做法、費用怎麼算，
-            由總部依實際狀況說明會比較準確。
-          </p>
-
-          {hasContact ? (
-            <div className="mb-7 grid gap-4 sm:grid-cols-2">
-              {HQ.tel && (
-                <a
-                  href={`tel:${HQ.tel.replace(/[^0-9+]/g, "")}`}
-                  className="group rounded-xl border border-white/[0.12] bg-white/[0.04] p-5 transition-colors hover:border-[#C8102E]/50"
-                >
-                  <span className="text-muted-token mb-1.5 block text-xs">總公司電話</span>
-                  <span className="text-primary-token block text-lg font-bold group-hover:text-[#e8607a]">
-                    {HQ.tel}
-                  </span>
-                </a>
-              )}
-              {HQ.address && (
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(HQ.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-xl border border-white/[0.12] bg-white/[0.04] p-5 transition-colors hover:border-[#C8102E]/50"
-                >
-                  <span className="text-muted-token mb-1.5 block text-xs">總公司地址</span>
-                  <span className="text-primary-token block text-base font-bold leading-snug group-hover:text-[#e8607a]">
-                    {HQ.address}
-                  </span>
-                  <span className="text-muted-token mt-1 block text-xs">在地圖上開啟</span>
-                </a>
-              )}
-            </div>
-          ) : null}
-
-          {/*
-            2026-08-29 修死循環。原本這裡固定放一顆「留下聯絡方式」→ #contact，
-            但 #contact 在表單未開放時會說「請直接與總部聯繫」並把人送回 #hq，
-            而 #hq 又沒有任何電話——訪客就在兩個區塊之間繞到放棄。
-            現在依實際有沒有聯絡方式決定要不要放按鈕：
-            HQ.tel 一填回來，這顆按鈕與上面的撥號卡片就會自動出現。
-          */}
-          {hasContact ? (
-            HQ.tel ? (
-              <a
-                href={`tel:${HQ.tel.replace(/[^0-9+]/g, "")}`}
-                className="inline-block rounded-full bg-[#C8102E] px-9 py-3.5 text-base font-bold text-white transition-colors hover:bg-red-700"
-              >
-                撥打總公司電話
-              </a>
-            ) : null
-          ) : (
-            <div className="mx-auto max-w-xl rounded-xl border border-white/[0.12] bg-white/[0.04] px-6 py-5">
-              <p className="text-secondary-token text-sm leading-relaxed">
-                總部的正式聯絡電話與地址正在確認中。
-                <br className="hidden sm:block" />
-                確認後會直接公布在這裡，在那之前我們不放未經確認的號碼。
-              </p>
-              <p className="text-muted-token mt-3 text-xs leading-relaxed">
-                若您已經有與東方美接洽的窗口，請直接與該窗口聯繫。
-              </p>
-            </div>
-          )}
-        </motion.div>
+        {/*
+          2026-08-29 移除本區的加盟 CTA。原本是「想加盟，直接找總公司談」＋
+          一顆按鈕，但總部電話尚未取得，那顆按鈕只會把人送回加盟洽詢區，
+          形成死循環。加盟入口現在統一收斂到 #contact（新版建置中），
+          這一區回歸單純介紹總部與後勤。
+        */}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { INQUIRY_OPEN } from "@/lib/site";
-import { HQ } from "@/components/HeadquartersSection";
+import NeonUnderConstruction from "@/components/NeonUnderConstruction";
 
 /**
  * 加盟洽詢表單
@@ -175,44 +175,16 @@ export default function FranchiseInquiryForm() {
    * Jason 2026-08-16 裁示：揭露流程齊備前，表單先不對外開放。
    * 不是把區塊藏起來假裝沒有——訪客還是看得到怎麼找總部，只是不在這裡留資料。
    */
+  /**
+   * Jason 2026-08-16 裁示：揭露流程齊備前，表單先不對外開放。
+   * Jason 2026-08-29 再裁示：「總部的流程還沒訂好，加盟的部分先改成新版建置中。」
+   *
+   * 原本這裡是一段「請直接與總部聯繫」＋一顆通往 #hq 的按鈕，但 #hq 沒有電話，
+   * 訪客會在兩區之間繞圈。根因不是程式，是總部的加盟進線流程尚未定案——
+   * 沒有流程就沒有窗口可以留。與其讓人繞到放棄，不如明講這一區在整修。
+   */
   if (!INQUIRY_OPEN) {
-    return (
-      <div className="mx-auto max-w-2xl rounded-2xl border border-white/[0.12] bg-white/[0.04] p-8 text-center backdrop-blur-md">
-        <h3 className="text-primary-token mb-3 text-xl font-bold">加盟洽詢</h3>
-        <p className="text-secondary-token mx-auto mb-6 max-w-md text-sm leading-relaxed">
-          線上洽詢表單尚未開放。加盟的費用、店型與區域條件由總部依實際狀況說明，
-          請直接與東方美總部聯繫。
-        </p>
-        {/*
-          2026-08-29 修死循環：原本這裡固定放「查看總部聯絡方式」→ #hq，
-          但 #hq 也沒有電話，只有一顆「留下聯絡方式」把人送回這裡。
-          訪客會在兩區之間繞圈，這就是 Jason 反映的「連絡不到總部」。
-          電話沒到位之前，誠實說沒有，比給一顆通往空氣的按鈕好。
-        */}
-        {HQ.tel ? (
-          <a
-            href={`tel:${HQ.tel.replace(/[^0-9+]/g, "")}`}
-            className="inline-block rounded-full bg-[#C8102E] px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-red-700"
-          >
-            撥打總部電話　{HQ.tel}
-          </a>
-        ) : (
-          <div className="mx-auto max-w-md rounded-xl border border-[#F5A623]/25 bg-[#F5A623]/[0.06] px-5 py-4">
-            <p className="text-secondary-token text-sm leading-relaxed">
-              總部的對外聯絡電話正在確認中，確認後會直接顯示在這裡。
-            </p>
-            <p className="text-muted-token mt-2 text-xs leading-relaxed">
-              目前站上沒有可撥打的號碼——與其給您一支未經確認的電話，
-              我們寧可先說明白。若您已有接洽窗口，請直接與該窗口聯繫。
-            </p>
-          </div>
-        )}
-        <p className="text-muted-token mt-5 text-xs leading-relaxed">
-          依公平交易委員會規定，加盟業主應於締結加盟關係前提供加盟重要資訊。
-          我們會在這份資訊備妥後才開放線上收件。
-        </p>
-      </div>
-    );
+    return <NeonUnderConstruction />;
   }
 
   return (

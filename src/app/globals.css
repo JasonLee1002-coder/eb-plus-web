@@ -281,3 +281,88 @@ div[id]:not([id=""]) {
     scroll-behavior: auto;
   }
 }
+
+/* ===================================================================
+   霓虹燈「新版建置中」
+   Jason 2026-08-29 裁示：總部的加盟流程還沒訂好，官網的加盟入口先收起來，
+   改成建置中告示。做成霓虹燈是因為這是店面招牌的語言——「今天沒開，但這家
+   店是活的」，比一句灰色的「敬請期待」誠實也好看。
+   動態全部包在 prefers-reduced-motion 之外，會暈眩的使用者看到的是靜態霓虹。
+=================================================================== */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.45; }
+}
+
+@keyframes neon-breathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.28); }
+}
+
+@keyframes neon-beam {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes neon-scan {
+  0% { transform: translateY(-120%); opacity: 0; }
+  12% { opacity: 0.5; }
+  88% { opacity: 0.5; }
+  100% { transform: translateY(320%); opacity: 0; }
+}
+
+.neon-text {
+  color: #fff6f7;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 11px rgba(255, 90, 120, 0.9),
+    0 0 22px rgba(200, 16, 46, 0.85),
+    0 0 42px rgba(200, 16, 46, 0.6),
+    0 0 80px rgba(200, 16, 46, 0.35);
+  animation: neon-breathe 3.2s ease-in-out infinite;
+}
+
+.neon-text-gold {
+  color: #fffaf0;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 10px rgba(255, 200, 90, 0.9),
+    0 0 20px rgba(245, 166, 35, 0.8),
+    0 0 38px rgba(245, 166, 35, 0.5);
+}
+
+/* 只讓其中一個字閃，全部一起閃會像壞掉 */
+.neon-flicker {
+  animation: neon-flicker 5.5s linear infinite;
+}
+
+/* 旋轉光束外框：用 conic-gradient 轉圈，內層再蓋一塊底色留出 1px 邊 */
+.neon-beam::before {
+  content: "";
+  position: absolute;
+  inset: -140%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(200, 16, 46, 0.05) 40deg,
+    #c8102e 68deg,
+    #f5a623 86deg,
+    rgba(245, 166, 35, 0.05) 110deg,
+    transparent 150deg,
+    transparent 360deg
+  );
+  animation: neon-beam 6s linear infinite;
+}
+
+.neon-scanline {
+  animation: neon-scan 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-text,
+  .neon-flicker,
+  .neon-beam::before,
+  .neon-scanline {
+    animation: none !important;
+  }
+  .neon-scanline { opacity: 0; }
+}

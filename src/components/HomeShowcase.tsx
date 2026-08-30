@@ -950,6 +950,12 @@ export default function HomeShowcase() {
         id="contact"
         className="relative overflow-hidden bg-[#0a0f1a] py-20 text-white sm:py-28"
       >
+        {/*
+          #franchise 從總部區移到這裡（2026-08-29）。導覽列「加盟方案」、頁尾與
+          83 篇文章裡的「查看加盟方案」都指向它，落在這一區才對得上——
+          加盟方案現在的狀態就是「新版建置中」。
+        */}
+        <span id="franchise" aria-hidden className="block scroll-mt-24" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#C8102E]/8 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-[#F5A623]/6 rounded-full blur-[130px]" />
@@ -968,29 +974,13 @@ export default function HomeShowcase() {
               </p>
             </ScrollReveal>
 
-            {/* Process: horizontal text flow, no numbered circles */}
-            <ScrollReveal delay={0.2}>
-              <div className="mb-14 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-0">
-                {[
-                  { title: "預約諮詢", desc: "了解您的店面狀況" },
-                  { title: "現場評估", desc: "規劃動線與設備" },
-                  { title: "系統導入", desc: "教育訓練與上線協助" },
-                  { title: "正式營運", desc: "持續調整與支援" },
-                ].map((r, i) => (
-                  <div key={r.title} className="flex items-center gap-2">
-                    <div className="text-center px-4">
-                      <div className="text-sm font-bold text-white">{r.title}</div>
-                      <div className="text-xs text-gray-500">{r.desc}</div>
-                    </div>
-                    {i < 3 && (
-                      <svg className="hidden sm:block w-4 h-4 text-white/20 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                      </svg>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
+            {/*
+              2026-08-29 移除「預約諮詢 → 現場評估 → 系統導入 → 正式營運」四步流程。
+              Codex 2026-08-16 稽核就提醒過這幾步不宜先寫成既定作業；
+              Jason 2026-08-29 明講總部的加盟流程還沒訂好。
+              寫在官網上就是對外承諾，總部沒點頭之前不能替他們定。
+              流程確認後（見「加盟線上詢問接手流程」請總部裁示文件）再放回來。
+            */}
           </div>
 
           {/* Contact Form */}
