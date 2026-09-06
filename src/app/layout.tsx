@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import SiteChrome from "@/components/SiteChrome";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -71,10 +72,14 @@ export default function RootLayout({
         <meta name="theme-color" content="#C8102E" />
       </head>
       <body className={`${notoSansTC.variable} antialiased`}>
-        <Header />
+        <SiteChrome>
+          <Header />
+        </SiteChrome>
         <main>{children}</main>
-        <Footer />
-        <BackToTop />
+        <SiteChrome>
+          <Footer />
+          <BackToTop />
+        </SiteChrome>
         <Analytics />
         <SpeedInsights />
       </body>
