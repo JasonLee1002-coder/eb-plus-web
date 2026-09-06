@@ -51,6 +51,8 @@ export type Brand = {
   /** 對外電話。來源必須是 Google 商家頁或店家自己印的東西，不放猜的號碼 */
   tel?: string;
   video?: { src: string; poster: string; note: string };
+  /** 多語版影片。訪客可切換，預設中文 */
+  videoVariants?: { key: string; label: string; src: string; poster: string; note: string }[];
   /** 關於這家店：只寫可查證的事實，一段一句話 */
   about: string[];
   /** 姊妹店的 slug，用來互相連結 */
@@ -181,6 +183,31 @@ export const XINDIAN: Brand = {
     poster: "/video/xindian-pier2-poster.jpg",
     note: "形象影片拍的是夜間餐酒時段，白天的早午餐時段見下方實拍。",
   },
+  // 日文版原是 2026/09/08 首都高來訪的迎賓片（開頭 8 秒是專屬迎賓卡）；
+  // 韓文版是為韓國客群做的，沒有那張卡。兩支都放上來讓訪客自己選。
+  videoVariants: [
+    {
+      key: "zh",
+      label: "中文",
+      src: "/video/xindian-pier2.mp4",
+      poster: "/video/xindian-pier2-poster.jpg",
+      note: "形象影片拍的是夜間餐酒時段，白天的早午餐時段見下方實拍。",
+    },
+    {
+      key: "ja",
+      label: "日本語",
+      src: "/video/xindian-ja.mp4",
+      poster: "/video/xindian-ja-poster.jpg",
+      note: "日本語ナレーション・字幕付き（95秒）。冒頭は首都高速道路グループの皆様への歓迎カードです。",
+    },
+    {
+      key: "ko",
+      label: "한국어",
+      src: "/video/xindian-ko.mp4",
+      poster: "/video/xindian-ko-poster.jpg",
+      note: "한국어 내레이션・자막 (88초).",
+    },
+  ],
   about: [
     "店開在駁二藝術特區的大義倉庫群裡，是老倉庫改的空間，紅磚外牆與店招並存。",
     "下午做早午餐，入夜換成餐酒館。兩個時段用同一個空間、同一座吧台——咖啡機與酒櫃並排，換時段不必換場地。",

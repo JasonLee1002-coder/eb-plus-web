@@ -135,6 +135,13 @@ export default function StoreFormat() {
           影片為欣殿萬飲（高雄駁二）形象片，拍的是夜間餐酒時段。
           <br className="hidden sm:block" />
           白天的早午餐時段見下方實拍。
+          {/* 日／韓版在品牌頁可切換，這裡指過去，免得訪客不知道有 */}
+          <a
+            href="/brands/xindian#video"
+            className="ml-2 text-[#F5A623] underline underline-offset-4 transition-colors hover:text-[#ffc457]"
+          >
+            日本語・한국어版はこちら
+          </a>
         </p>
 
         {/* 三個時段區塊 */}

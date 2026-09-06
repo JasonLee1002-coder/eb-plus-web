@@ -534,6 +534,7 @@ export default function HomeShowcase() {
                 image: "/images/xindian/storefront.jpg",
                 gradient: null,
                 href: "/brands/xindian",
+                hasVideo: true,
               },
               {
                 name: "TACB 人文餐酒",
@@ -542,6 +543,7 @@ export default function HomeShowcase() {
                 image: "/images/tacb/gallery-wall.jpg",
                 gradient: null,
                 href: "/brands/tacb",
+                hasVideo: false,
               },
             ].map((b) => (
               <TiltCard key={b.name}>
@@ -569,11 +571,21 @@ export default function HomeShowcase() {
                     </div>
                     <h3 className="text-xl font-black text-white">{b.name}</h3>
                     <p className="mt-1.5 max-w-md text-sm leading-relaxed text-white/60">{b.desc}</p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#F5A623] px-3 py-1.5 text-xs font-bold text-black">
-                      看這家店
-                      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                      </svg>
+                    <span className="mt-3 flex flex-wrap items-center gap-2">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F5A623] px-3 py-1.5 text-xs font-bold text-black">
+                        看這家店
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                      </span>
+                      {b.hasVideo && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/30 px-3 py-1.5 text-xs font-medium text-white/85">
+                          <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                          影片　中／日／韓
+                        </span>
+                      )}
                     </span>
                   </div>
                 </article>

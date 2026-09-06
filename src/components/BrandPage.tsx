@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BRANDS, type Brand, type Photo } from "@/lib/brands";
+import BrandVideo from "./BrandVideo";
 
 
 /**
@@ -197,38 +198,7 @@ export default function BrandPage({ brand }: { brand: Brand }) {
         </div>
       </section>
 
-      {/* ── 影片（有才顯示）── */}
-      {brand.video && (
-        <section className="border-t border-white/10 px-6 py-16 sm:py-20">
-          <div className="mx-auto max-w-4xl">
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-black">
-              <video
-                className="aspect-video w-full"
-                controls
-                preload="none"
-                playsInline
-                poster={brand.video.poster}
-              >
-                <source src={brand.video.src} type="video/mp4" />
-                您的瀏覽器不支援影片播放。
-              </video>
-            </div>
-            <p className="mt-4 text-center text-xs leading-relaxed text-white/40">
-              {brand.video.note}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* ── 實拍 ── */}
-      {brand.photos.length > 0 && (
-        <section className="border-t border-white/10 px-6 py-16 sm:py-20">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-10 text-2xl font-bold sm:text-3xl">店裡的樣子</h2>
-            <PhotoGrid items={brand.photos} badge="實際場景" />
-          </div>
-        </section>
-      )}
+      <BrandVideo brand={brand} />
 
       {/* ── 菜單 ── */}
       {brand.menu && (
