@@ -104,6 +104,9 @@ export default function BrandPage({ brand }: { brand: Brand }) {
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
             {brand.tagline}
           </p>
+          {brand.slogan && (
+            <p className="mt-4 text-sm italic text-[#F5A623]/80">{brand.slogan}</p>
+          )}
         </div>
       </section>
 
@@ -124,34 +127,44 @@ export default function BrandPage({ brand }: { brand: Brand }) {
               </dd>
             </div>
             <div>
-              <dt className="mb-2 text-xs tracking-[0.3em] text-[#F5A623]">評價</dt>
-              <dd className="text-sm leading-relaxed text-white/80">
+              <dt className="mb-2 text-xs tracking-[0.3em] text-[#F5A623]">怎麼去・看評價</dt>
+              <dd className="flex flex-wrap gap-2">
                 {/*
                   站上不寫評分與評論數——那是會變動的數字，寫死就是未查證宣稱。
-                  直接把讀者送到 Google 商家頁，看到的永遠是當下的真實狀況。
+                  導航另外給一顆：來吃飯的人第一件事是「怎麼去」，
+                  原本只有一個叫「看評價」的連結，要導航得自己想辦法。
+                  電話：我方沒有經查證的訂位電話，寧可不放，也不放猜的號碼。
                 */}
+                <a
+                  href={brand.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#F5A623] px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-[#ffc457]"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                  導航前往
+                </a>
                 <a
                   href={brand.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[#F5A623] underline underline-offset-4 transition-colors hover:text-[#ffc457]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-sm text-white/75 transition-colors hover:border-white/40 hover:text-white"
                 >
-                  在 Google 上看評價
-                  <svg
-                    className="h-3.5 w-3.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    aria-hidden
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                    />
-                  </svg>
+                  Google 評價
                 </a>
+                {brand.instagram && (
+                  <a
+                    href={brand.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-sm text-white/75 transition-colors hover:border-white/40 hover:text-white"
+                  >
+                    Instagram
+                  </a>
+                )}
               </dd>
             </div>
           </dl>
@@ -201,6 +214,23 @@ export default function BrandPage({ brand }: { brand: Brand }) {
           <div className="mx-auto max-w-5xl">
             <h2 className="mb-10 text-2xl font-bold sm:text-3xl">店裡的樣子</h2>
             <PhotoGrid items={brand.photos} badge="實際場景" />
+          </div>
+        </section>
+      )}
+
+      {/* ── 菜單 ── */}
+      {brand.menu && (
+        <section className="border-t border-white/10 px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">菜單</h2>
+            {/*
+              菜單價格會調整。放上拍攝月份並寫明以店內為準，
+              免得客人拿著舊價格上門。
+            */}
+            <p className="mb-10 text-sm text-white/40">
+              {brand.menu.asOf}店內菜單。品項與價格會調整，以店內公告為準。
+            </p>
+            <PhotoGrid items={brand.menu.photos} cols={2} />
           </div>
         </section>
       )}

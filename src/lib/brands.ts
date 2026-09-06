@@ -41,6 +41,13 @@ export type Brand = {
   food?: Photo[];
   /** 商圈周邊實拍 */
   neighborhood?: Photo[];
+  /** 菜單實拍。價格會變，頁面上一定要標拍攝月份與「以店內為準」 */
+  menu?: { photos: Photo[]; asOf: string };
+  /** 店家自己的官方標語（來源：店內菜單），沒有就不寫 */
+  slogan?: string;
+  /** Google 地圖導航連結——來吃飯的人第一件事是「怎麼去」 */
+  directionsUrl: string;
+  instagram?: string;
   video?: { src: string; poster: string; note: string };
   /** 關於這家店：只寫可查證的事實，一段一句話 */
   about: string[];
@@ -62,6 +69,11 @@ export const XINDIAN: Brand = {
   openingHours: ["Mo-Th 10:00-01:00", "Fr-Su 10:00-03:00"],
   servesCuisine: ["早午餐", "餐酒館", "咖啡"],
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=%E6%AC%A3%E6%AE%BF%E8%90%AC%E9%A3%B2+%E9%AB%98%E9%9B%84%E9%A7%81%E4%BA%8C",
+  directionsUrl:
+    "https://www.google.com/maps/dir/?api=1&destination=%E9%AB%98%E9%9B%84%E5%B8%82%E9%B9%BD%E5%9F%95%E5%8D%80%E5%A4%A7%E7%BE%A9%E8%A1%972%E8%99%9F",
+  // 來源：店內菜單「品牌故事與社群 QR」頁（2026-08-10 實拍），店家自己印的
+  instagram: "https://www.instagram.com/shindian.wanyin/",
+  slogan: "從晨光到微醺，收藏每一段美好時光。",
   photos: [
     {
       src: "/images/xindian/storefront.jpg",
@@ -143,6 +155,19 @@ export const XINDIAN: Brand = {
       caption: "駁二廣場的夜間人流",
     },
   ],
+  menu: {
+    asOf: "2026 年 8 月",
+    photos: [
+      { src: "/images/xindian/menu/brunch-platter.jpg", alt: "欣殿萬飲早午餐拼盤菜單頁", caption: "早午餐拼盤（10:00–15:00）" },
+      { src: "/images/xindian/menu/pasta.jpg", alt: "欣殿萬飲義大利麵菜單頁", caption: "義大利麵" },
+      { src: "/images/xindian/menu/risotto.jpg", alt: "欣殿萬飲義大利燉飯菜單頁", caption: "義大利燉飯" },
+      { src: "/images/xindian/menu/croissant.jpg", alt: "欣殿萬飲可頌與佛卡夏菜單頁", caption: "可頌・佛卡夏" },
+      { src: "/images/xindian/menu/light-bites.jpg", alt: "欣殿萬飲輕食小點菜單頁", caption: "輕食小點" },
+      { src: "/images/xindian/menu/coffee.jpg", alt: "欣殿萬飲咖啡與果汁菜單頁", caption: "咖啡與果汁" },
+      { src: "/images/xindian/menu/drinks-1.jpg", alt: "欣殿萬飲調酒菜單頁一", caption: "萬飲輕酒（一）" },
+      { src: "/images/xindian/menu/drinks-2.jpg", alt: "欣殿萬飲調酒菜單頁二", caption: "萬飲輕酒（二）" },
+    ],
+  },
   video: {
     src: "/video/xindian-pier2.mp4",
     poster: "/video/xindian-pier2-poster.jpg",
@@ -171,6 +196,8 @@ export const TACB: Brand = {
   openingHours: ["Mo-Su 19:00-02:00"],
   servesCuisine: ["餐酒館", "調酒"],
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=TACB+%E4%BA%BA%E6%96%87%E9%A4%90%E9%85%92+%E9%AB%98%E9%9B%84",
+  directionsUrl:
+    "https://www.google.com/maps/dir/?api=1&destination=%E9%AB%98%E9%9B%84%E5%B8%82%E6%96%B0%E8%88%88%E5%8D%80%E6%9E%97%E6%A3%AE%E4%BA%8C%E8%B7%AF135%E5%B7%B735%E8%99%9F",
   photos: [
     {
       src: "/images/tacb/bar-counter.jpg",

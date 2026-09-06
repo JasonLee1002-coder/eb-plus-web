@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { XINDIAN } from "@/lib/brands";
 
 /**
  * 首都高速道路株式会社 来台迎賓頁（Jason 2026-09-06 指示）
@@ -184,6 +186,55 @@ export default function Page() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/*
+        ── アクセス ──
+        2026-09-06 連結圖分析抓到：這頁原本是全站唯一「完全走不出去」的頁面。
+        日方掃 QR 進來只能看，不能導航、不能看店、不能回首頁。
+        9/9 現場就要用，這是最該補的一段。
+      */}
+      <section className="border-t border-white/10 px-6 py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl">
+          <p lang="ja" className="mb-8 text-center text-xs tracking-[0.35em] text-[#F5A623]">
+            アクセス
+          </p>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <a
+              href={XINDIAN.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F5A623] px-6 py-3.5 text-sm font-bold text-black transition-colors hover:bg-[#ffc457]"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+              </svg>
+              <span lang="ja">地図・ルート案内</span>
+            </a>
+
+            <Link
+              href="/brands/xindian"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm text-white/80 transition-colors hover:border-white/50 hover:text-white"
+            >
+              <span lang="ja">お店の詳細・メニュー</span>
+            </Link>
+
+            <a
+              href={XINDIAN.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm text-white/80 transition-colors hover:border-white/50 hover:text-white"
+            >
+              <span lang="ja">Google マップ</span>
+            </a>
+          </div>
+
+          <p className="mt-6 text-center text-xs leading-relaxed text-white/35">
+            地圖導航／店家詳細與菜單／Google 商家頁
+          </p>
         </div>
       </section>
 
