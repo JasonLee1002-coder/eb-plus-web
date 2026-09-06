@@ -34,13 +34,26 @@ export default function BrandVideo({ brand }: { brand: Brand }) {
               type="button"
               onClick={() => setActive(i)}
               aria-pressed={i === active}
-              className={`rounded-full px-8 py-3.5 text-lg font-bold tracking-wide transition-all sm:text-xl ${
+              style={
+                {
+                  "--breathe-rgb": item.glow,
+                  // 三顆錯開起始相位，不同步呼吸才會「活」；
+                  // 一起閃會像警示燈，反而讓人不想按
+                  animationDelay: `${i * 0.9}s`,
+                } as React.CSSProperties
+              }
+              className={`breathe rounded-full px-8 py-3.5 text-lg font-bold tracking-wide transition-[transform,background-color,color] duration-300 sm:text-xl ${
                 i === active
-                  ? "glow-pulse-amber scale-105 bg-[#F5A623] text-black"
-                  : "glow-hover-amber border border-white/20 bg-white/[0.04] text-white/70 hover:border-[#F5A623]/60 hover:text-white"
+                  ? "scale-105 text-black [background-color:rgb(var(--breathe-rgb))]"
+                  : "border border-white/25 bg-white/[0.04] text-white/80 hover:text-white"
               }`}
             >
-              {item.label}
+              <span
+                className="pointer-events-none"
+                style={i === active ? undefined : { color: `rgb(${item.glow})` }}
+              >
+                {item.label}
+              </span>
             </button>
           ))}
         </div>

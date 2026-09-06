@@ -52,7 +52,15 @@ export type Brand = {
   tel?: string;
   video?: { src: string; poster: string; note: string };
   /** 多語版影片。訪客可切換，預設中文 */
-  videoVariants?: { key: string; label: string; src: string; poster: string; note: string }[];
+  videoVariants?: {
+    key: string;
+    label: string;
+    src: string;
+    poster: string;
+    note: string;
+    /** 呼吸燈顏色（R,G,B）。三顆各自不同，讓人一眼看出是三個選項 */
+    glow: string;
+  }[];
   /** 關於這家店：只寫可查證的事實，一段一句話 */
   about: string[];
   /** 姊妹店的 slug，用來互相連結 */
@@ -189,6 +197,7 @@ export const XINDIAN: Brand = {
     {
       key: "zh",
       label: "中文",
+      glow: "245,166,35",    // 琥珀，站台主色
       src: "/video/xindian-pier2.mp4",
       poster: "/video/xindian-pier2-poster.jpg",
       note: "形象影片拍的是夜間餐酒時段，白天的早午餐時段見下方實拍。",
@@ -196,6 +205,7 @@ export const XINDIAN: Brand = {
     {
       key: "ja",
       label: "日本語",
+      glow: "232,78,95",     // 緋紅
       src: "/video/xindian-ja.mp4",
       poster: "/video/xindian-ja-poster.jpg",
       note: "日本語ナレーション・字幕付き（95秒）。冒頭は首都高速道路グループの皆様への歓迎カードです。",
@@ -203,6 +213,7 @@ export const XINDIAN: Brand = {
     {
       key: "ko",
       label: "한국어",
+      glow: "74,144,226",    // 靛藍
       src: "/video/xindian-ko.mp4",
       poster: "/video/xindian-ko-poster.jpg",
       note: "한국어 내레이션・자막 (88초).",

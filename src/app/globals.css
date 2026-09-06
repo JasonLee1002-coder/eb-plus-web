@@ -81,6 +81,32 @@ html {
   box-shadow: 0 0 16px rgba(245, 166, 35, 0.28);
 }
 
+/* ===== 呼吸燈（Jason 2026-09-06：三顆都要主動發光，日文韓文用不同色）=====
+   一組 keyframes 吃 --breathe-rgb 變數，每顆鈕自己帶顏色，
+   不必為每個顏色複製一份動畫。delay 錯開，三顆不同步呼吸才會「活」，
+   視線會依序被帶過去，而不是三顆一起閃像警示燈。 */
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 13px 0 rgba(var(--breathe-rgb), 0.30),
+                0 0 28px 0 rgba(var(--breathe-rgb), 0.10);
+  }
+  50% {
+    box-shadow: 0 0 26px 2px rgba(var(--breathe-rgb), 0.62),
+                0 0 54px 6px rgba(var(--breathe-rgb), 0.22);
+  }
+}
+
+.breathe {
+  animation: breathe 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breathe {
+    animation: none;
+    box-shadow: 0 0 20px rgba(var(--breathe-rgb), 0.45);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .glow-pulse-amber { animation: none; box-shadow: 0 0 24px rgba(245, 166, 35, 0.5); }
 }
