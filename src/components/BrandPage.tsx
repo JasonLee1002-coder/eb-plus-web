@@ -1,6 +1,56 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRANDS, type Brand } from "@/lib/brands";
+import { BRANDS, type Brand, type Photo } from "@/lib/brands";
+
+
+/**
+ * 照片格。`badge` 會壓在圖片上——標示會跟著圖片一起被截圖轉貼出去，
+ * 寫在圖片外面的說明轉貼時就掉了（StoreFormat 已用同一招）。
+ */
+function PhotoGrid({
+  items,
+  badge,
+  cols = 3,
+}: {
+  items: Photo[];
+  badge?: string;
+  cols?: 2 | 3;
+}) {
+  return (
+    <div
+      className={`grid gap-5 sm:grid-cols-2 ${cols === 3 ? "lg:grid-cols-3" : ""}`}
+    >
+      {items.map((p) => (
+        <figure
+          key={p.src}
+          className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+        >
+          <div className="relative aspect-[4/3]">
+            <Image
+              src={p.src}
+              alt={p.alt}
+              fill
+              sizes={
+                cols === 3
+                  ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  : "(max-width: 640px) 100vw, 50vw"
+              }
+              className="object-cover"
+            />
+            {badge && (
+              <span className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-1 text-[10px] font-medium text-white backdrop-blur-sm">
+                {badge}
+              </span>
+            )}
+          </div>
+          <figcaption className="p-5 text-sm leading-relaxed text-white/50">
+            {p.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
 
 /**
  * 兩家餐酒館共用的品牌頁版型。
@@ -145,32 +195,56 @@ export default function BrandPage({ brand }: { brand: Brand }) {
         </section>
       )}
 
-      {/* ── 實拍（沒照片就不畫這一段）── */}
+      {/* ── 實拍 ── */}
       {brand.photos.length > 0 && (
         <section className="border-t border-white/10 px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-5xl">
             <h2 className="mb-10 text-2xl font-bold sm:text-3xl">店裡的樣子</h2>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {brand.photos.map((p) => (
-                <figure
-                  key={p.src}
-                  className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
-                >
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={p.src}
-                      alt={p.alt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="p-5 text-sm leading-relaxed text-white/50">
-                    {p.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <PhotoGrid items={brand.photos} badge="實際場景" />
+          </div>
+        </section>
+      )}
+
+      {/* ── 餐點 ── */}
+      {brand.food && brand.food.length > 0 && (
+        <section className="border-t border-white/10 px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">餐點</h2>
+            <p className="mb-10 text-sm text-white/40">
+              店內實際供應的品項，菜單會依季節調整。
+            </p>
+            <PhotoGrid items={brand.food} badge="實際餐點" cols={2} />
+          </div>
+        </section>
+      )}
+
+      {/* ── 商圈 ── */}
+      {brand.neighborhood && brand.neighborhood.length > 0 && (
+        <section className="border-t border-white/10 px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">走出店門</h2>
+            <p className="mb-10 text-sm text-white/40">
+              以下是店周邊的實拍，非本店室內。
+            </p>
+            <PhotoGrid items={brand.neighborhood} badge="周邊實拍" />
+          </div>
+        </section>
+      )}
+
+      {/*
+        插畫情境區。Jason 2026-09-06：「一些插畫也可以用。但別變成圖文不實就好，
+        要註明示意圖之類。」所以這一段：①標題就寫「情境插畫」②段首說明白不是實景
+        ③每張圖上壓「示意圖」標籤，被截圖轉貼時標示會跟著走。
+      */}
+      {brand.illustrations && brand.illustrations.length > 0 && (
+        <section className="border-t border-white/10 px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">情境插畫</h2>
+            <p className="mb-10 max-w-2xl text-sm leading-relaxed text-white/40">
+              以下是插畫，不是店內實景，畫的是這家店晚上大概的樣子。
+              要看真的長什麼樣，請看上面的實拍與 Google 商家頁。
+            </p>
+            <PhotoGrid items={brand.illustrations} badge="示意圖" />
           </div>
         </section>
       )}

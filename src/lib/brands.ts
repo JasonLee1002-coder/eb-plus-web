@@ -14,6 +14,8 @@
  * 依裁示行文，若日後總部另有說法以總部為準。
  */
 
+export type Photo = { src: string; alt: string; caption: string };
+
 export type Brand = {
   slug: string;
   name: string;
@@ -32,7 +34,13 @@ export type Brand = {
   servesCuisine: string[];
   /** Google 商家頁——評分與評論一律導去這裡看，不在站上寫死數字 */
   googleMapsUrl: string;
-  photos: { src: string; alt: string; caption: string }[];
+  photos: Photo[];
+  /** 插畫情境圖——與實拍分開放，頁面上會標示「示意圖」 */
+  illustrations?: Photo[];
+  /** 餐點實拍 */
+  food?: Photo[];
+  /** 商圈周邊實拍 */
+  neighborhood?: Photo[];
   video?: { src: string; poster: string; note: string };
   /** 關於這家店：只寫可查證的事實，一段一句話 */
   about: string[];
@@ -61,9 +69,24 @@ export const XINDIAN: Brand = {
       caption: "駁二大義倉庫群的老屋外牆，店招與磚牆並存",
     },
     {
-      src: "/images/xindian/dining-area.jpg",
-      alt: "欣殿萬飲店內挑高用餐區，落地窗與植栽",
-      caption: "白天的用餐區：採光、桌距與動線都以早午餐客群安排",
+      src: "/images/xindian/window-logo.jpg",
+      alt: "欣殿萬飲窗面的燈箱 Logo",
+      caption: "窗面燈箱，晚上從街上就看得到",
+    },
+    {
+      src: "/images/xindian/full-view-bar.jpg",
+      alt: "欣殿萬飲店內全區空景，可見吧台與座位配置",
+      caption: "全區空景：吧台在中央，座位繞著配置",
+    },
+    {
+      src: "/images/xindian/drape-ceiling.jpg",
+      alt: "欣殿萬飲用餐區，天花懸掛布幔",
+      caption: "布幔天花把挑高的倉庫空間拉出層次",
+    },
+    {
+      src: "/images/xindian/sofa-area.jpg",
+      alt: "欣殿萬飲沙發座位區",
+      caption: "沙發區留給久坐的客人",
     },
     {
       src: "/images/xindian/bar-shelf.jpg",
@@ -71,19 +94,53 @@ export const XINDIAN: Brand = {
       caption: "同一座吧台：咖啡機與酒櫃並排，換時段不必換場地",
     },
     {
-      src: "/images/xindian/seating.jpg",
-      alt: "欣殿萬飲店內座位區",
-      caption: "座位配置留了走道，出餐與客人動線分開",
+      src: "/images/xindian/long-table-bar.jpg",
+      alt: "欣殿萬飲用餐長桌與吧台",
+      caption: "長桌坐得下一群人",
     },
     {
       src: "/images/xindian/kiosk-bar.jpg",
       alt: "欣殿萬飲店內自助點餐機與吧台",
       caption: "自助點餐機設在進門處，點單直接進廚房",
     },
+  ],
+  food: [
     {
-      src: "/images/xindian/scene-b.jpg",
-      alt: "欣殿萬飲店內用餐情境",
-      caption: "白天時段的現場",
+      src: "/images/xindian/food/beef-platter.jpg",
+      alt: "晨宴牛板腱拼盤，含炒蛋、薯餅、吐司與沙拉",
+      caption: "晨宴牛板腱拼盤",
+    },
+    {
+      src: "/images/xindian/food/truffle-eggs.jpg",
+      alt: "松露晨食炒蛋與時蔬",
+      caption: "松露晨食炒蛋時蔬",
+    },
+    {
+      src: "/images/xindian/food/chicken-platter.jpg",
+      alt: "晨宴香煎雞腿拼盤",
+      caption: "晨宴香煎雞腿拼盤",
+    },
+    {
+      src: "/images/xindian/food/blueberry-cheesecake.jpg",
+      alt: "藍莓乳酪蛋糕",
+      caption: "藍莓乳酪蛋糕",
+    },
+  ],
+  neighborhood: [
+    {
+      src: "/images/xindian/area/dagang-bridge.jpg",
+      alt: "高雄大港橋夜景",
+      caption: "大港橋就在步行範圍內",
+    },
+    {
+      src: "/images/xindian/area/warehouse-market.jpg",
+      alt: "駁二倉庫群與夜間市集",
+      caption: "倉庫群晚上有市集",
+    },
+    {
+      src: "/images/xindian/area/pier2-plaza.jpg",
+      alt: "駁二廣場夜間人流",
+      caption: "駁二廣場的夜間人流",
     },
   ],
   video: {
@@ -114,13 +171,60 @@ export const TACB: Brand = {
   openingHours: ["Mo-Su 19:00-02:00"],
   servesCuisine: ["餐酒館", "調酒"],
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=TACB+%E4%BA%BA%E6%96%87%E9%A4%90%E9%85%92+%E9%AB%98%E9%9B%84",
-  // 站上目前沒有 TACB 的實拍照。寧可不放，也不拿別家的照片充數。
-  photos: [],
+  photos: [
+    {
+      src: "/images/tacb/bar-counter.jpg",
+      alt: "TACB 人文餐酒的吧台長桌，後方層架陳列酒瓶",
+      caption: "一整條吧台長桌，後方是酒櫃",
+    },
+    {
+      src: "/images/tacb/dining-negroni.jpg",
+      alt: "TACB 用餐區，牆面壁畫與 NEGRONI 霓虹燈",
+      caption: "用餐區的牆面壁畫，吧台上方掛著 NEGRONI 霓虹",
+    },
+    {
+      src: "/images/tacb/long-table.jpg",
+      alt: "TACB 店內長桌與綠色牆面壁畫",
+      caption: "長桌配皮革椅，牆上是整面手繪",
+    },
+    {
+      src: "/images/tacb/gallery-wall.jpg",
+      alt: "TACB 店內綠牆、時鐘與畫框牆",
+      caption: "時鐘與畫框牆，是這家店最好認的一面",
+    },
+    {
+      src: "/images/tacb/seating-deep.jpg",
+      alt: "TACB 座位區深景，可見畫框牆與吧台",
+      caption: "從座位看進去，一路到吧台",
+    },
+  ],
+  // 插畫是 2026-07-08「TACB 觀光介紹 國際旅人插畫版」的情境圖，**不是實景**，
+  // 頁面上每張都壓「示意圖」標籤並在段首說明（Jason 2026-09-06：插畫可以用，
+  // 但別變成圖文不實）。同批另有兩張沒收：一張有虛構店名「BISTRO LE JOIE」，
+  // 一張是神燈奇幻場景，都不適合掛在真實店家頁面上。
+  illustrations: [
+    {
+      src: "/images/tacb/illus/bar-neon.jpg",
+      alt: "插畫：客人在吧台前舉杯，牆上是 TACB 霓虹字",
+      caption: "吧台前的一輪敬酒",
+    },
+    {
+      src: "/images/tacb/illus/toast-selfie.jpg",
+      alt: "插畫：一群客人在綠牆與畫框牆前合照",
+      caption: "畫框牆前的合照",
+    },
+    {
+      src: "/images/tacb/illus/kaohsiung-night.jpg",
+      alt: "插畫：高雄夜市街景，旅人在攤販與小店之間穿梭",
+      caption: "夜裡的高雄街區",
+    },
+  ],
   about: [
     "店在新崛江商圈的巷子裡，離駁二約四公里。",
     "只做晚上，19:00 開店到凌晨兩點。沒有白天時段，整家店的節奏就是為夜裡設計的。",
     "與高雄駁二的欣殿萬飲是同一組團隊。",
     "這家店開得比欣殿萬飲早，累積的評價也多得多——要看客人怎麼說，Google 商家頁上都在。",
+    "綠色牆面、整排時鐘與畫框牆，是這家店最好認的一面。",
   ],
   sibling: "xindian",
 };

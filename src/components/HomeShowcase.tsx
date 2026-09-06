@@ -515,8 +515,8 @@ export default function HomeShowcase() {
                 name: "TACB 人文餐酒",
                 place: "高雄新崛江",
                 desc: "純夜間餐酒館，19:00 開店。同一組團隊經營，酒單與現場服務是這家店的底子。",
-                image: null,
-                gradient: "from-[#2b1620] to-[#0d0d0d]",
+                image: "/images/tacb/gallery-wall.jpg",
+                gradient: null,
                 href: "/brands/tacb",
               },
             ].map((b) => (
