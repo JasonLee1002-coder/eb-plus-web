@@ -62,13 +62,15 @@ export const XINDIAN: Brand = {
   name: "欣殿萬飲",
   nameEn: "Xindian Wanyin",
   area: "高雄駁二",
-  tagline: "白天早午餐，傍晚起餐酒館。同一個空間、同一座吧台，換的只是時段。",
+  tagline: "午後早午餐，入夜轉餐酒館。同一個空間、同一座吧台，換的只是時段。",
   address: "高雄市鹽埕區大義街 2 號 C6-7",
   streetAddress: "大義街 2 號 C6-7",
   addressLocality: "鹽埕區",
   addressRegion: "高雄市",
-  hoursText: ["週一至週四　10:00–01:00", "週五至週日　10:00–03:00"],
-  openingHours: ["Mo-Th 10:00-01:00", "Fr-Su 10:00-03:00"],
+  // 2026-09-06 Google 商家頁實查：七天都是 13:30–21:30。
+  // 站上原值（10:00–01:00／10:00–03:00）是 2026-08 Places API 快照，店家已改過。
+  hoursText: ["每日　13:30–21:30"],
+  openingHours: ["Mo-Su 13:30-21:30"],
   servesCuisine: ["早午餐", "餐酒館", "咖啡"],
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=%E6%AC%A3%E6%AE%BF%E8%90%AC%E9%A3%B2+%E9%AB%98%E9%9B%84%E9%A7%81%E4%BA%8C",
   directionsUrl:
@@ -161,6 +163,8 @@ export const XINDIAN: Brand = {
   ],
   menu: {
     asOf: "2026 年 8 月",
+    // ⚠️ 菜單上印的早午餐供應時段是 10:00–15:00，但 Google 商家頁的營業時間是
+    // 13:30–21:30，兩者對不起來。頁面上只寫「以店內公告為準」，不替店家二選一。
     photos: [
       { src: "/images/xindian/menu/brunch-platter.jpg", alt: "欣殿萬飲早午餐拼盤菜單頁", caption: "早午餐拼盤（10:00–15:00）" },
       { src: "/images/xindian/menu/pasta.jpg", alt: "欣殿萬飲義大利麵菜單頁", caption: "義大利麵" },
@@ -179,7 +183,7 @@ export const XINDIAN: Brand = {
   },
   about: [
     "店開在駁二藝術特區的大義倉庫群裡，是老倉庫改的空間，紅磚外牆與店招並存。",
-    "白天做早午餐，傍晚換成餐酒館。兩個時段用同一個空間、同一座吧台——咖啡機與酒櫃並排，換時段不必換場地。",
+    "下午做早午餐，入夜換成餐酒館。兩個時段用同一個空間、同一座吧台——咖啡機與酒櫃並排，換時段不必換場地。",
     "點餐、出單、收銀與後台紀錄兩個時段共用一套系統，交接時不必重建資料。",
     "駁二是觀光區，來的客人不只在地人。",
   ],
@@ -196,12 +200,15 @@ export const TACB: Brand = {
   streetAddress: "林森二路 135 巷 35 號",
   addressLocality: "新興區",
   addressRegion: "高雄市",
-  hoursText: ["每日　19:00–02:00"],
-  openingHours: ["Mo-Su 19:00-02:00"],
+  // 2026-09-06 Google 商家頁實查：週末比平日多一小時
+  hoursText: ["週日至週四　19:00–02:00", "週五、週六　19:00–03:00"],
+  openingHours: ["Su-Th 19:00-02:00", "Fr-Sa 19:00-03:00"],
   servesCuisine: ["餐酒館", "調酒"],
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=TACB+%E4%BA%BA%E6%96%87%E9%A4%90%E9%85%92+%E9%AB%98%E9%9B%84",
   directionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=%E9%AB%98%E9%9B%84%E5%B8%82%E6%96%B0%E8%88%88%E5%8D%80%E6%9E%97%E6%A3%AE%E4%BA%8C%E8%B7%AF135%E5%B7%B735%E8%99%9F",
+  // 2026-09-06 Google 商家頁實查
+  tel: "07-2616400",
   photos: [
     {
       src: "/images/tacb/bar-counter.jpg",
@@ -252,7 +259,7 @@ export const TACB: Brand = {
   ],
   about: [
     "店在新崛江商圈的巷子裡，離駁二約四公里。",
-    "只做晚上，19:00 開店到凌晨兩點。沒有白天時段，整家店的節奏就是為夜裡設計的。",
+    "只做晚上，19:00 開店，平日到凌晨兩點、週五六到三點。沒有白天時段，整家店的節奏就是為夜裡設計的。",
     "與高雄駁二的欣殿萬飲是同一組團隊。",
     "這家店開得比欣殿萬飲早，累積的評價也多得多——要看客人怎麼說，Google 商家頁上都在。",
     "綠色牆面、整排時鐘與畫框牆，是這家店最好認的一面。",
