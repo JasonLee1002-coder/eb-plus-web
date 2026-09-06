@@ -1,6 +1,7 @@
 export const dynamic = "force-static";
 import { getAllPosts } from "@/lib/posts";
 import { PUBLIC_INDEXING, SITE_URL } from "@/lib/site";
+import { BRANDS } from "@/lib/brands";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +25,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    // 兩家餐酒館的品牌頁——「高雄駁二 餐酒館」「新崛江 餐酒館」這類在地字
+    // 要有落地頁才接得到，優先度高於一般文章
+    ...BRANDS.map((b) => ({
+      url: `${baseUrl}/brands/${b.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 
   const seoPages: MetadataRoute.Sitemap = posts.map((post) => ({

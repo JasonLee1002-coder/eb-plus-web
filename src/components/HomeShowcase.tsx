@@ -509,6 +509,7 @@ export default function HomeShowcase() {
                 desc: "白天早午餐，傍晚起餐酒館。同一個空間、同一座吧台，換時段不換場地。",
                 image: "/images/xindian/storefront.jpg",
                 gradient: null,
+                href: "/brands/xindian",
               },
               {
                 name: "TACB 人文餐酒",
@@ -516,9 +517,15 @@ export default function HomeShowcase() {
                 desc: "純夜間餐酒館，19:00 開店。同一組團隊經營，酒單與現場服務是這家店的底子。",
                 image: null,
                 gradient: "from-[#2b1620] to-[#0d0d0d]",
+                href: "/brands/tacb",
               },
             ].map((b) => (
               <TiltCard key={b.name}>
+                <a
+                  href={b.href}
+                  aria-label={`${b.name}（${b.place}）`}
+                  className="block"
+                >
                 <article className="group relative h-56 overflow-hidden rounded-2xl sm:h-64">
                   {b.image ? (
                     <Image
@@ -538,8 +545,15 @@ export default function HomeShowcase() {
                     </div>
                     <h3 className="text-xl font-black text-white">{b.name}</h3>
                     <p className="mt-1.5 max-w-md text-sm leading-relaxed text-white/60">{b.desc}</p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-[#F5A623]">
+                      看這家店
+                      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </span>
                   </div>
                 </article>
+                </a>
               </TiltCard>
             ))}
           </div>

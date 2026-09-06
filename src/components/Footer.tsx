@@ -8,6 +8,8 @@
 const footerLinks = [
   { label: "關於我們", href: "/#about" },
   { label: "品牌版圖", href: "/#brands" },
+  { label: "欣殿萬飲", href: "/brands/xindian" },
+  { label: "TACB 人文餐酒", href: "/brands/tacb" },
   { label: "人氣菜單", href: "/#menu" },
   { label: "加盟支援", href: "/#blueprint" },
   { label: "加盟方案", href: "/#franchise" },
