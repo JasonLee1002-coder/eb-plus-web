@@ -21,7 +21,7 @@ import Image from "next/image";
  */
 
 export const metadata: Metadata = {
-  title: "歓迎 首都高速道路株式会社 ご一行様 | 欣殿萬飲",
+  title: "歓迎 首都高速道路株式会社 御一行様 | 欣殿萬飲",
   description:
     "首都高速道路株式会社の皆様の台湾ご訪問を、高雄・駁二の欣殿萬飲より心より歓迎いたします。",
   // root layout 的 keywords 含「早午餐加盟／早餐店加盟」，會被這頁繼承。
@@ -71,7 +71,7 @@ export default function Page() {
           >
             首都高速道路株式会社
             <span className="mt-3 block text-xl font-bold text-white/80 sm:text-2xl lg:text-3xl">
-              ご一行様
+              御一行様
             </span>
           </h1>
 
@@ -119,7 +119,7 @@ export default function Page() {
               controls
               preload="none"
               playsInline
-              poster="/video/xindian-pier2-poster.jpg"
+              poster="/video/shutoko-welcome-poster.jpg"
             >
               <source src="/video/xindian-pier2-ja.mp4" type="video/mp4" />
               <span lang="ja">お使いのブラウザは動画再生に対応していません。</span>
