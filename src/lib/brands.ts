@@ -48,6 +48,8 @@ export type Brand = {
   /** Google 地圖導航連結——來吃飯的人第一件事是「怎麼去」 */
   directionsUrl: string;
   instagram?: string;
+  /** 對外電話。來源必須是 Google 商家頁或店家自己印的東西，不放猜的號碼 */
+  tel?: string;
   video?: { src: string; poster: string; note: string };
   /** 關於這家店：只寫可查證的事實，一段一句話 */
   about: string[];
@@ -73,6 +75,8 @@ export const XINDIAN: Brand = {
     "https://www.google.com/maps/dir/?api=1&destination=%E9%AB%98%E9%9B%84%E5%B8%82%E9%B9%BD%E5%9F%95%E5%8D%80%E5%A4%A7%E7%BE%A9%E8%A1%972%E8%99%9F",
   // 來源：店內菜單「品牌故事與社群 QR」頁（2026-08-10 實拍），店家自己印的
   instagram: "https://www.instagram.com/shindian.wanyin/",
+  // 來源：Google 商家頁「欣殿萬飲 SHIN DIAN WAN YIN・BISTRO」（Jason 2026-09-06 提供截圖）
+  tel: "07-5218857",
   slogan: "從晨光到微醺，收藏每一段美好時光。",
   photos: [
     {

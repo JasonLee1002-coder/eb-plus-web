@@ -22,6 +22,7 @@ export function restaurantSchema(brand: Brand, url: string) {
       addressCountry: "TW",
     },
     openingHours: brand.openingHours,
+    ...(brand.tel ? { telephone: brand.tel } : {}),
     servesCuisine: brand.servesCuisine,
     sameAs: [brand.googleMapsUrl],
     parentOrganization: {
