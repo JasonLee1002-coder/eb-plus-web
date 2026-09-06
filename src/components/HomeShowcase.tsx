@@ -494,6 +494,55 @@ export default function HomeShowcase() {
               ))}
             </div>
           </div>
+
+          {/*
+            餐酒館兩家（Jason 2026-09-06 裁示寫「旗下」，取代先前的「合作場域」寫法）。
+            紀律：不寫成可加盟的方案——Jason 2026-09-06「未來會，現在規劃中，先別曝光」，
+            所以這裡只講店本身，不出現招商／加盟／店型可選等字眼。
+            TACB 目前站上沒有實拍照，寧可用漸層底也不放非該店的照片。
+          */}
+          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {[
+              {
+                name: "欣殿萬飲",
+                place: "高雄駁二",
+                desc: "白天早午餐，傍晚起餐酒館。同一個空間、同一座吧台，換時段不換場地。",
+                image: "/images/xindian/storefront.jpg",
+                gradient: null,
+              },
+              {
+                name: "TACB 人文餐酒",
+                place: "高雄新崛江",
+                desc: "純夜間餐酒館，19:00 開店。同一組團隊經營，酒單與現場服務是這家店的底子。",
+                image: null,
+                gradient: "from-[#2b1620] to-[#0d0d0d]",
+              },
+            ].map((b) => (
+              <TiltCard key={b.name}>
+                <article className="group relative h-56 overflow-hidden rounded-2xl sm:h-64">
+                  {b.image ? (
+                    <Image
+                      src={b.image}
+                      alt={`${b.name}（${b.place}）`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className={`h-full w-full bg-gradient-to-br ${b.gradient}`} />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <div className="mb-2 inline-block rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-white/80 backdrop-blur-sm">
+                      {b.place}
+                    </div>
+                    <h3 className="text-xl font-black text-white">{b.name}</h3>
+                    <p className="mt-1.5 max-w-md text-sm leading-relaxed text-white/60">{b.desc}</p>
+                  </div>
+                </article>
+              </TiltCard>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -14,9 +14,10 @@ import { motion } from "framer-motion";
  * 寫作紀律（docs/CONTENT_POLICY.md）：
  *  - 照片與影片皆為 2026-08-10 起於該店實地取得的素材，非生成圖
  *  - 不寫坪效、翻桌率、營收、客單價等任何未經東方美書面提供的數字
- *  - 不把它寫成「可加盟的方案」——Codex 2026-08-16 稽核指出正式招商範圍
- *    未經東方美確認前，店型不得寫成申請人可選的商品（見 docs/codex-funnel-round1）
- *  - 欣殿萬飲是獨立品牌，寫「合作場域」不寫「旗下品牌」
+ *  - 欣殿萬飲寫「旗下品牌」（Jason 2026-09-06 裁示，取代 2026-08-16 的「合作場域」寫法）
+ *  - 但**不寫成「可加盟的方案」**——Jason 2026-09-06：「未來會，現在規劃中，先別曝光」。
+ *    站上不得出現招商、加盟、店型可選之類的字眼，也不要寫「是否納入招商範圍」
+ *    （那句本身就把還在考慮講出去了）
  */
 
 const PHOTOS = [
@@ -131,9 +132,9 @@ export default function StoreFormat() {
         </motion.div>
 
         <p className="text-muted-token mb-14 text-center text-xs leading-relaxed">
-          影片為欣殿萬飲（高雄駁二）形象片，拍的是夜間餐酒時段。欣殿萬飲為獨立餐酒品牌，
+          影片為欣殿萬飲（高雄駁二）形象片，拍的是夜間餐酒時段。
           <br className="hidden sm:block" />
-          與東方美+ 在該場域合作導入自助點餐與後台系統。白天的早午餐時段見下方實拍。
+          白天的早午餐時段見下方實拍。
         </p>
 
         {/* 三個時段區塊 */}
@@ -193,8 +194,6 @@ export default function StoreFormat() {
 
         <p className="text-muted-token mt-8 text-center text-xs leading-relaxed">
           雙時段要不要做、怎麼配，跟坪數、商圈與人力都有關係，每家店的答案不會一樣。
-          <br className="hidden sm:block" />
-          這個型態目前是合作場域的實際做法，是否納入招商範圍請與東方美總部確認。
         </p>
       </div>
     </section>
