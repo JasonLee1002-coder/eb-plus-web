@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: post.image ? [{ url: post.image }] : [],
     },
     alternates: {
-      canonical: `${SITE_URL}/seo/${slug}/`,
+      canonical: `${SITE_URL}/seo/${slug}`,
     },
     robots: PUBLIC_INDEXING
       ? { index: true, follow: true }
@@ -144,7 +144,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
             inLanguage: "zh-Hant-TW",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `${SITE_URL}/seo/${slug}/`,
+              "@id": `${SITE_URL}/seo/${slug}`,
             },
             keywords: post.keywords.join(", "),
           }),

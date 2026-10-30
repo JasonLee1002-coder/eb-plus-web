@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "東方美+ EB Plus",
     locale: "zh_TW",
   },
-  alternates: { canonical: `${SITE_URL}/seo/` },
+  alternates: { canonical: `${SITE_URL}/seo` },
 };
 
 export default function SeoBlogIndex() {
