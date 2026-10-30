@@ -13,7 +13,9 @@
  *   2. SITE_URL 換成正式網域（canonical 與 sitemap 都吃這個值）
  *   3. 重新對新網域做一次 IndexNow 推送
  */
-export const PUBLIC_INDEXING = false;
+export const PUBLIC_INDEXING = true;
+// 2026-10-30 Jason 看過手機版後同意開索引（「覺得可以，我就開索引並對新網址推 IndexNow」），
+// 同日裁示舊網址 eb-plus-web.vercel.app 作廢，由 vercel.json 301 轉到 cptfm.com。
 
 /**
  * canonical 與 sitemap 的基準網址。正式網域下來後改這裡，不要散在各檔。
