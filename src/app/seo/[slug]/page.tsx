@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { PUBLIC_INDEXING } from "@/lib/site";
+import { PUBLIC_INDEXING, SITE_URL } from "@/lib/site";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import type { Metadata } from "next";
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: post.image ? [{ url: post.image }] : [],
     },
     alternates: {
-      canonical: `https://eb-plus-web.vercel.app/seo/${slug}/`,
+      canonical: `${SITE_URL}/seo/${slug}/`,
     },
     robots: PUBLIC_INDEXING
       ? { index: true, follow: true }
@@ -144,7 +144,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
             inLanguage: "zh-Hant-TW",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://eb-plus-web.vercel.app/seo/${slug}/`,
+              "@id": `${SITE_URL}/seo/${slug}/`,
             },
             keywords: post.keywords.join(", "),
           }),

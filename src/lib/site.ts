@@ -15,8 +15,11 @@
  */
 export const PUBLIC_INDEXING = false;
 
-/** canonical 與 sitemap 的基準網址。正式網域下來後改這裡，不要散在各檔。 */
-export const SITE_URL = "https://eb-plus-web.vercel.app";
+/**
+ * canonical 與 sitemap 的基準網址。正式網域下來後改這裡，不要散在各檔。
+ * 2026-10-30 Jason 裁示改申請 cptfm.com 並買下（取代原目標 eastbeauty.com.tw），官網搬過去。
+ */
+export const SITE_URL = "https://cptfm.com";
 
 /**
  * 線上加盟洽詢是否開放收件。

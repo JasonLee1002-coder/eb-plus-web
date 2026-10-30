@@ -1,6 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "部落格 | 東方美+ EB Plus — 餐飲科技趨勢與加盟攻略",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "東方美+ EB Plus",
     locale: "zh_TW",
   },
-  alternates: { canonical: "https://eb-plus-web.vercel.app/seo/" },
+  alternates: { canonical: `${SITE_URL}/seo/` },
 };
 
 export default function SeoBlogIndex() {
